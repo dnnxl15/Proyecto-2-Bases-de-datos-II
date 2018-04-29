@@ -1,4 +1,97 @@
 /*
+* Type: Building
+* Author: Johan Torres Creed
+* Description: This is the object Building, that conteins the follow atributes
+* Created: 26/04/18
+* Last modification: 26/04/18
+* Last modification by: Johan Torres Creed
+*/
+CREATE TYPE Building_obj AS OBJECT (
+	idBuilding NUMBER NOT NULL,
+	buildingName VARCHAR2(100),
+	buildingLocation VARCHAR2(100),
+	level NUMBER,
+	campusLocation VARCHAR2(100),
+	idFaculty NUMBER
+);
+
+/*
+* Type: Classroom
+* Author: Johan Torres Creed
+* Description: This is the object Classroom, that conteins the follow atributes
+* Created: 26/04/18
+* Last modification: 26/04/18
+* Last modification by: Johan Torres Creed
+*/
+CREATE TYPE Classroom_obj AS OBJECT (
+	idBuilding NUMBER NOT NULL,
+	classNumber NUMBER,
+	classCapacity NUMBER
+);
+
+/*
+* Type: Lab
+* Author: Johan Torres Creed
+* Description: This is the object Lab, that conteins the follow atributes
+* Created: 26/04/18
+* Last modification: 26/04/18
+* Last modification by: Johan Torres Creed
+*/
+CREATE TYPE Lab_obj AS OBJECT (
+	idBuilding NUMBER NOT NULL,
+	labNumber NUMBER,
+	labCapacity NUMBER,
+	labEquipment VARCHAR2(100)
+);
+
+/*
+* Type: Degree
+* Author: Johan Torres Creed
+* Description: This is the object Degree, that conteins the follow atributes
+* Created: 26/04/18
+* Last modification: 26/04/18
+* Last modification by: Johan Torres Creed
+*/
+CREATE TYPE Degree_obj AS OBJECT (
+	idDegree NUMBER NOT NULL,
+	degreeName VARCHAR2(100),
+	length NUMBER,
+	degreePrerequisites VARCHAR2(100),
+	idFaculty NUMBER
+);
+
+/*
+* Type: Takes
+* Author: Johan Torres Creed
+* Description: This is the object Takes, that conteins the follow atributes
+* Created: 26/04/18
+* Last modification: 26/04/18
+* Last modification by: Johan Torres Creed
+*/
+CREATE TYPE Takes_obj AS OBJECT (
+	idTakes NUMBER NOT NULL,
+	student VARCHAR2(100),
+	subject VARCHAR2(100),
+	marks NUMBER
+);
+
+/*
+* Type: Subject
+* Author: Johan Torres Creed
+* Description: This is the object Subject, that conteins the follow atributes
+* Created: 26/04/18
+* Last modification: 26/04/18
+* Last modification by: Johan Torres Creed
+*/
+CREATE TYPE Subject_obj AS OBJECT (
+	idSubject NUMBER NOT NULL,
+	subjectName VARCHAR2(100),
+	credit NUMBER,
+	subjectPrerequisites VARCHAR2(100),
+	idPerson NUMBER
+);
+
+/*
 * Type: Person
 * Author: Danny Xie Li
 * Description: This is the object Person, that conteins the follow atributes
@@ -50,7 +143,7 @@ CREATE TABLE Student_table OF Student_obj (idPerson PRIMARY KEY)
 */
 CREATE TYPE Staff_obj UNDER Person_obj ( 
 	idBuilding NUMBER,
-	numberOffice VARCHAR2,
+	numberOffice NUMBER,
 	staffType VARCHAR2(100)
 )NOT FINAL;
 
@@ -75,7 +168,7 @@ CREATE TABLE Staff_table OF Staff_obj (idPerson PRIMARY KEY)
 */
 CREATE TYPE TutorStudent_obj UNDER Student_obj ( 
 	numberHours NUMBER,
-	rate FLOAT
+	rate NUMBER
 );
 
 /*
@@ -98,7 +191,7 @@ CREATE TABLE TutorStudent_table OF TutorStudent_obj (idPerson PRIMARY KEY)
 */
 CREATE TYPE TutorStaff_obj UNDER Staff_obj ( 
 	numberHours NUMBER,
-	rate FLOAT
+	rate NUMBER
 );
 
 /*
@@ -204,6 +297,81 @@ CREATE TABLE AssociateLecturer_table OF AssociateLecturer_obj (idPerson PRIMARY 
 */
 
 /*
+* Procedure: insertSubject
+* Author: Johan Torres Creed
+* Description: This procedure inserts a subject in the table Subject_table.
+* Created: 28/04/18
+* Last modification: 28/04/18
+* Last modification by: Johan Torres Creed
+*/
+CREATE PROCEDURE insertSubject(pSubjectName IN VARCHAR2, pCredit IN NUMBER,
+pSubjectPrerequisites IN VARCHAR2, pIDPerson IN NUMBER) AS
+BEGIN
+	INSERT INTO Subject_table
+	VALUES(Subject_obj(sequenceSubjectID.Nextval, pSubjectName, pCredit, pSubjectPrerequisites, pIDPerson));
+	COMMIT;
+END insertSubject;
+
+/* PRUEBA DE INSERT SUBJECT*/
+
+CALL insertSubject('Introduccion a la Tecnologia', 3, ' ', getAssociateLecturer(0)); 
+
+/*
+* Procedure: deleteSubject
+* Author: Johan Torres Creed
+* Description: This procedure delete a subject in the table Subject_table.
+* Created: 28/04/18
+* Last modification: 28/04/18
+* Last modification by: Johan Torres Creed
+*/
+CREATE PROCEDURE deleteSubject(pIDSubject IN NUMBER) AS
+BEGIN
+	DELETE FROM Subject_table 
+	WHERE idSubject = pIDSubject;
+	COMMIT;
+END deleteSubject;
+
+/* PRUEBA DE DELETE SUBJECT*/
+
+CALL deleteSubject(1);
+
+/*
+* Procedure: getSubject
+* Author: Johan Torres Creed
+* Description: This procedure get a subject in the table Subject_table and have a out parameter as a cursor.
+* Created: 28/04/18
+* Last modification: 28/04/18
+* Last modification by: Johan Torres Creed
+*/
+CREATE OR REPLACE PROCEDURE getSubject(cSubject OUT SYS_REFCURSOR)
+IS
+BEGIN
+	OPEN cSubject FOR 
+	SELECT Subject_table.idSubject, Subject_table.subjectName, Subject_table.credit,
+	Subject_table.subjectPrerequisites, Subject_table.idPerson
+	FROM Subject_table;
+END getSubject;
+
+/*
+* Procedure: updateSubject
+* Author: Johan Torres Creed
+* Description: This procedure updates a subject in the table Subject_table.
+* Created: 28/04/18
+* Last modification: 28/04/18
+* Last modification by: Johan Torres Creed
+*/
+CREATE OR REPLACE PROCEDURE updateSubject(pIDSubject IN NUMBER, pSubjectName IN VARCHAR2,
+pCredit IN NUMBER, pSubjectPrerequisites IN VARCHAR2, pIDPerson IN NUMBER) AS
+BEGIN 
+	UPDATE Subject_table subj
+	SET subj.subjectName = pSubjectName,
+	subj.credit = pCredit,
+	subj.subjectPrerequisites = pSubjectPrerequisites,
+	subj.idPerson = pIDPerson
+	WHERE subj.idSubject = pIDSubject;
+END updateSubject;
+
+/*
 * Procedure: insertStudent
 * Author: Danny Xie Li
 * Description: This procedure insert student in the table Student_table.
@@ -299,7 +467,7 @@ CALL updateStudent(2, 'Bilio', 'Gomez', 'Bachillerato', 'San Jose', 89652365, 56
 */
 CREATE PROCEDURE insertStaff(pFirstName IN VARCHAR2, pSurname IN VARCHAR2,
 pTitle IN VARCHAR2, pAddress IN VARCHAR2, pPhone IN NUMBER, pPostcode IN NUMBER,
-campusLocation IN VARCHAR2, idBuilding IN NUMBER, numberOffice IN VARCHAR2, staffType IN VARCHAR2) AS
+campusLocation IN VARCHAR2, idBuilding IN NUMBER, numberOffice IN NUMBER, staffType IN VARCHAR2) AS
 BEGIN
 	INSERT INTO Staff_table 
 	VALUES(Staff_obj(sequenceStaffID.Nextval, pSurname, pFirstName, pTitle, pAddress, pPhone, pPostcode, campusLocation, idBuilding,
@@ -309,7 +477,7 @@ END insertStaff;
 
 /* PRUEBA DE INSERT STAFF*/
 
-CALL insertStaff('Billy', 'Gomez', 'Master', 'Pavas', 12365478, 1452,'Cartago', 1, 'BCGH6', 'Secretaria'); 
+CALL insertStaff('Billy', 'Gomez', 'Master', 'Pavas', 12365478, 1452,'Cartago', 1, 12, 'Secretaria'); 
 
 /*
 * Procedure: deleteStaff
@@ -358,7 +526,7 @@ END getStaff;
 */
 CREATE OR REPLACE PROCEDURE updateStaff(pIDPerson IN NUMBER, pFirstName IN VARCHAR2, pSurname IN VARCHAR2,
 pTitle IN VARCHAR2, pAddress IN VARCHAR2, pPhone IN NUMBER, pPostcode IN NUMBER,
-pCampusLocation IN VARCHAR2, pIdBuilding IN NUMBER, pNumberOffice IN VARCHAR2, pStaffType IN VARCHAR2) AS
+pCampusLocation IN VARCHAR2, pIdBuilding IN NUMBER, pNumberOffice IN NUMBER, pStaffType IN VARCHAR2) AS
 BEGIN 
 	UPDATE Staff_table staf
 	SET staf.surname = pSurname,
@@ -376,7 +544,7 @@ END updateStaff;
 
 /* PRUEBA DE UPDATE STUDENT*/
 
-CALL updateStaff(2, 'Bilio', 'Gomez', 'Bachillerato', 'San Jose', 89652365, 5632, 'Cartago', 5, 'BDC5', 'Limpieza');
+CALL updateStaff(2, 'Bilio', 'Gomez', 'Bachillerato', 'San Jose', 89652365, 5632, 'Cartago', 5, 12, 'Limpieza');
 
 /*
 * Procedure: insertTutorStudent
@@ -388,7 +556,7 @@ CALL updateStaff(2, 'Bilio', 'Gomez', 'Bachillerato', 'San Jose', 89652365, 5632
 */
 CREATE PROCEDURE insertTutorStudent(pFirstName IN VARCHAR2, pSurname IN VARCHAR2,
 pTitle IN VARCHAR2, pAddress IN VARCHAR2, pPhone IN NUMBER, pPostcode IN NUMBER,
-campusLocation IN VARCHAR2, pYear IN NUMBER, pNumberHours IN NUMBER, pRate IN FLOAT) AS
+campusLocation IN VARCHAR2, pYear IN NUMBER, pNumberHours IN NUMBER, pRate IN NUMBER) AS
 BEGIN
 	INSERT INTO TutorStudent_table 
 	VALUES(TutorStudent_obj(sequenceTutorStudentID.Nextval, pSurname, pFirstName, pTitle, pAddress, pPhone, pPostcode, campusLocation, 
@@ -398,7 +566,7 @@ END insertTutorStudent;
 
 /* PRUEBA DE INSERT TUTOR STUDENT*/
 
-CALL insertTutorStudent('Billy', 'Gomez', 'Master', 'Pavas', 12365478, 1452,'Cartago', 2010, 12, 52.52); 
+CALL insertTutorStudent('Billy', 'Gomez', 'Master', 'Pavas', 12365478, 1452,'Cartago', 2010, 12, 52); 
 /*
 * Procedure: deleteTutorStudent
 * Author: Danny Xie Li
@@ -446,7 +614,7 @@ END getTutorStudent;
 */
 CREATE OR REPLACE PROCEDURE updateTutorStudent(pIDPerson IN NUMBER, pFirstName IN VARCHAR2, pSurname IN VARCHAR2,
 pTitle IN VARCHAR2, pAddress IN VARCHAR2, pPhone IN NUMBER, pPostcode IN NUMBER,
-pCampusLocation IN VARCHAR2, pYear IN NUMBER, pNumberHours IN NUMBER, pRate IN FLOAT) AS
+pCampusLocation IN VARCHAR2, pYear IN NUMBER, pNumberHours IN NUMBER, pRate IN NUMBER) AS
 BEGIN 
 	UPDATE TutorStudent_table tutorS
 	SET tutorS.surname = pSurname,
@@ -464,7 +632,7 @@ END updateTutorStudent;
 
 /* PRUEBA DE UPDATE TUTOR STUDENT*/
 
-CALL updateTutorStudent(2, 'Bilio', 'Gomez', 'Bachillerato', 'San Jose', 89652365, 5632, 'Cartago', 2500, 12, 22.2);
+CALL updateTutorStudent(2, 'Bilio', 'Gomez', 'Bachillerato', 'San Jose', 89652365, 5632, 'Cartago', 2500, 12, 222);
 
 /*
 * Procedure: insertTutorStaff
@@ -476,7 +644,7 @@ CALL updateTutorStudent(2, 'Bilio', 'Gomez', 'Bachillerato', 'San Jose', 8965236
 */
 CREATE PROCEDURE insertTutorStaff(pFirstName IN VARCHAR2, pSurname IN VARCHAR2,
 pTitle IN VARCHAR2, pAddress IN VARCHAR2, pPhone IN NUMBER, pPostcode IN NUMBER,
-pCampusLocation IN VARCHAR2, pYear IN NUMBER, pNumberHours IN NUMBER, pRate IN FLOAT) AS
+pCampusLocation IN VARCHAR2, pYear IN NUMBER, pNumberHours IN NUMBER, pRate IN NUMBER) AS
 BEGIN
 	INSERT INTO TutorStaff_table 
 	VALUES(TutorStaff_obj(sequenceTutorStaffID.Nextval, pSurname, pFirstName, pTitle, pAddress, pPhone, 
@@ -486,7 +654,7 @@ END insertTutorStaff;
 
 /* PRUEBA DE INSERT TUTOR STUDENT*/
 
-CALL insertTutorStaff('Billy', 'Gomez', 'Master', 'Pavas', 12365478, 1452,'Cartago', 2010, 12, 5.2); 
+CALL insertTutorStaff('Billy', 'Gomez', 'Master', 'Pavas', 12365478, 1452,'Cartago', 2010, 12, 52); 
 /*
 * Procedure: deleteTutorStaff
 * Author: Danny Xie Li
@@ -534,7 +702,7 @@ END getTutorStaff;
 */
 CREATE OR REPLACE PROCEDURE updateTutorStaff(pIDPerson IN NUMBER, pFirstName IN VARCHAR2, pSurname IN VARCHAR2,
 pTitle IN VARCHAR2, pAddress IN VARCHAR2, pPhone IN NUMBER, pPostcode IN NUMBER,
-pCampusLocation IN VARCHAR2, pYear IN NUMBER, pNumberHours IN NUMBER, pRate IN FLOAT) AS
+pCampusLocation IN VARCHAR2, pYear IN NUMBER, pNumberHours IN NUMBER, pRate IN NUMBER) AS
 BEGIN 
 	UPDATE TutorStaff_table tutorS
 	SET tutorS.surname = pSurname,
@@ -552,7 +720,7 @@ END updateTutorStaff;
 
 /* PRUEBA DE UPDATE TUTOR STUDENT*/
 
-CALL updateTutorStaff(2, 'Bilio', 'Gomez', 'Bachillerato', 'San Jose', 89652365, 5632, 'Cartago', 2500, 12, 222.32);
+CALL updateTutorStaff(2, 'Bilio', 'Gomez', 'Bachillerato', 'San Jose', 89652365, 5632, 'Cartago', 2500, 12, 222);
 
 /*
 * Procedure: insertTechnician
@@ -855,6 +1023,22 @@ CALL updateAdmin(0, 'Billy', 'Gomez', 'Master', 'Pavas', 12365478, 1452,
 */
 
 /*
+* Sequence: sequenceSubjectID
+* Author: Johan Torres Creed
+* Description: Sequence subject id.
+* Created: 28/04/18
+* Last modification: 28/04/18
+* Last modification by: Johan Torres Creed
+*/
+CREATE SEQUENCE sequenceSubjectID
+ START WITH     0
+ INCREMENT BY   1
+ MINVALUE 0
+ MAXVALUE 10000000
+ NOCACHE
+ NOCYCLE;
+
+/*
 * Sequence: sequenceStudentID
 * Author: Danny Xie Li
 * Description: Sequence student id.
@@ -967,14 +1151,7 @@ CREATE SEQUENCE sequenceAdminID
  NOCYCLE;
 
 
-/*
-* Procedure: 
-* Author: Danny Xie Li
-* Description: Sequence admin id.
-* Created: 26/04/18
-* Last modification: 26/04/18
-* Last modification by: Danny Xie Li
-*/
+
 
 
 
