@@ -342,6 +342,55 @@ BEGIN
 	COMMIT;
 END deleteCampus;
 
+/*
+* Procedure: insertOffice
+* Author: Esteban Coto Alfaro
+* Description: Procedure to insert a office into the table Office_table
+* Created: 29/04/18
+* Last modification: 29/04/18
+* Last modification by: Esteban Coto Alfaro
+*/
+CREATE PROCEDURE insertOffice(pIDBuilding IN NUMBER, pOfficeNum IN NUMBER,
+pOfficePhone IN NUMBER) AS
+BEGIN
+	INSERT INTO Office_table 
+	VALUES(Office_obj(pIDBuilding, pOfficeNum, pOfficePhone));
+	COMMIT;
+END insertOffice;
+
+/*
+* Procedure: updateOffice
+* Author: Esteban Coto Alfaro
+* Description: Procedure to update a office into the table Office_table
+* Created: 29/04/18
+* Last modification: 29/04/18
+* Last modification by: Esteban Coto Alfaro
+*/
+CREATE PROCEDURE updateOffice(pOldNum, pIDBuilding IN NUMBER, pNewNum IN NUMBER,
+pOfficePhone IN NUMBER) AS
+BEGIN
+	UPDATE Office_table office
+	SET office.idBuilding = pIDBuilding,
+	office.officeNumber = pNewNum,
+	office.officePhone = pOfficePhone
+	WHERE office.officeNumber = pOldNum;
+END updateOffice;
+
+/*
+* Procedure: deleteOffice
+* Author: Esteban Coto Alfaro
+* Description: Procedure to delete a office into the table Campus_table
+* Created: 29/04/18
+* Last modification: 29/04/18
+* Last modification by: Esteban Coto Alfaro
+*/
+CREATE PROCEDURE deleteOffice(pOfficeNum IN NUMBER) AS
+BEGIN
+	DELETE FROM Office_table office
+	WHERE office.officeNumber = pOfficeNum;
+	COMMIT;
+END deleteOffice;
+
 CREATE SEQUENCE seqCampus
 START WITH 0
 INCREMENT BY 1
