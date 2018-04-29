@@ -16,6 +16,17 @@ CREATE TYPE Building_obj AS OBJECT (
 );
 
 /*
+* Table: Building_table
+* Author: Johan Torres Creed
+* Description: This is the table Building, that conteins Building_obj and the primary key is from the building id
+* Created: 28/04/18
+* Last modification: 28/04/18
+* Last modification by: Johan Torres Creed
+*/
+CREATE TABLE Building_table OF Building_obj (idBuilding PRIMARY KEY)
+	OBJECT IDENTIFIER IS PRIMARY KEY
+
+/*
 * Type: Office
 * Author: Johan Torres Creed
 * Description: This is the object Office, that conteins the follow atributes
@@ -28,6 +39,17 @@ CREATE TYPE Office_obj AS OBJECT (
 	officeNumber VARCHAR2,
 	officePhone NUMBER
 );
+
+/*
+* Table: Office_table
+* Author: Johan Torres Creed
+* Description: This is the table Office, that conteins Office_obj and the primary key is from the building id
+* Created: 28/04/18
+* Last modification: 28/04/18
+* Last modification by: Johan Torres Creed
+*/
+CREATE TABLE Office_table OF Office_obj (idBuilding PRIMARY KEY)
+	OBJECT IDENTIFIER IS PRIMARY KEY
 
 /*
 * Type: Classroom
@@ -44,6 +66,17 @@ CREATE TYPE Classroom_obj AS OBJECT (
 );
 
 /*
+* Table: Classroom_table
+* Author: Johan Torres Creed
+* Description: This is the table Classroom, that conteins Classroom_obj and the primary key is from the building id
+* Created: 28/04/18
+* Last modification: 28/04/18
+* Last modification by: Johan Torres Creed
+*/
+CREATE TABLE Classroom_table OF Classroom_obj (idBuilding PRIMARY KEY)
+	OBJECT IDENTIFIER IS PRIMARY KEY
+
+/*
 * Type: Lab
 * Author: Johan Torres Creed
 * Description: This is the object Lab, that conteins the follow atributes
@@ -57,6 +90,17 @@ CREATE TYPE Lab_obj AS OBJECT (
 	labCapacity NUMBER,
 	labEquipment VARCHAR2(100)
 );
+
+/*
+* Table: Lab_table
+* Author: Johan Torres Creed
+* Description: This is the table Lab, that conteins Lab_obj and the primary key is from the building id
+* Created: 28/04/18
+* Last modification: 28/04/18
+* Last modification by: Johan Torres Creed
+*/
+CREATE TABLE Lab_table OF Lab_obj (idBuilding PRIMARY KEY)
+	OBJECT IDENTIFIER IS PRIMARY KEY
 
 /*
 * Type: Degree
@@ -75,6 +119,17 @@ CREATE TYPE Degree_obj AS OBJECT (
 );
 
 /*
+* Table: Degree_table
+* Author: Johan Torres Creed
+* Description: This is the table Degree, that conteins Degree_obj and the primary key is from the degree id
+* Created: 28/04/18
+* Last modification: 28/04/18
+* Last modification by: Johan Torres Creed
+*/
+CREATE TABLE Degree_table OF Degree_obj (idDegree PRIMARY KEY)
+	OBJECT IDENTIFIER IS PRIMARY KEY
+
+/*
 * Type: Takes
 * Author: Johan Torres Creed
 * Description: This is the object Takes, that conteins the follow atributes
@@ -88,6 +143,17 @@ CREATE TYPE Takes_obj AS OBJECT (
 	subject VARCHAR2(100),
 	marks NUMBER
 );
+
+/*
+* Table: Takes_table
+* Author: Johan Torres Creed
+* Description: This is the table Takes, that conteins Takes_obj and the primary key is from the takes id
+* Created: 28/04/18
+* Last modification: 28/04/18
+* Last modification by: Johan Torres Creed
+*/
+CREATE TABLE Takes_table OF Takes_obj (idTakes PRIMARY KEY)
+	OBJECT IDENTIFIER IS PRIMARY KEY
 
 /*
 * Type: Subject
@@ -104,6 +170,17 @@ CREATE TYPE Subject_obj AS OBJECT (
 	subjectPrerequisites VARCHAR2(100),
 	idPerson NUMBER
 );
+
+/*
+* Table: Subject_table
+* Author: Johan Torres Creed
+* Description: This is the table Subject, that conteins Subject_obj and the primary key is from the subject id
+* Created: 28/04/18
+* Last modification: 28/04/18
+* Last modification by: Johan Torres Creed
+*/
+CREATE TABLE Subject_table OF Subject_obj (idSubject PRIMARY KEY)
+	OBJECT IDENTIFIER IS PRIMARY KEY
 
 /*
 * Type: Person
@@ -1035,6 +1112,22 @@ CALL updateAdmin(0, 'Billy', 'Gomez', 'Master', 'Pavas', 12365478, 1452,
 * SEQUENCE
 *-----------
 */
+
+/*
+* Sequence: sequenceBuildingID
+* Author: Johan Torres Creed
+* Description: Sequence building id.
+* Created: 28/04/18
+* Last modification: 28/04/18
+* Last modification by: Johan Torres Creed
+*/
+CREATE SEQUENCE sequenceBuildingID
+ START WITH     0
+ INCREMENT BY   1
+ MINVALUE 0
+ MAXVALUE 10000000
+ NOCACHE
+ NOCYCLE;
 
 /*
 * Sequence: sequenceSubjectID
