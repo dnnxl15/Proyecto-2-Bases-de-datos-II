@@ -71,7 +71,7 @@ CREATE TYPE RC_Unit_obj AS OBJECT(
 * Last modification: 28/04/18
 * Last modification by: Esteban Coto Alfaro
 */
-CREATE TYPE RC_Unit_table AS TABLE OF RC_Unit_obj;
+CREATE TYPE RC_Unit_array AS VARRAY(10) OF RC_Unit_obj;
 
 /*
 * Table: Research Center
@@ -85,7 +85,7 @@ CREATE TYPE Research_Center_obj AS OBJECT(
 	idResearchCenter NUMBER,
 	name VARCHAR2(100),
 	head VARCHAR2(100),
-	unit RC_Unit_table
+	unit RC_Unit_array
 )NOT FINAL;
 
 /*
@@ -97,6 +97,7 @@ CREATE TYPE Research_Center_obj AS OBJECT(
 * Last modification by: Esteban Coto Alfaro
 */
 CREATE OR REPLACE TYPE List_RC AS TABLE OF Research_Center_obj;
+
 
 /*
 * Type: Object of schoole profesor
@@ -195,14 +196,13 @@ CREATE TYPE Department_obj AS OBJECT(
 CREATE OR REPLACE TYPE List_Department AS TABLE OF Department_obj;
 
 /*
-* Type: Facluty object
+* Type: building object
 * Author: Esteban Coto Alfaro
-* Description: Creates the faculty object
+* Description: Creates the building object
 * Created: 28/04/18
 * Last modification: 28/04/18
 * Last modification by: Esteban Coto Alfaro
 */
-
 CREATE TYPE Building_obj AS OBJECT(
 	idBuilding NUMBER,
 	buildingCode VARCHAR2(100),
@@ -213,15 +213,31 @@ CREATE TYPE Building_obj AS OBJECT(
 	idFaculty NUMBER
 )NOT FINAL;
 
+/*
+* Table: Building_Table
+* Author: Esteban Coto Alfaro
+* Description: Creates the building table
+* Created: 01/05/18
+* Last modification: 01/05/18
+* Last modification by: Esteban Coto Alfaro
+*/
 CREATE TABLE Building_table OF Building_obj(PRIMARY KEY (idBuilding));
 
+/*
+* Type: Facluty object
+* Author: Esteban Coto Alfaro
+* Description: Creates the faculty object
+* Created: 28/04/18
+* Last modification: 28/04/18
+* Last modification by: Esteban Coto Alfaro
+*/
 CREATE TYPE Faculty_obj AS OBJECT(
 	idFaculty NUMBER,
 	name VARCHAR2(100),
 	dean VARCHAR2(100),
 	department_list List_Department,
 	school_list List_School,
-	rc_list List_RC,
+	rc_list List_RC
 )NOT FINAL;
 
 /*
@@ -232,10 +248,7 @@ CREATE TYPE Faculty_obj AS OBJECT(
 * Last modification: 28/04/18
 * Last modification by: Esteban Coto Alfaro
 */
-CREATE TABLE Faculty_table OF Faculty_obj(PRIMARY KEY (idFaculty),
-department_list List_Department,
-school_list List_School,
-rc_list List_RC)
+CREATE TABLE Faculty_table OF Faculty_obj(PRIMARY KEY (idFaculty))
 NESTED TABLE department_list STORE AS Table_Department
 NESTED TABLE school_list STORE AS Table_School
 NESTED TABLE rc_list STORE AS Table_RC;
@@ -248,7 +261,7 @@ NESTED TABLE rc_list STORE AS Table_RC;
 * Last modification: 28/04/18
 * Last modification by: Esteban Coto Alfaro
 */
-CREATE TABLE Department_table OF Department_obj(PRIMARY KEY (idDepartment))
+CREATE TABLE Department_table OF Department_obj(PRIMARY KEY (idDepartment));
 
 /*
 * Table: School
@@ -428,6 +441,26 @@ BEGIN
 	WHERE building.buildingCode = pBuildingCode;
 	COMMIT;
 END deleteBuilding;
+
+/*
+* Procedure: insertFaculty
+* Author: Esteban Coto Alfaro
+* Description: Procedure to insert a faculty into the table Faculty_table
+* Created: 01/05/18
+* Last modification: 01/05/18
+* Last modification by: Esteban Coto Alfaro
+*/
+CREATE PROCEDURE insertFaculty(pFacultyName IN VARCHAR2(100), pFacultyDean IN VARCHAR2(100), pSchoolName IN VARCHAR2(100),
+	pSchoolHead IN VARCHAR2(100), pSchoolProf IN SchoolProf_array, pDepartmentName IN VARCHAR2(100), pDepartmentHead IN VARCHAR2(100),
+	pDepartmentProf IN DeptProf_array, pRCName IN VARCHAR2(100), pRCHead IN VARCHAR2(100), pRCUnit IN RC_Unit_array) AS
+BEGIN
+	INSERT INTO Faculty_table 
+	VALUES(Faculty_obj(seqFaculty.Nextval, pFacultyName, pFacultyDean, 
+		List_Department(Department_obj(seqDepartment.Nextval, pDepartmentName, pDepartmentHead, pDepartmentProf)),
+		List_School(School_obj(seqSchool.Nextval, pSchoolName, pSchoolHead, pSchoolProf)),
+		List_RC(Research_Center_obj(seqResearchCenter.Nextval, pRCName, pRCHead, pRCUnit))));
+	COMMIT;
+END insertFaculty;
 
 CREATE SEQUENCE seqCampus
 START WITH 0
