@@ -462,6 +462,18 @@ BEGIN
 	COMMIT;
 END insertFaculty;
 
+/*
+---------- SEQUENCES ----------
+*/
+
+/*
+* Sequence: seqCampus
+* Author: Esteban Coto Alfaro
+* Description: Sequence to have control of the campus id
+* Created: 28/04/18
+* Last modification: 28/04/18
+* Last modification by: Esteban Coto Alfaro
+*/
 CREATE SEQUENCE seqCampus
 START WITH 0
 INCREMENT BY 1
@@ -470,6 +482,14 @@ MAXVALUE 1000000
 NOCACHE
 NOCYCLE
 
+/*
+* Sequence: seqFaculty
+* Author: Esteban Coto Alfaro
+* Description: Sequence to have control of the faculty id
+* Created: 28/04/18
+* Last modification: 28/04/18
+* Last modification by: Esteban Coto Alfaro
+*/
 CREATE SEQUENCE seqFaculty
 START WITH 0
 INCREMENT BY 1
@@ -478,6 +498,14 @@ MAXVALUE 1000000
 NOCACHE
 NOCYCLE
 
+/*
+* Sequence: seqSchool
+* Author: Esteban Coto Alfaro
+* Description: Sequence to have control of the school id
+* Created: 28/04/18
+* Last modification: 28/04/18
+* Last modification by: Esteban Coto Alfaro
+*/
 CREATE SEQUENCE seqSchool
 START WITH 0
 INCREMENT BY 1
@@ -486,6 +514,14 @@ MAXVALUE 1000000
 NOCACHE
 NOCYCLE
 
+/*
+* Sequence: seqDepartment
+* Author: Esteban Coto Alfaro
+* Description: Sequence to have control of the department id
+* Created: 28/04/18
+* Last modification: 28/04/18
+* Last modification by: Esteban Coto Alfaro
+*/
 CREATE SEQUENCE seqDepartment
 START WITH 0
 INCREMENT BY 1
@@ -494,6 +530,14 @@ MAXVALUE 1000000
 NOCACHE
 NOCYCLE
 
+/*
+* Sequence: seqResearchCenter
+* Author: Esteban Coto Alfaro
+* Description: Sequence to have control of the researchCenter id
+* Created: 28/04/18
+* Last modification: 28/04/18
+* Last modification by: Esteban Coto Alfaro
+*/
 CREATE SEQUENCE seqResearchCenter
 START WITH 0
 INCREMENT BY 1
@@ -502,6 +546,14 @@ MAXVALUE 1000000
 NOCACHE
 NOCYCLE
 
+/*
+* Sequence: seqBuilding
+* Author: Esteban Coto Alfaro
+* Description: Sequence to have control of the building id
+* Created: 28/04/18
+* Last modification: 28/04/18
+* Last modification by: Esteban Coto Alfaro
+*/
 CREATE SEQUENCE seqBuilding
 START WITH 0
 INCREMENT BY 1
@@ -510,6 +562,14 @@ MAXVALUE 1000000
 NOCACHE
 NOCYCLE
 
+/*
+* Sequence: seqOffice
+* Author: Esteban Coto Alfaro
+* Description: Sequence to have control of the office id
+* Created: 28/04/18
+* Last modification: 28/04/18
+* Last modification by: Esteban Coto Alfaro
+*/
 CREATE SEQUENCE seqOffice
 START WITH 0
 INCREMENT BY 1
