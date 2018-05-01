@@ -35,20 +35,21 @@ CREATE TABLE Campus_table OF Campus_obj (idCampus PRIMARY KEY)
 * Last modification by: Esteban Coto Alfaro
 */
 CREATE TYPE Office_obj AS OBJECT(
-	idBuilding NUMBER,
+	idOffice NUMBER,
+	buildingCode VARCHAR2(100),
 	officeNumber VARCHAR2(100),
 	officePhone NUMBER
 )NOT FINAL;
 
 /*
-* Type: List office
+* Table: Office
 * Author: Esteban Coto Alfaro
-* Description: Creates the list of office
+* Description: Creates the table Office
 * Created: 28/04/18
 * Last modification: 28/04/18
 * Last modification by: Esteban Coto Alfaro
 */
-CREATE OR REPLACE TYPE List_Office AS TABLE OF Office_obj;
+CREATE TABLE Office_table OF Office_obj(PRIMARY KEY (officeNumber));
 
 /*
 * Type: Research center unit object
@@ -85,7 +86,7 @@ CREATE TYPE Research_Center_obj AS OBJECT(
 	name VARCHAR2(100),
 	head VARCHAR2(100),
 	unit RC_Unit_table
-);
+)NOT FINAL;
 
 /*
 * Table: Create List of researc center
@@ -108,7 +109,7 @@ CREATE OR REPLACE TYPE List_RC AS TABLE OF Research_Center_obj;
 CREATE TYPE SchoolProf_obj AS OBJECT(
 	schoolProfName VARCHAR2(100),
 	schoolProfPhone NUMBER
-);
+)NOT FINAL;
 
 /*
 * VARRAY: School profesor array
@@ -133,7 +134,7 @@ CREATE TYPE School_obj AS OBJECT(
 	name VARCHAR2(100),
 	head VARCHAR2(100),
 	prof_array SchoolProf_array
-);
+)NOT FINAL;
 
 /*
 * Table: Table of list of school
@@ -156,7 +157,7 @@ CREATE OR REPLACE TYPE List_School AS TABLE OF School_obj;
 CREATE TYPE DeptProf_obj AS OBJECT(
 	deptProfName VARCHAR2(100),
 	deptProfPhone NUMBER
-);
+)NOT FINAL;
 
 /*
 * VARRAY: department profesor array
@@ -181,7 +182,7 @@ CREATE TYPE Department_obj AS OBJECT(
 	name VARCHAR2(100),
 	head VARCHAR2(100),
 	prof_array DeptProf_array
-);
+)NOT FINAL;
 
 /*
 * Table: list of deparments
@@ -204,15 +205,15 @@ CREATE OR REPLACE TYPE List_Department AS TABLE OF Department_obj;
 
 CREATE TYPE Building_obj AS OBJECT(
 	idBuilding NUMBER,
+	buildingCode VARCHAR2(100),
 	buildingName VARCHAR2(100),
 	buildingLocation VARCHAR2(100),
 	buildingLevel NUMBER,
 	campusLocation VARCHAR2(100),
-	idFaculty NUMBER,
-	office_list List_Office
-);
+	idFaculty NUMBER
+)NOT FINAL;
 
-CREATE OR REPLACE TYPE List_Building AS TABLE OF Building_obj;
+CREATE TABLE Building_table OF Building_obj(PRIMARY KEY (idBuilding));
 
 CREATE TYPE Faculty_obj AS OBJECT(
 	idFaculty NUMBER,
@@ -221,8 +222,7 @@ CREATE TYPE Faculty_obj AS OBJECT(
 	department_list List_Department,
 	school_list List_School,
 	rc_list List_RC,
-	building_list List_Building
-);
+)NOT FINAL;
 
 /*
 * Table: Faculty table with Department, School and Research center
@@ -235,25 +235,10 @@ CREATE TYPE Faculty_obj AS OBJECT(
 CREATE TABLE Faculty_table OF Faculty_obj(PRIMARY KEY (idFaculty),
 department_list List_Department,
 school_list List_School,
-rc_list List_RC,
-building_list List_Building)
+rc_list List_RC)
 NESTED TABLE department_list STORE AS Table_Department
 NESTED TABLE school_list STORE AS Table_School
-NESTED TABLE rc_list STORE AS Table_RC
-NESTED TABLE building_list AS Table_Building;
-
-CREATE TABLE Building_table OF Building_obj(PRIMARY KEY (idBuilding))
-NASTED TABLE office_list STORE AS Table_Office;
-
-/*
-* Table: Office
-* Author: Esteban Coto Alfaro
-* Description: Creates the table Office
-* Created: 28/04/18
-* Last modification: 28/04/18
-* Last modification by: Esteban Coto Alfaro
-*/
-CREATE TABLE Office_table OF Office_obj(PRIMARY KEY (officeNumber));
+NESTED TABLE rc_list STORE AS Table_RC;
 
 /*
 * Table: Department
@@ -350,11 +335,11 @@ END deleteCampus;
 * Last modification: 29/04/18
 * Last modification by: Esteban Coto Alfaro
 */
-CREATE PROCEDURE insertOffice(pIDBuilding IN NUMBER, pOfficeNum IN NUMBER,
+CREATE PROCEDURE insertOffice(pBuildingCode IN VARCHAR2(100), pOfficeNum IN VARCHAR2(100),
 pOfficePhone IN NUMBER) AS
 BEGIN
 	INSERT INTO Office_table 
-	VALUES(Office_obj(pIDBuilding, pOfficeNum, pOfficePhone));
+	VALUES(Office_obj(seqOffice.Nextval, pBuildingCode, pOfficeNum, pOfficePhone));
 	COMMIT;
 END insertOffice;
 
@@ -366,11 +351,11 @@ END insertOffice;
 * Last modification: 29/04/18
 * Last modification by: Esteban Coto Alfaro
 */
-CREATE PROCEDURE updateOffice(pOldNum, pIDBuilding IN NUMBER, pNewNum IN NUMBER,
-pOfficePhone IN NUMBER) AS
+CREATE PROCEDURE updateOffice(pOldNum IN VARCHAR2(100), pBuildingCode IN VARCHAR2(100), 
+	pNewNum IN VARCHAR2(100), pOfficePhone IN NUMBER) AS
 BEGIN
 	UPDATE Office_table office
-	SET office.idBuilding = pIDBuilding,
+	SET office.buildingCode = pBuildingCode,
 	office.officeNumber = pNewNum,
 	office.officePhone = pOfficePhone
 	WHERE office.officeNumber = pOldNum;
@@ -379,17 +364,70 @@ END updateOffice;
 /*
 * Procedure: deleteOffice
 * Author: Esteban Coto Alfaro
-* Description: Procedure to delete a office into the table Campus_table
+* Description: Procedure to delete a office into the table Office_table
 * Created: 29/04/18
 * Last modification: 29/04/18
 * Last modification by: Esteban Coto Alfaro
 */
-CREATE PROCEDURE deleteOffice(pOfficeNum IN NUMBER) AS
+CREATE PROCEDURE deleteOffice(pOfficeNum IN VARCHAR2(100)) AS
 BEGIN
 	DELETE FROM Office_table office
 	WHERE office.officeNumber = pOfficeNum;
 	COMMIT;
 END deleteOffice;
+
+/*
+* Procedure: insertBuilding
+* Author: Esteban Coto Alfaro
+* Description: Procedure to insert a building into the table Building_table
+* Created: 01/05/18
+* Last modification: 01/05/18
+* Last modification by: Esteban Coto Alfaro
+*/
+CREATE PROCEDURE insertBuilding(pBuildingCode IN VARCHAR2(100), pBuildingName IN VARCHAR2(100),
+pBuildingLocation IN VARCHAR2(100), pBuildingLevel IN NUMBER, pCampusLocation IN VARCHAR2(100),
+pFacultyID IN NUMBER) AS
+BEGIN
+	INSERT INTO Building_table 
+	VALUES(Building_obj(seqBuilding.Nextval, pBuildingCode, pBuildingName, pBuildingLocation, pBuildingLevel, pCampusLocation, pFacultyID));
+	COMMIT;
+END insertBuilding;
+
+/*
+* Procedure: updateBuilding
+* Author: Esteban Coto Alfaro
+* Description: Procedure to update a building into the table Building_table
+* Created: 01/05/18
+* Last modification: 01/05/18
+* Last modification by: Esteban Coto Alfaro
+*/
+CREATE PROCEDURE updateBuilding(pOldCode IN VARCHAR2(100), pNewCode IN VARCHAR2(100), pBuildingName IN VARCHAR2(100),
+	pBuildingLocation IN VARCHAR2(100), pBuildingLevel IN VARCHAR2(100), pCampusLocation IN VARCHAR2(100), pFacultyID IN NUMBER) AS
+BEGIN
+	UPDATE Building_table building
+	SET building.buildingCode = pNewCode,
+	building.buildingName = pBuildingName,
+	building.buildingLocation = pBuildingLocation,
+	building.buildingLevel = pBuildingLevel,
+	building.campusLocation = pCampusLocation,
+	building.idFaculty = pFacultyID
+	WHERE building.buildingCode = pOldCode;
+END updateBuilding;
+
+/*
+* Procedure: deleteBuilding
+* Author: Esteban Coto Alfaro
+* Description: Procedure to delete a Building into the table Building_table
+* Created: 01/05/18
+* Last modification: 01/05/18
+* Last modification by: Esteban Coto Alfaro
+*/
+CREATE PROCEDURE deleteBuilding(pBuildingCode IN VARCHAR2(100)) AS
+BEGIN
+	DELETE FROM Building_table building
+	WHERE building.buildingCode = pBuildingCode;
+	COMMIT;
+END deleteBuilding;
 
 CREATE SEQUENCE seqCampus
 START WITH 0
