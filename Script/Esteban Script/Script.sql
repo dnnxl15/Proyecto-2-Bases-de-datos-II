@@ -455,7 +455,7 @@ CREATE PROCEDURE insertFaculty(pFacultyName IN VARCHAR2(100), pFacultyDean IN VA
 	pDepartmentProf IN DeptProf_array, pRCName IN VARCHAR2(100), pRCHead IN VARCHAR2(100), pRCUnit IN RC_Unit_array) AS
 BEGIN
 	INSERT INTO Faculty_table 
-	VALUES(Faculty_obj(seqFaculty.Nextval, pFacultyName, pFacultyDean, 
+	VALUES(Faculty_obj(seqFaculty.Nextval, pFacultyName, pFacultyDean,
 		List_Department(Department_obj(seqDepartment.Nextval, pDepartmentName, pDepartmentHead, pDepartmentProf)),
 		List_School(School_obj(seqSchool.Nextval, pSchoolName, pSchoolHead, pSchoolProf)),
 		List_RC(Research_Center_obj(seqResearchCenter.Nextval, pRCName, pRCHead, pRCUnit))));
