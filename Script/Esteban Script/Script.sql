@@ -450,15 +450,10 @@ END deleteBuilding;
 * Last modification: 01/05/18
 * Last modification by: Esteban Coto Alfaro
 */
-CREATE PROCEDURE insertFaculty(pFacultyName IN VARCHAR2(100), pFacultyDean IN VARCHAR2(100), pSchoolName IN VARCHAR2(100),
-	pSchoolHead IN VARCHAR2(100), pSchoolProf IN SchoolProf_array, pDepartmentName IN VARCHAR2(100), pDepartmentHead IN VARCHAR2(100),
-	pDepartmentProf IN DeptProf_array, pRCName IN VARCHAR2(100), pRCHead IN VARCHAR2(100), pRCUnit IN RC_Unit_array) AS
+CREATE PROCEDURE insertFaculty(pFacultyName IN VARCHAR2(100), pFacultyDean IN VARCHAR2(100)) AS
 BEGIN
 	INSERT INTO Faculty_table 
-	VALUES(Faculty_obj(seqFaculty.Nextval, pFacultyName, pFacultyDean,
-		List_Department(Department_obj(seqDepartment.Nextval, pDepartmentName, pDepartmentHead, pDepartmentProf)),
-		List_School(School_obj(seqSchool.Nextval, pSchoolName, pSchoolHead, pSchoolProf)),
-		List_RC(Research_Center_obj(seqResearchCenter.Nextval, pRCName, pRCHead, pRCUnit))));
+	VALUES(Faculty_obj(seqFaculty.Nextval, pFacultyName, pFacultyDean, NULL, NULL, NULL));
 	COMMIT;
 END insertFaculty;
 
@@ -577,3 +572,14 @@ MINVALUE 0
 MAXVALUE 1000000
 NOCACHE
 NOCYCLE
+
+
+insert into faculty_table
+VALUES(0, 'fac', 'dean', List_Department(
+Department_obj(0, 'dept1', 'head', DeptProf_array(DeptProf_obj('Nombre1', 12345), DeptProf_obj('Nombre2', 54321))), 
+Department_obj(1, 'dept2', 'head2', DeptProf_array(DeptProf_obj('Nombre3', 12345), DeptProf_obj('Nombre4', 54321))) ), List_School(
+School_obj(0, 'school1', 'Schoolhead', SchoolProf_array(SchoolProf_obj('Nombre1', 12345), SchoolProf_obj('Nombre2', 54321))), 
+School_obj(1, 'school2', 'head2', SchoolProf_array(SchoolProf_obj('Nombre3', 12345), SchoolProf_obj('Nombre4', 54321))) ), List_RC(
+Research_Center_obj(0, 'rc1', 'head1', RC_Unit_array(RC_Unit_obj('unit1'),RC_Unit_obj('unit2'))), 
+Research_Center_obj(1, 'rc2', 'head2', RC_Unit_array(RC_Unit_obj('unit3'),RC_Unit_obj('unit4'))))
+);
