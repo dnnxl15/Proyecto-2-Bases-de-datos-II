@@ -1,3 +1,6 @@
+CREATE CLUSTER Building_cluster (idBuilding NUMBER(3)) SIZE 512;
+CREATE INDEX idx_building_cluster ON CLUSTER Building_cluster;
+
 /*
 * Type: Classroom
 * Author: Johan Torres Creed
@@ -7,10 +10,10 @@
 * Last modification by: Johan Torres Creed
 */
 CREATE TYPE Classroom_obj AS OBJECT (
-	idBuilding NUMBER NOT NULL,
+	idBuilding NUMBER,
 	classNumber VARCHAR2(100),
 	classCapacity NUMBER
-);
+)NOT FINAL;
 
 /*
 * Table: Classroom_table
@@ -20,7 +23,8 @@ CREATE TYPE Classroom_obj AS OBJECT (
 * Last modification: 28/04/18
 * Last modification by: Johan Torres Creed
 */
-CREATE TABLE Classroom_table OF Classroom_obj (PRIMARY KEY(classNumber));
+CREATE TABLE Classroom_table OF Classroom_obj (PRIMARY KEY(classNumber))
+	CLUSTER Building_cluster (idBuilding);
 
 /*
 * Type: Lab
@@ -30,12 +34,21 @@ CREATE TABLE Classroom_table OF Classroom_obj (PRIMARY KEY(classNumber));
 * Last modification: 26/04/18
 * Last modification by: Johan Torres Creed
 */
+
+/*
+DECLARE TYPE Equipment IS VARRAY(100) OF VARCHAR2(50);
+BEGIN
+    NULL;
+END;
+*/
+
 CREATE TYPE Lab_obj AS OBJECT (
-	idBuilding NUMBER NOT NULL,
+	idBuilding NUMBER,
 	labNumber VARCHAR2(100),
 	labCapacity NUMBER,
 	labEquipment VARCHAR2(100)
-);
+)NOT FINAL;
+
 
 /*
 * Table: Lab_table
@@ -45,7 +58,8 @@ CREATE TYPE Lab_obj AS OBJECT (
 * Last modification: 28/04/18
 * Last modification by: Johan Torres Creed
 */
-CREATE TABLE Lab_table OF Lab_obj (PRIMARY KEY(labNumber));
+CREATE TABLE Lab_table OF Lab_obj (PRIMARY KEY(labNumber))
+	CLUSTER Building_cluster (idBuilding);
 
 /*
 * Type: Degree
@@ -56,12 +70,12 @@ CREATE TABLE Lab_table OF Lab_obj (PRIMARY KEY(labNumber));
 * Last modification by: Johan Torres Creed
 */
 CREATE TYPE Degree_obj AS OBJECT (
-	idDegree NUMBER NOT NULL,
+	idDegree NUMBER,
 	degreeName VARCHAR2(100),
 	length NUMBER,
 	degreePrerequisites VARCHAR2(100),
 	idFaculty NUMBER
-);
+)NOT FINAL;
 
 /*
 * Table: Degree_table
@@ -75,30 +89,31 @@ CREATE TABLE Degree_table OF Degree_obj (idDegree PRIMARY KEY)
 	OBJECT IDENTIFIER IS PRIMARY KEY
 
 /*
-* Type: Takes
+* Type: Table EnrollsIn
 * Author: Johan Torres Creed
-* Description: This is the object Takes, that conteins the follow atributes
-* Created: 26/04/18
-* Last modification: 26/04/18
+* Description: EnrollsIn, association between Student and Degree
+* Created: 02/05/18
+* Last modification: 02/05/18
 * Last modification by: Johan Torres Creed
 */
-CREATE TYPE Takes_obj AS OBJECT (
-	idTakes NUMBER NOT NULL,
-	student VARCHAR2(100),
-	subject VARCHAR2(100),
-	marks NUMBER
+CREATE TABLE EnrollsIn AS (
+	idPerson REF Student_obj SCOPE IS Student_table,
+	idDegree REF Degree_obj SCOPE IS Degree_table
 );
 
 /*
-* Table: Takes_table
+* Type: Table Takes
 * Author: Johan Torres Creed
-* Description: This is the table Takes, that conteins Takes_obj and the primary key is from the takes id
-* Created: 28/04/18
-* Last modification: 28/04/18
+* Description: Takes, association between Student and Subject
+* Created: 26/04/18
+* Last modification: 02/05/18
 * Last modification by: Johan Torres Creed
 */
-CREATE TABLE Takes_table OF Takes_obj (idTakes PRIMARY KEY)
-	OBJECT IDENTIFIER IS PRIMARY KEY
+CREATE TABLE Takes AS (
+	idPerson REF Student_obj SCOPE IS Student_table,
+	idSubject REF Subject_obj SCOPE IS Subject_table,
+	marks NUMBER
+);
 
 /*
 * Type: Subject
@@ -109,12 +124,12 @@ CREATE TABLE Takes_table OF Takes_obj (idTakes PRIMARY KEY)
 * Last modification by: Johan Torres Creed
 */
 CREATE TYPE Subject_obj AS OBJECT (
-	idSubject NUMBER NOT NULL,
+	idSubject NUMBER,
 	subjectName VARCHAR2(100),
 	credit NUMBER,
 	subjectPrerequisites VARCHAR2(100),
 	idPerson NUMBER
-);
+)NOT FINAL;
 
 /*
 * Table: Subject_table
@@ -139,7 +154,7 @@ CREATE TYPE SeniorLecturer_obj UNDER Lecturer_obj (
 	numberPhd NUMBER NULL,
 	numberMaster NUMBER NULL,
 	numberHonours NUMBER NULL
-);
+)NOT FINAL;
 
 /*
 * Table: SeniorLecturer 
@@ -382,16 +397,14 @@ END updateDegree;
 * Last modification: 28/04/18
 * Last modification by: Johan Torres Creed
 */
-CREATE PROCEDURE insertTakes(pStudent IN VARCHAR2, pSubject IN VARCHAR2, pMarks IN NUMBER) AS
+CREATE PROCEDURE insertTakes(pStudent IN NUMBER, pSubject IN NUMBER, pMarks IN NUMBER) AS
 BEGIN
 	INSERT INTO Takes_table
-	VALUES(Takes_obj(seqTakes.Nextval, pStudent, pSubject, pMarks));
+	VALUES(SELECT REF(pStd), REF(pSubj), pMarks
+		FROM Student_table pStd, Subject_table pSubj
+		WHERE pStd.idPerson = pStudent AND pSubj.idSubject = pSubject);
 	COMMIT;
 END insertTakes;
-
-/* PRUEBA DE INSERT TAKES*/
-
-CALL insertSubject(getStudent(0), getSubject(0), 80);
 
 /*
 * Procedure: deleteTakes
@@ -401,16 +414,12 @@ CALL insertSubject(getStudent(0), getSubject(0), 80);
 * Last modification: 28/04/18
 * Last modification by: Johan Torres Creed
 */
-CREATE PROCEDURE deleteTakes(pIDTakes IN NUMBER) AS
+CREATE PROCEDURE deleteTakes(pStudent IN NUMBER) AS
 BEGIN
 	DELETE FROM Takes_table 
-	WHERE idTakes = pIDTakes;
+	WHERE idPerson = pStudent;
 	COMMIT;
 END deleteTakes;
-
-/* PRUEBA DE DELETE TAKES*/
-
-CALL deleteTakes(0);
 
 /*
 * Procedure: getTakes
@@ -424,7 +433,7 @@ CREATE OR REPLACE PROCEDURE getTakes(cTakes OUT SYS_REFCURSOR)
 IS
 BEGIN
 	OPEN cTakes FOR 
-	SELECT Takes_table.idTakes, Takes_table.student, Takes_table.subject, Takes_table.marks
+	SELECT Takes_table.idStudent, Takes_table.idSubject, Takes_table.marks
 	FROM Takes_table;
 END getTakes;
 
@@ -436,13 +445,12 @@ END getTakes;
 * Last modification: 28/04/18
 * Last modification by: Johan Torres Creed
 */
-CREATE OR REPLACE PROCEDURE updateTakes(pIDTakes IN NUMBER, pStudent IN VARCHAR2, pSubject IN VARCHAR2, pMarks IN NUMBER) AS
+CREATE OR REPLACE PROCEDURE updateTakes(pStudent IN NUMBER, pSubject IN NUMBER, pMarks IN NUMBER) AS
 BEGIN 
 	UPDATE Takes_table tks
-	SET tks.student = pStudent,
-	tks.subject = pSubject,
-	tks.marks = pMarks
-	WHERE tks.idTakes = pIDTakes;
+	SET tks.marks = pMarks
+	WHERE tks.idStudent = (SELECT REF(pStd) FROM Student_table pStd WHERE pStd.idPerson = pStudent)
+		AND tks.idSubject = (SELECT REF(pSubj) FROM Subject_table pSubj WHERE pStbj.idSubject = pSubject);
 END updateTakes;
 
 /*
@@ -644,14 +652,6 @@ NOCACHE
 NOCYCLE
 
 CREATE SEQUENCE seqDegree
-START WITH 0
-INCREMENT BY 1
-MINVALUE 0 
-MAXVALUE 1000000
-NOCACHE
-NOCYCLE
-
-CREATE SEQUENCE seqTakes
 START WITH 0
 INCREMENT BY 1
 MINVALUE 0 
