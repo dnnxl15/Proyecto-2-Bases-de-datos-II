@@ -204,81 +204,6 @@ CREATE TABLE AssociateLecturer_table OF AssociateLecturer_obj (idPerson PRIMARY 
 */
 
 /*
-* Procedure: insertSubject
-* Author: Johan Torres Creed
-* Description: This procedure inserts a subject in the table Subject_table.
-* Created: 28/04/18
-* Last modification: 28/04/18
-* Last modification by: Johan Torres Creed
-*/
-CREATE PROCEDURE insertSubject(pSubjectName IN VARCHAR2, pCredit IN NUMBER,
-pSubjectPrerequisites IN VARCHAR2, pIDPerson IN NUMBER) AS
-BEGIN
-	INSERT INTO Subject_table
-	VALUES(Subject_obj(sequenceSubjectID.Nextval, pSubjectName, pCredit, pSubjectPrerequisites, pIDPerson));
-	COMMIT;
-END insertSubject;
-
-/* PRUEBA DE INSERT SUBJECT*/
-
-CALL insertSubject('Introduccion a la Tecnologia', 3, ' ', getAssociateLecturer(0)); 
-
-/*
-* Procedure: deleteSubject
-* Author: Johan Torres Creed
-* Description: This procedure delete a subject in the table Subject_table.
-* Created: 28/04/18
-* Last modification: 28/04/18
-* Last modification by: Johan Torres Creed
-*/
-CREATE PROCEDURE deleteSubject(pIDSubject IN NUMBER) AS
-BEGIN
-	DELETE FROM Subject_table 
-	WHERE idSubject = pIDSubject;
-	COMMIT;
-END deleteSubject;
-
-/* PRUEBA DE DELETE SUBJECT*/
-
-CALL deleteSubject(1);
-
-/*
-* Procedure: getSubject
-* Author: Johan Torres Creed
-* Description: This procedure get a subject in the table Subject_table and have a out parameter as a cursor.
-* Created: 28/04/18
-* Last modification: 28/04/18
-* Last modification by: Johan Torres Creed
-*/
-CREATE OR REPLACE PROCEDURE getSubject(cSubject OUT SYS_REFCURSOR)
-IS
-BEGIN
-	OPEN cSubject FOR 
-	SELECT Subject_table.idSubject, Subject_table.subjectName, Subject_table.credit,
-	Subject_table.subjectPrerequisites, Subject_table.idPerson
-	FROM Subject_table;
-END getSubject;
-
-/*
-* Procedure: updateSubject
-* Author: Johan Torres Creed
-* Description: This procedure updates a subject in the table Subject_table.
-* Created: 28/04/18
-* Last modification: 28/04/18
-* Last modification by: Johan Torres Creed
-*/
-CREATE OR REPLACE PROCEDURE updateSubject(pIDSubject IN NUMBER, pSubjectName IN VARCHAR2,
-pCredit IN NUMBER, pSubjectPrerequisites IN VARCHAR2, pIDPerson IN NUMBER) AS
-BEGIN 
-	UPDATE Subject_table subj
-	SET subj.subjectName = pSubjectName,
-	subj.credit = pCredit,
-	subj.subjectPrerequisites = pSubjectPrerequisites,
-	subj.idPerson = pIDPerson
-	WHERE subj.idSubject = pIDSubject;
-END updateSubject;
-
-/*
 * Procedure: insertStudent
 * Author: Danny Xie Li
 * Description: This procedure insert student in the table Student_table.
@@ -928,38 +853,6 @@ CALL updateAdmin(0, 'Billy', 'Gomez', 'Master', 'Pavas', 12365478, 1452,
 * SEQUENCE
 *-----------
 */
-
-/*
-* Sequence: sequenceBuildingID
-* Author: Johan Torres Creed
-* Description: Sequence building id.
-* Created: 28/04/18
-* Last modification: 28/04/18
-* Last modification by: Johan Torres Creed
-*/
-CREATE SEQUENCE sequenceBuildingID
- START WITH     0
- INCREMENT BY   1
- MINVALUE 0
- MAXVALUE 10000000
- NOCACHE
- NOCYCLE;
-
-/*
-* Sequence: sequenceSubjectID
-* Author: Johan Torres Creed
-* Description: Sequence subject id.
-* Created: 28/04/18
-* Last modification: 28/04/18
-* Last modification by: Johan Torres Creed
-*/
-CREATE SEQUENCE sequenceSubjectID
- START WITH     0
- INCREMENT BY   1
- MINVALUE 0
- MAXVALUE 10000000
- NOCACHE
- NOCYCLE;
 
 /*
 * Sequence: sequenceStudentID
