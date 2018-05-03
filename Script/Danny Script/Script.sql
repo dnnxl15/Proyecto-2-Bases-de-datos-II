@@ -49,8 +49,8 @@ CREATE TABLE Student_table OF Student_obj (idPerson PRIMARY KEY)
 * Last modification by: Danny Xie Li
 */
 CREATE TYPE Staff_obj UNDER Person_obj ( 
-	idBuilding NUMBER,
-	numberOffice VARCHAR2,
+	idBuilding VARCHAR2(100),
+	numberOffice VARCHAR2(100),
 	staffType VARCHAR2(100)
 )NOT FINAL;
 
@@ -299,7 +299,7 @@ CALL updateStudent(2, 'Bilio', 'Gomez', 'Bachillerato', 'San Jose', 89652365, 56
 */
 CREATE PROCEDURE insertStaff(pFirstName IN VARCHAR2, pSurname IN VARCHAR2,
 pTitle IN VARCHAR2, pAddress IN VARCHAR2, pPhone IN NUMBER, pPostcode IN NUMBER,
-campusLocation IN VARCHAR2, idBuilding IN NUMBER, numberOffice IN VARCHAR2, staffType IN VARCHAR2) AS
+campusLocation IN VARCHAR2, idBuilding IN VARCHAR2, numberOffice IN VARCHAR2, staffType IN VARCHAR2) AS
 BEGIN
 	INSERT INTO Staff_table 
 	VALUES(Staff_obj(sequenceStaffID.Nextval, pSurname, pFirstName, pTitle, pAddress, pPhone, pPostcode, campusLocation, idBuilding,
@@ -358,7 +358,7 @@ END getStaff;
 */
 CREATE OR REPLACE PROCEDURE updateStaff(pIDPerson IN NUMBER, pFirstName IN VARCHAR2, pSurname IN VARCHAR2,
 pTitle IN VARCHAR2, pAddress IN VARCHAR2, pPhone IN NUMBER, pPostcode IN NUMBER,
-pCampusLocation IN VARCHAR2, pIdBuilding IN NUMBER, pNumberOffice IN VARCHAR2, pStaffType IN VARCHAR2) AS
+pCampusLocation IN VARCHAR2, pIdBuilding IN VARCHAR2, pNumberOffice IN VARCHAR2, pStaffType IN VARCHAR2) AS
 BEGIN 
 	UPDATE Staff_table staf
 	SET staf.surname = pSurname,
@@ -476,11 +476,12 @@ CALL updateTutorStudent(2, 'Bilio', 'Gomez', 'Bachillerato', 'San Jose', 8965236
 */
 CREATE PROCEDURE insertTutorStaff(pFirstName IN VARCHAR2, pSurname IN VARCHAR2,
 pTitle IN VARCHAR2, pAddress IN VARCHAR2, pPhone IN NUMBER, pPostcode IN NUMBER,
-pCampusLocation IN VARCHAR2, pYear IN NUMBER, pNumberHours IN NUMBER, pRate IN FLOAT) AS
+pCampusLocation IN VARCHAR2, pIdBuilding IN VARCHAR2, pNumberOffice IN VARCHAR2,
+pStaffType IN VARCHAR2, pNumberHours IN NUMBER, pRate IN FLOAT) AS
 BEGIN
 	INSERT INTO TutorStaff_table 
 	VALUES(TutorStaff_obj(sequenceTutorStaffID.Nextval, pSurname, pFirstName, pTitle, pAddress, pPhone, 
-		pPostcode, pCampusLocation, pYear, pNumberHours, pRate));
+		pPostcode, pCampusLocation, pIdBuilding, pNumberOffice, pStaffType, pNumberHours, pRate));
 	COMMIT;
 END insertTutorStaff;
 
@@ -520,7 +521,8 @@ BEGIN
 	OPEN cTutorStaff FOR 
 	SELECT TutorStaff_table.idPerson, TutorStaff_table.surname, TutorStaff_table.firstName, 
 	TutorStaff_table.title, TutorStaff_table.address, TutorStaff_table.phone, TutorStaff_table.postcode,
-	TutorStaff_table.campusLocation, TutorStaff_table.year, TutorStaff_table.numberHours, TutorStaff_table.rate
+	TutorStaff_table.campusLocation, TutorStaff_table.idBuilding,TutorStaff_table.numberOffice
+	TutorStaff_table.staffType, TutorStaff_table.numberHours, TutorStaff_table.rate
 	FROM TutorStaff_table;
 END getTutorStaff;
 
@@ -534,7 +536,8 @@ END getTutorStaff;
 */
 CREATE OR REPLACE PROCEDURE updateTutorStaff(pIDPerson IN NUMBER, pFirstName IN VARCHAR2, pSurname IN VARCHAR2,
 pTitle IN VARCHAR2, pAddress IN VARCHAR2, pPhone IN NUMBER, pPostcode IN NUMBER,
-pCampusLocation IN VARCHAR2, pYear IN NUMBER, pNumberHours IN NUMBER, pRate IN FLOAT) AS
+pCampusLocation IN VARCHAR2, pIdBuilding IN VARCHAR2, pNumberOffice IN VARCHAR2,
+pStaffType IN VARCHAR2, pNumberHours IN NUMBER, pRate IN FLOAT) AS
 BEGIN 
 	UPDATE TutorStaff_table tutorS
 	SET tutorS.surname = pSurname,
@@ -544,7 +547,9 @@ BEGIN
 	tutorS.phone = pPhone,
 	tutorS.postcode = pPostcode,
 	tutorS.campusLocation = pCampusLocation,
-	tutorS.year = pYear,
+	tutorS.idBuilding = pIdBuilding,
+	tutorS.numberOffice = pNumberOffice,
+	tutorS.staffType = pStaffType,
 	tutorS.numberHours = pNumberHours,
 	tutorS.rate = pRate
 	WHERE tutorS.idPerson = pIDPerson;
@@ -564,7 +569,7 @@ CALL updateTutorStaff(2, 'Bilio', 'Gomez', 'Bachillerato', 'San Jose', 89652365,
 */
 CREATE PROCEDURE insertTechnician(pFirstName IN VARCHAR2, pSurname IN VARCHAR2,
 pTitle IN VARCHAR2, pAddress IN VARCHAR2, pPhone IN NUMBER, pPostcode IN NUMBER,
-pCampusLocation IN VARCHAR2, pIdBuilding IN NUMBER, numberOffice IN VARCHAR2, staffType IN VARCHAR2, 
+pCampusLocation IN VARCHAR2, pIdBuilding IN VARCHAR2, numberOffice IN VARCHAR2, staffType IN VARCHAR2, 
 techTitle IN VARCHAR2, techSkill IN VARCHAR2) AS
 BEGIN
 	INSERT INTO Technician_table 
@@ -625,7 +630,7 @@ END getTechinician;
 */
 CREATE OR REPLACE PROCEDURE updateTutorTechinician(pIDPerson IN NUMBER, pFirstName IN VARCHAR2, pSurname IN VARCHAR2,
 pTitle IN VARCHAR2, pAddress IN VARCHAR2, pPhone IN NUMBER, pPostcode IN NUMBER,
-pCampusLocation IN VARCHAR2, pIdBuilding IN NUMBER, pNumberOffice IN VARCHAR2, pStaffType IN VARCHAR2, 
+pCampusLocation IN VARCHAR2, pIdBuilding IN VARCHAR2, pNumberOffice IN VARCHAR2, pStaffType IN VARCHAR2, 
 pTechTitle IN VARCHAR2, pTechSkill IN VARCHAR2) AS
 BEGIN 
 	UPDATE Technician_table tech
@@ -659,7 +664,7 @@ CALL updateTutorTechinician(0, 'Juanes', 'Gomez', 'Master', 'Pavas', 12365478, 1
 */
 CREATE PROCEDURE insertAssociateLecturer(pFirstName IN VARCHAR2, pSurname IN VARCHAR2,
 pTitle IN VARCHAR2, pAddress IN VARCHAR2, pPhone IN NUMBER, pPostcode IN NUMBER,
-pCampusLocation IN VARCHAR2, pIdBuilding IN NUMBER, pNumberOffice IN VARCHAR2, pStaffType IN VARCHAR2,
+pCampusLocation IN VARCHAR2, pIdBuilding IN VARCHAR2, pNumberOffice IN VARCHAR2, pStaffType IN VARCHAR2,
  pArea IN VARCHAR2, pLecturerType IN VARCHAR2, pNumberHours IN NUMBER, 
 pYearJoin IN NUMBER) AS
 BEGIN
@@ -721,7 +726,7 @@ END getAssociateLecturer;
 * Last modification by: Danny Xie Li
 */
 CREATE OR REPLACE PROCEDURE updateAssociateLecturer(pIDPerson IN NUMBER, pFirstName IN VARCHAR2, pSurname IN VARCHAR2,
-pTitle IN VARCHAR2, pAddress IN VARCHAR2, pPhone IN NUMBER, pPostcode IN NUMBER, pCampusLocation IN VARCHAR2, pIdBuilding IN NUMBER,
+pTitle IN VARCHAR2, pAddress IN VARCHAR2, pPhone IN NUMBER, pPostcode IN NUMBER, pCampusLocation IN VARCHAR2, pIdBuilding IN VARCHAR2,
 pNumberOffice IN VARCHAR2, pStaffType IN VARCHAR2, pArea IN VARCHAR2, pLecturerType IN VARCHAR2, pNumberHours IN NUMBER, pYearJoin IN NUMBER) AS
 BEGIN 
 	UPDATE AssociateLecturer_table lecA
@@ -757,7 +762,7 @@ CALL updateAssociateLecturer(0, 'Billy', 'Gomez', 'Master', 'Pavas', 12365478, 1
 */
 CREATE PROCEDURE insertAdmin(pFirstName IN VARCHAR2, pSurname IN VARCHAR2,
 pTitle IN VARCHAR2, pAddress IN VARCHAR2, pPhone IN NUMBER, pPostcode IN NUMBER,
-pCampusLocation IN VARCHAR2, pIdBuilding IN NUMBER, pNumberOffice IN VARCHAR2, pStaffType IN VARCHAR2,
+pCampusLocation IN VARCHAR2, pIdBuilding IN VARCHAR2, pNumberOffice IN VARCHAR2, pStaffType IN VARCHAR2,
 pAdminTitle IN VARCHAR2, pComputerSkill IN VARCHAR2, pOfficeSkill IN VARCHAR2) AS
 BEGIN
 	INSERT INTO Admin_table 
@@ -821,7 +826,7 @@ END getAdmin;
 * Last modification by: Danny Xie Li
 */
 CREATE OR REPLACE PROCEDURE updateAdmin(pIDPerson IN NUMBER, pFirstName IN VARCHAR2, pSurname IN VARCHAR2,
-pTitle IN VARCHAR2, pAddress IN VARCHAR2, pPhone IN NUMBER, pPostcode IN NUMBER, pCampusLocation IN VARCHAR2, pIdBuilding IN NUMBER,
+pTitle IN VARCHAR2, pAddress IN VARCHAR2, pPhone IN NUMBER, pPostcode IN NUMBER, pCampusLocation IN VARCHAR2, pIdBuilding IN VARCHAR2,
 pNumberOffice IN VARCHAR2, pStaffType IN VARCHAR2, pAdmiTitle IN VARCHAR2, pComputerSkill IN VARCHAR2,
 pOfficeSkill IN VARCHAR2) AS
 BEGIN 
