@@ -1,5 +1,76 @@
-CREATE CLUSTER Building_cluster (idBuilding NUMBER(3)) SIZE 512;
+/*
+* Type: building object
+* Author: Esteban Coto Alfaro
+* Description: Creates the building object
+* Created: 28/04/18
+* Last modification: 28/04/18
+* Last modification by: Esteban Coto Alfaro
+*/
+CREATE TYPE Building_obj AS OBJECT(
+	idBuilding NUMBER,
+	buildingCode VARCHAR2(100),
+	buildingName VARCHAR2(100),
+	buildingLocation VARCHAR2(100),
+	buildingLevel NUMBER,
+	campusLocation VARCHAR2(100),
+	idFaculty NUMBER
+)NOT FINAL;
+
+/*
+* Table: Building_Table
+* Author: Esteban Coto Alfaro
+* Description: Creates the building table
+* Created: 01/05/18
+* Last modification: 01/05/18
+* Last modification by: Esteban Coto Alfaro
+*/
+CREATE TABLE Building_table OF Building_obj(PRIMARY KEY (idBuilding));
+
+/*
+* Type: Building_cluster
+* Author: Johan Torres Creed
+* Description: Cluster for all building departments, run after creating Building
+* Created: 02/05/18
+* Last modification: 02/05/18
+* Last modification by: Johan Torres Creed
+*/
+CREATE CLUSTER Building_cluster (idBuilding NUMBER) SIZE 512;
+
+/*
+* Type: idx_building_cluster
+* Author: Johan Torres Creed
+* Description: Needed for the indexed cluster, run after Building_cluster
+* Created: 02/05/18
+* Last modification: 02/05/18
+* Last modification by: Johan Torres Creed
+*/
 CREATE INDEX idx_building_cluster ON CLUSTER Building_cluster;
+
+/*
+* Type: Office
+* Author: Esteban Coto Alfaro
+* Description: Creates the object Office
+* Created: 28/04/18
+* Last modification: 28/04/18
+* Last modification by: Esteban Coto Alfaro
+*/
+CREATE TYPE Office_obj AS OBJECT(
+	idBuilding NUMBER,
+	buildingCode VARCHAR2(100),
+	officeNumber VARCHAR2(100),
+	officePhone NUMBER
+)NOT FINAL;
+
+/*
+* Table: Office
+* Author: Esteban Coto Alfaro
+* Description: Creates the table Office
+* Created: 28/04/18
+* Last modification: 28/04/18
+* Last modification by: Esteban Coto Alfaro
+*/
+CREATE TABLE Office_table OF Office_obj(PRIMARY KEY (officeNumber))
+	CLUSTER Building_cluster (idBuilding);
 
 /*
 * Type: Classroom
