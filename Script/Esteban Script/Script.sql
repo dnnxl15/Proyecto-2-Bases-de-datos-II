@@ -450,13 +450,59 @@ END deleteBuilding;
 * Last modification: 01/05/18
 * Last modification by: Esteban Coto Alfaro
 */
-CREATE PROCEDURE insertFaculty(pFacultyName IN VARCHAR2(100), pFacultyDean IN VARCHAR2(100)) AS
+CREATE PROCEDURE insertFaculty(pFacultyName IN VARCHAR2, pFacultyDean IN VARCHAR2) AS
 BEGIN
 	INSERT INTO Faculty_table 
 	VALUES(Faculty_obj(seqFaculty.Nextval, pFacultyName, pFacultyDean, NULL, NULL, NULL));
 	COMMIT;
 END insertFaculty;
 
+CREATE PROCEDURE updateFaculty(pFacultyID IN NUMBER, pName IN VARCHAR2, pDean IN VARCHAR2) AS
+BEGIN
+	UPDATE Faculty_table faculty
+	SET faculty.name = pName,
+	faculty.dean = pDean
+	WHERE faculty.idFaculty = pFacultyID;
+END updateFaculty;
+
+CREATE PROCEDURE deleteFaculty(pName IN VARCHAR2) AS
+BEGIN
+	DELETE FROM Faculty_table faculty
+	WHERE faculty.name = pName;
+	COMMIT;
+END deleteFaculty;
+
+CREATE PROCEDURE insertDepartment(pFaculty IN VARCHAR2, pName IN VARCHAR2, pHead IN VARCHAR2) AS
+BEGIN
+	INSERT INTO
+	TABLE(SELECT faculty.department_List
+	FROM Faculty_table faculty
+	WHERE faculty.name = pFaculty)
+	VALUES(seqDepartment, pName, pHead);
+	COMMIT;
+END insertDepartment;
+
+CREATE PROCEDURE updateDepartment(pFaculty IN VARCHAR2, pOldName IN VARCHAR2, pNewName IN VARCHAR2, pHead IN VARCHAR2) AS
+BEGIN
+	UPDATE
+	TABLE(SELECT faculty.department_List
+	FROM Faculty_table faculty
+	WHERE faculty.name = pFaculty)
+	SET name = pNewName,
+	head = pHead
+	WHERE name = pOldName;
+	COMMIT;
+END updateDepartment;
+
+CREATE PROCEDURE deleteDepartment(pFaculty IN VARCHAR2, pName IN VARCHAR2) AS
+BEGIN
+	DELETE
+	TABLE(SELECT faculty.department_List
+	FROM Faculty_table faculty
+	WHERE faculty.name = pFaculty)
+	WHERE name = pName;
+	COMMIT;
+END deleteDepartment;
 /*
 ---------- SEQUENCES ----------
 */
@@ -583,3 +629,16 @@ School_obj(1, 'school2', 'head2', SchoolProf_array(SchoolProf_obj('Nombre3', 123
 Research_Center_obj(0, 'rc1', 'head1', RC_Unit_array(RC_Unit_obj('unit1'),RC_Unit_obj('unit2'))), 
 Research_Center_obj(1, 'rc2', 'head2', RC_Unit_array(RC_Unit_obj('unit3'),RC_Unit_obj('unit4'))))
 );
+
+UPDATE TABLE(SELECT faculty_table.department_list 
+From faculty_table 
+WHERE faculty_table.idfaculty = 0)
+SET head = 'head1'
+WHERE idDepartment = 0;
+Commit;
+
+DELETE TABLE(SELECT faculty_table.department_list 
+From faculty_table 
+WHERE faculty_table.idfaculty = 0)
+WHERE idDepartment = 0;
+Commit;
