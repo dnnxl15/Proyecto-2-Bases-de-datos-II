@@ -340,6 +340,18 @@ BEGIN
 	COMMIT;
 END deleteCampus;
 
+CREATE OR REPLACE PROCEDURE getCampus IS
+    CURSOR c_getCampus IS SELECT campus.location, campus.address, campus.phone, campus.fax, 
+                                campus.head FROM Campus_Table campus;
+           r_Campus c_getCampus%ROWTYPE;
+    BEGIN
+        OPEN c_getCampus;
+        LOOP
+            FETCH c_getCampus INTO r_Campus;
+            EXIT WHEN c_getCampus%NOTFOUND;
+        END LOOP;
+        CLOSE c_getCampus;
+END;
 /*
 * Procedure: insertOffice
 * Author: Esteban Coto Alfaro
