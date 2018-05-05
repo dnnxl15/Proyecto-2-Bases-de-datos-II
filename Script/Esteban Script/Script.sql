@@ -459,16 +459,27 @@ END deleteBuilding;
 * Author: Esteban Coto Alfaro
 * Description: Procedure to insert a faculty into the table Faculty_table
 * Created: 01/05/18
-* Last modification: 01/05/18
+* Last modification: 04/05/18
 * Last modification by: Esteban Coto Alfaro
 */
 CREATE PROCEDURE insertFaculty(pFacultyName IN VARCHAR2, pFacultyDean IN VARCHAR2) AS
 BEGIN
 	INSERT INTO Faculty_table 
-	VALUES(Faculty_obj(seqFaculty.Nextval, pFacultyName, pFacultyDean, NULL, NULL, NULL));
+	VALUES(Faculty_obj(seqFaculty.Nextval, pFacultyName, pFacultyDean, 
+		List_Department(Department_obj(NULL, NULL, NULL, NULL)),
+		List_School(School_obj(NULL, NULL, NULL, NULL)), 
+		List_RC(Research_Center_obj(NULL, NULL, NULL, NULL)));
 	COMMIT;
 END insertFaculty;
 
+/*
+* Procedure: updateFaculty
+* Author: Esteban Coto Alfaro
+* Description: Procedure to update a faculty into the table Faculty_table
+* Created: 04/05/18
+* Last modification: 04/05/18
+* Last modification by: Esteban Coto Alfaro
+*/
 CREATE PROCEDURE updateFaculty(pFacultyID IN NUMBER, pName IN VARCHAR2, pDean IN VARCHAR2) AS
 BEGIN
 	UPDATE Faculty_table faculty
@@ -477,6 +488,14 @@ BEGIN
 	WHERE faculty.idFaculty = pFacultyID;
 END updateFaculty;
 
+/*
+* Procedure: deleteFaculty
+* Author: Esteban Coto Alfaro
+* Description: Procedure to delete a faculty into the table Faculty_table
+* Created: 04/05/18
+* Last modification: 04/05/18
+* Last modification by: Esteban Coto Alfaro
+*/
 CREATE PROCEDURE deleteFaculty(pName IN VARCHAR2) AS
 BEGIN
 	DELETE FROM Faculty_table faculty
@@ -484,37 +503,173 @@ BEGIN
 	COMMIT;
 END deleteFaculty;
 
-CREATE PROCEDURE insertDepartment(pFaculty IN VARCHAR2, pName IN VARCHAR2, pHead IN VARCHAR2) AS
+/*
+* Procedure: insertDepartment
+* Author: Esteban Coto Alfaro
+* Description: Procedure to insert a Department into the table List_Department as a nesed table of Faculty_table
+* Created: 04/05/18
+* Last modification: 04/05/18
+* Last modification by: Esteban Coto Alfaro
+*/
+CREATE PROCEDURE insertDepartment(pFaculty IN VARCHAR2, pName IN VARCHAR2, pHead IN VARCHAR2, pDeptProf DeptProf_array) AS
 BEGIN
 	INSERT INTO
-	TABLE(SELECT faculty.department_List
-	FROM Faculty_table faculty
-	WHERE faculty.name = pFaculty)
-	VALUES(seqDepartment, pName, pHead);
+	TABLE(SELECT faculty_table.department_List
+	FROM faculty_table
+	WHERE faculty_table.name = pFaculty)
+	VALUES(seqDepartment.Nextval, pName, pHead, pDeptProf);
 	COMMIT;
 END insertDepartment;
 
+/*
+* Procedure: updateDepartment
+* Author: Esteban Coto Alfaro
+* Description: Procedure to update a Department into the table List_Department as a nesed table of Faculty_table
+* Created: 04/05/18
+* Last modification: 04/05/18
+* Last modification by: Esteban Coto Alfaro
+*/
 CREATE PROCEDURE updateDepartment(pFaculty IN VARCHAR2, pOldName IN VARCHAR2, pNewName IN VARCHAR2, pHead IN VARCHAR2) AS
 BEGIN
 	UPDATE
-	TABLE(SELECT faculty.department_List
-	FROM Faculty_table faculty
-	WHERE faculty.name = pFaculty)
+	TABLE(SELECT faculty_table.department_List
+	FROM faculty_table
+	WHERE faculty_table.name = pFaculty)
 	SET name = pNewName,
 	head = pHead
 	WHERE name = pOldName;
 	COMMIT;
 END updateDepartment;
 
+/*
+* Procedure: deleteDepartment
+* Author: Esteban Coto Alfaro
+* Description: Procedure to delete a Department into the table List_Department as a nesed table of Faculty_table
+* Created: 04/05/18
+* Last modification: 04/05/18
+* Last modification by: Esteban Coto Alfaro
+*/
 CREATE PROCEDURE deleteDepartment(pFaculty IN VARCHAR2, pName IN VARCHAR2) AS
 BEGIN
 	DELETE
-	TABLE(SELECT faculty.department_List
-	FROM Faculty_table faculty
-	WHERE faculty.name = pFaculty)
+	TABLE(SELECT faculty_table.department_List
+	FROM faculty_table
+	WHERE faculty_table.name = pFaculty)
 	WHERE name = pName;
 	COMMIT;
 END deleteDepartment;
+
+/*
+* Procedure: insertSchool
+* Author: Esteban Coto Alfaro
+* Description: Procedure to insert a School into the table List_School as a nesed table of Faculty_table
+* Created: 04/05/18
+* Last modification: 04/05/18
+* Last modification by: Esteban Coto Alfaro
+*/
+CREATE PROCEDURE insertSchool(pFaculty IN VARCHAR2, pName IN VARCHAR2, pHead IN VARCHAR2, pSchoolProf SchoolProf_array) AS
+BEGIN
+	INSERT INTO
+	TABLE(SELECT faculty_table.school_List
+	FROM faculty_table
+	WHERE faculty_table.name = pFaculty)
+	VALUES(seqSchool.Nextval, pName, pHead, pSchoolProf);
+	COMMIT;
+END insertSchool;
+
+/*
+* Procedure: updateSchool
+* Author: Esteban Coto Alfaro
+* Description: Procedure to update a School into the table List_School as a nesed table of Faculty_table
+* Created: 04/05/18
+* Last modification: 04/05/18
+* Last modification by: Esteban Coto Alfaro
+*/
+CREATE PROCEDURE updateSchool(pFaculty IN VARCHAR2, pOldName IN VARCHAR2, pNewName IN VARCHAR2, pHead IN VARCHAR2) AS
+BEGIN
+	UPDATE
+	TABLE(SELECT faculty_table.school_List
+	FROM faculty_table
+	WHERE faculty_table.name = pFaculty)
+	SET name = pNewName,
+	head = pHead
+	WHERE name = pOldName;
+	COMMIT;
+END updateSchool;
+
+/*
+* Procedure: deleteSchool
+* Author: Esteban Coto Alfaro
+* Description: Procedure to delete a School into the table List_School as a nesed table of Faculty_table
+* Created: 04/05/18
+* Last modification: 04/05/18
+* Last modification by: Esteban Coto Alfaro
+*/
+CREATE PROCEDURE deleteSchool(pFaculty IN VARCHAR2, pName IN VARCHAR2) AS
+BEGIN
+	DELETE
+	TABLE(SELECT faculty_table.school_List
+	FROM faculty_table
+	WHERE faculty_table.name = pFaculty)
+	WHERE name = pName;
+	COMMIT;
+END deleteSchool;
+
+/*
+* Procedure: insertRC
+* Author: Esteban Coto Alfaro
+* Description: Procedure to insert a Research Center into the table List_RC as a nesed table of Faculty_table
+* Created: 04/05/18
+* Last modification: 04/05/18
+* Last modification by: Esteban Coto Alfaro
+*/
+CREATE PROCEDURE insertRC(pFaculty IN VARCHAR2, pName IN VARCHAR2, pHead IN VARCHAR2, pUnit RC_Unit_array) AS
+BEGIN
+	INSERT INTO
+	TABLE(SELECT faculty_table.rc_List
+	FROM faculty_table
+	WHERE faculty_table.name = pFaculty)
+	VALUES(seqResearchCenter.Nextval, pName, pHead, pUnit);
+	COMMIT;
+END insertRC;
+
+/*
+* Procedure: updateRC
+* Author: Esteban Coto Alfaro
+* Description: Procedure to update a Research Center into the table List_RC as a nesed table of Faculty_table
+* Created: 04/05/18
+* Last modification: 04/05/18
+* Last modification by: Esteban Coto Alfaro
+*/
+CREATE PROCEDURE updateRC(pFaculty IN VARCHAR2, pOldName IN VARCHAR2, pNewName IN VARCHAR2, pHead IN VARCHAR2) AS
+BEGIN
+	UPDATE
+	TABLE(SELECT faculty_table.rc_List
+	FROM faculty_table
+	WHERE faculty_table.name = pFaculty)
+	SET name = pNewName,
+	head = pHead
+	WHERE name = pOldName;
+	COMMIT;
+END updateRC;
+
+/*
+* Procedure: deleteRC
+* Author: Esteban Coto Alfaro
+* Description: Procedure to delete a Research Center into the table List_RC as a nesed table of Faculty_table
+* Created: 04/05/18
+* Last modification: 04/05/18
+* Last modification by: Esteban Coto Alfaro
+*/
+CREATE PROCEDURE deleteRC(pFaculty IN VARCHAR2, pName IN VARCHAR2) AS
+BEGIN
+	DELETE
+	TABLE(SELECT faculty_table.rc_List
+	FROM faculty_table
+	WHERE faculty_table.name = pFaculty)
+	WHERE name = pName;
+	COMMIT;
+END deleteRC;
 /*
 ---------- SEQUENCES ----------
 */
@@ -641,6 +796,14 @@ School_obj(1, 'school2', 'head2', SchoolProf_array(SchoolProf_obj('Nombre3', 123
 Research_Center_obj(0, 'rc1', 'head1', RC_Unit_array(RC_Unit_obj('unit1'),RC_Unit_obj('unit2'))), 
 Research_Center_obj(1, 'rc2', 'head2', RC_Unit_array(RC_Unit_obj('unit3'),RC_Unit_obj('unit4'))))
 );
+
+
+INSERT INTO TABLE(faculty_table.department_list 
+From faculty_table 
+WHERE faculty_table.idfaculty = 0)
+VALUES
+(0, 'Name', 'head');
+COMMIT;
 
 UPDATE TABLE(SELECT faculty_table.department_list 
 From faculty_table 
