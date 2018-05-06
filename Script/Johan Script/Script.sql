@@ -31,10 +31,10 @@ CREATE TABLE Building_table OF Building_obj(PRIMARY KEY (idBuilding));
 * Author: Johan Torres Creed
 * Description: Cluster for all building departments, run after creating Building
 * Created: 02/05/18
-* Last modification: 02/05/18
-* Last modification by: Johan Torres Creed
+* Last modification: 06/05/18
+* Last modification by: Esteban Coto Alfaro
 */
-CREATE CLUSTER Building_cluster (idBuilding NUMBER) SIZE 512;
+CREATE CLUSTER Building_cluster (buildingCode VARCHAR2) SIZE 512;
 
 /*
 * Type: idx_building_cluster
@@ -51,11 +51,11 @@ CREATE INDEX idx_building_cluster ON CLUSTER Building_cluster;
 * Author: Esteban Coto Alfaro
 * Description: Creates the object Office
 * Created: 28/04/18
-* Last modification: 28/04/18
+* Last modification: 06/05/18
 * Last modification by: Esteban Coto Alfaro
 */
 CREATE TYPE Office_obj AS OBJECT(
-	idBuilding NUMBER,
+	idOffice NUMBER,
 	buildingCode VARCHAR2(100),
 	officeNumber VARCHAR2(100),
 	officePhone NUMBER
@@ -69,8 +69,8 @@ CREATE TYPE Office_obj AS OBJECT(
 * Last modification: 28/04/18
 * Last modification by: Esteban Coto Alfaro
 */
-CREATE TABLE Office_table OF Office_obj(PRIMARY KEY (officeNumber))
-	CLUSTER Building_cluster (idBuilding);
+CREATE TABLE Office_table OF Office_obj(PRIMARY KEY (idOffice))
+	CLUSTER Building_cluster (buildingCode);
 
 /*
 * Type: Classroom
