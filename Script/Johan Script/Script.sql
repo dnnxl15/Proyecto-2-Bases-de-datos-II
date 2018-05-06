@@ -209,7 +209,7 @@ CREATE TYPE Takes_obj AS OBJECT (
 * Last modification: 04/05/18
 * Last modification by: Johan Torres Creed
 */
-CREATE TABLE Takess_table OF Takes_obj (
+CREATE TABLE Takes_table OF Takes_obj (
 	PRIMARY KEY (studentID),
 	SCOPE FOR (studentID) IS Student_table,
 	SCOPE FOR (subjectID) IS Subject_table
@@ -338,7 +338,7 @@ CREATE PROCEDURE insertOffice(pBuildingCode IN VARCHAR2(100), pOfficeNum IN VARC
 pOfficePhone IN NUMBER) AS
 BEGIN
 	INSERT INTO Office_table 
-	VALUES(Office_obj(seqBuilding.Nextval, pBuildingCode, pOfficeNum, pOfficePhone));
+	VALUES(Office_obj(seqOffice.Nextval, pBuildingCode, pOfficeNum, pOfficePhone));
 	COMMIT;
 END insertOffice;
 
@@ -386,7 +386,7 @@ END deleteOffice;
 CREATE PROCEDURE insertClassroom(pBuildingCode IN VARCHAR2(100), pClassNumber IN VARCHAR2, pClassCapacity IN NUMBER) AS
 BEGIN
 	INSERT INTO Classroom_table
-	VALUES(Classroom_obj(seqBuilding.Nextval, pBuildingCode, pClassNumber, pClassCapacity));
+	VALUES(Classroom_obj(seqClassroom.Nextval, pBuildingCode, pClassNumber, pClassCapacity));
 	COMMIT;
 END insertClassroom; 
 
@@ -451,7 +451,7 @@ CREATE PROCEDURE insertLab(pBuildingCode IN VARCHAR2(100), pLabNumber IN VARCHAR
 	pLabCapacity IN NUMBER, pLabEquipment in Equipment_list) AS
 BEGIN
 	INSERT INTO Lab_table
-	VALUES(Lab_obj(seqBuilding.Nextval, pBuildingCode, pLabNumber, pLabCapacity, pLabEquipment));
+	VALUES(Lab_obj(seqLab.Nextval, pBuildingCode, pLabNumber, pLabCapacity, pLabEquipment));
 	COMMIT;
 END insertLab;
 
@@ -848,6 +848,54 @@ CALL deleteSeniorLecturer(0);
 * Last modification by: Esteban Coto Alfaro
 */
 CREATE SEQUENCE seqBuilding
+START WITH 0
+INCREMENT BY 1
+MINVALUE 0 
+MAXVALUE 1000000
+NOCACHE
+NOCYCLE
+
+/*
+* Sequence: seqOffice
+* Author: Esteban Coto Alfaro
+* Description: Sequence to have control of the office id
+* Created: 28/04/18
+* Last modification: 28/04/18
+* Last modification by: Esteban Coto Alfaro
+*/
+CREATE SEQUENCE seqOffice
+START WITH 0
+INCREMENT BY 1
+MINVALUE 0 
+MAXVALUE 1000000
+NOCACHE
+NOCYCLE
+
+/*
+* Sequence: seqClassroom
+* Author: Johan Torres Creed
+* Description: Sequence to have control of the classroom id
+* Created: 28/04/18
+* Last modification: 28/04/18
+* Last modification by: Johan Torres Creed
+*/
+CREATE SEQUENCE seqClassroom
+START WITH 0
+INCREMENT BY 1
+MINVALUE 0 
+MAXVALUE 1000000
+NOCACHE
+NOCYCLE
+
+/*
+* Sequence: seqLab
+* Author: Johan Torres Creed
+* Description: Sequence to have control of the Lab id
+* Created: 28/04/18
+* Last modification: 28/04/18
+* Last modification by: Johan Torres Creed
+*/
+CREATE SEQUENCE seqLab
 START WITH 0
 INCREMENT BY 1
 MINVALUE 0 
