@@ -971,10 +971,31 @@ CREATE SEQUENCE sequenceAdminID
  NOCACHE
  NOCYCLE;
 
+/*TEST CURSOR*/
+/*Procedure: getStudents*/
 
-
-
-
+DECLARE 
+  v_cur SYS_REFCURSOR;
+  vSurname   VARCHAR2(10);
+  vFirstName VARCHAR2(100);
+  vTitle VARCHAR2(100);
+  vAddress VARCHAR2(100);
+  vPhone NUMBER;
+  vPost NUMBER;
+  vCampus VARCHAR(100);
+  vYear NUMBER;
+  vId NUMBER;
+  
+BEGIN
+  getStudents(v_cur);
+ 
+  LOOP
+    FETCH v_cur INTO vId, vSurname, vFirstName, vTitle, vAddress, vPhone, vPost, vCampus, vYear;
+    EXIT WHEN v_cur%NOTFOUND;
+    dbms_output.put_line(vId|| ' ' ||vSurname|| ' ' ||vFirstName|| ' ' ||vTitle|| ' ' ||vAddress|| ' ' ||vPhone|| ' ' || vPost|| ' ' || vCampus|| ' ' ||vYear);
+  END LOOP;
+  CLOSE v_cur;
+END;
 
 
 
