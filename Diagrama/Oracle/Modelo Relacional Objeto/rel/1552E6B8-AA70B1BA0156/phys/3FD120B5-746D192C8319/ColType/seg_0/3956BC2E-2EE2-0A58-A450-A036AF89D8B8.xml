@@ -1,0 +1,10 @@
+<?xml version = '1.0' encoding = 'UTF-8'?>
+<CollectionTypeProxyOraclev10g class="oracle.dbtools.crest.model.design.storage.oracle.v10g.CollectionTypeProxyOraclev10g" name="LIST_RC" directorySegmentName="seg_0" id="3956BC2E-2EE2-0A58-A450-A036AF89D8B8">
+<sourceConnName>Proyecto</sourceConnName>
+<sourceObjSchema>GRUPO10</sourceObjSchema>
+<sourceObjName>LIST_RC</sourceObjName>
+<createdBy>dnnxl</createdBy>
+<createdTime>2018-05-08 04:04:06 UTC</createdTime>
+<ownerDesignName>Modelo Relacional Objeto</ownerDesignName>
+<owner>3E16FD55-E612-8E91-F165-62612DAF21C1</owner>
+</CollectionTypeProxyOraclev10g>

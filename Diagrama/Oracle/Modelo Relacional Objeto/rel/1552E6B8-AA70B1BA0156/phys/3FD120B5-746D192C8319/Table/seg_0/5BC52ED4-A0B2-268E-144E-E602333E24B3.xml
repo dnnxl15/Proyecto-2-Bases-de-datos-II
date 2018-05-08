@@ -1,0 +1,62 @@
+<?xml version = '1.0' encoding = 'UTF-8'?>
+<TableProxyOraclev12c class="oracle.dbtools.crest.model.design.storage.oracle.v12c.TableProxyOraclev12c" name="DEGREE_TABLE" directorySegmentName="seg_0" id="5BC52ED4-A0B2-268E-144E-E602333E24B3">
+<createdBy>dnnxl</createdBy>
+<createdTime>2018-05-08 04:05:11 UTC</createdTime>
+<ownerDesignName>Modelo Relacional Objeto</ownerDesignName>
+<schemaObject>0EF7B3E1-761B-2C20-A420-D65FAD7E9A68</schemaObject>
+<logging>YES</logging>
+<partitionedRowMovement>DISABLE</partitionedRowMovement>
+<segment>3F8F198C-0ABB-B63A-D2DF-A759764E0DC6</segment>
+<tableSpace>FC9B9FF6-0563-4E75-73E8-BF6411758E82</tableSpace>
+<temporaryChanged>false</temporaryChanged>
+<accessDriverType>oracle_loader</accessDriverType>
+<rejectLimit></rejectLimit>
+<inMemory>NO</inMemory>
+<columnProxies itemClass="oracle.dbtools.crest.model.design.storage.oracle.v12c.ColumnProxyOraclev12c">
+<ColumnProxy name="IDFACULTY" id="2634953E-D3CE-3867-AD9E-2E4B8465589D">
+<createdBy>dnnxl</createdBy>
+<createdTime>2018-05-08 04:05:11 UTC</createdTime>
+<ownerDesignName>Modelo Relacional Objeto</ownerDesignName>
+</ColumnProxy>
+<ColumnProxy name="LENGTH" id="637292AE-6FBC-D928-8C63-2DE5FDB084F3">
+<createdBy>dnnxl</createdBy>
+<createdTime>2018-05-08 04:05:11 UTC</createdTime>
+<ownerDesignName>Modelo Relacional Objeto</ownerDesignName>
+</ColumnProxy>
+<ColumnProxy name="DEGREENAME" id="701CACA0-2CBA-0BDF-BDA2-5C835F02B987">
+<createdBy>dnnxl</createdBy>
+<createdTime>2018-05-08 04:05:11 UTC</createdTime>
+<ownerDesignName>Modelo Relacional Objeto</ownerDesignName>
+</ColumnProxy>
+<ColumnProxy name="DEGREEPREREQUISITES" id="973CEA68-F6C9-E89C-D8F4-5C8A473850AA">
+<createdBy>dnnxl</createdBy>
+<createdTime>2018-05-08 04:05:11 UTC</createdTime>
+<ownerDesignName>Modelo Relacional Objeto</ownerDesignName>
+</ColumnProxy>
+<ColumnProxy name="Oid" id="9EDA1D9B-AD5A-EF4F-715E-0B77A4496574">
+<createdBy>dnnxl</createdBy>
+<createdTime>2018-05-08 04:05:11 UTC</createdTime>
+<ownerDesignName>Modelo Relacional Objeto</ownerDesignName>
+</ColumnProxy>
+<ColumnProxy name="IDDEGREE" id="E32D5A8C-9D4D-C2DF-6C26-27DAC3D753EC">
+<createdBy>dnnxl</createdBy>
+<createdTime>2018-05-08 04:05:11 UTC</createdTime>
+<ownerDesignName>Modelo Relacional Objeto</ownerDesignName>
+</ColumnProxy>
+</columnProxies>
+<foreignKeys>
+<ForeignKey class="oracle.dbtools.crest.model.design.storage.oracle.v10g.FKProxyOraclev10g" name="FK_FACULTY_DEGREE" id="3C50A20C-A0F9-C2A1-643F-4DB1BAB10CD7">
+<createdBy>dnnxl</createdBy>
+<createdTime>2018-05-08 04:05:38 UTC</createdTime>
+<ownerDesignName>Modelo Relacional Objeto</ownerDesignName>
+</ForeignKey>
+</foreignKeys>
+<primaryKeys>
+<PrimaryKey class="oracle.dbtools.crest.model.design.storage.oracle.v10g.PKProxyOraclev10g" name="DEGREE_TABLE_PK" id="D4E71723-B5E8-9FD5-9110-8F14AD0078E3">
+<createdBy>dnnxl</createdBy>
+<createdTime>2018-05-08 04:05:11 UTC</createdTime>
+<ownerDesignName>Modelo Relacional Objeto</ownerDesignName>
+<indexSort>SORTED</indexSort>
+</PrimaryKey>
+</primaryKeys>
+</TableProxyOraclev12c>

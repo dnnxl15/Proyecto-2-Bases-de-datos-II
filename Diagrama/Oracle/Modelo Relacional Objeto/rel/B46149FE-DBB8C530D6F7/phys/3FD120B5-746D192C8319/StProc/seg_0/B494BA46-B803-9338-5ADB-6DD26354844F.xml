@@ -1,0 +1,11 @@
+<?xml version = '1.0' encoding = 'UTF-8'?>
+<StoredProcedureOraclev10g class="oracle.dbtools.crest.model.design.storage.oracle.v10g.StoredProcedureOraclev10g" name="DELETESENIORLECTURER" directorySegmentName="seg_0" id="B494BA46-B803-9338-5ADB-6DD26354844F">
+<sourceConnName>Proyecto</sourceConnName>
+<sourceObjSchema>GRUPO10</sourceObjSchema>
+<sourceObjName>DELETESENIORLECTURER</sourceObjName>
+<createdBy>dnnxl</createdBy>
+<createdTime>2018-05-08 03:44:47 UTC</createdTime>
+<ownerDesignName>Modelo Relacional Objeto</ownerDesignName>
+<owner>E8B72E22-8E7E-1117-BFE8-A54D01A163C3</owner>
+<source>CREATE OR REPLACE PROCEDURE GRUPO10.DELETESENIORLECTURER(pIDPerson IN NUMBER) AS&amp;amp;lt;br/&amp;amp;gt;BEGIN&amp;amp;lt;br/&amp;amp;gt;	DELETE FROM SeniorLecturer_table &amp;amp;lt;br/&amp;amp;gt;	WHERE idPerson = pIDPerson;&amp;amp;lt;br/&amp;amp;gt;	COMMIT;&amp;amp;lt;br/&amp;amp;gt;END deleteSeniorLecturer;</source>
+</StoredProcedureOraclev10g>

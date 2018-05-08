@@ -1,0 +1,58 @@
+<?xml version = '1.0' encoding = 'UTF-8'?>
+<StructuredType class="oracle.dbtools.crest.model.design.datatypes.StructuredType" name="SCHOOL_OBJ" directorySegmentName="seg_0" id="E2B051EE-A79A-BEA6-7343-5F57A607EA09">
+<sourceConnName>Proyecto</sourceConnName>
+<sourceObjSchema>GRUPO10</sourceObjSchema>
+<sourceObjName>SCHOOL_OBJ</sourceObjName>
+<createdBy>dnnxl</createdBy>
+<createdTime>2018-05-08 03:12:34 UTC</createdTime>
+<ownerDesignName>Modelo Relacional Objeto</ownerDesignName>
+<predefined>false</predefined>
+<final>false</final>
+<instantiable>true</instantiable>
+<attributes itemClass="oracle.dbtools.crest.model.design.datatypes.TypeElement">
+<Attribute name="IDSCHOOL" id="F46824C1-C0CD-BEA3-78DB-A7AA28BC1BD9">
+<createdBy>dnnxl</createdBy>
+<createdTime>2018-05-08 04:04:59 UTC</createdTime>
+<ownerDesignName>Modelo Relacional Objeto</ownerDesignName>
+<mandatory>false</mandatory>
+<precision>0</precision>
+<reference>false</reference>
+<scale>0</scale>
+<type>LOGDT019</type>
+</Attribute>
+<Attribute name="NAME" id="C69F889C-13BD-A2E0-AB9A-ABB7FF260EFA">
+<createdBy>dnnxl</createdBy>
+<createdTime>2018-05-08 04:04:59 UTC</createdTime>
+<ownerDesignName>Modelo Relacional Objeto</ownerDesignName>
+<mandatory>false</mandatory>
+<precision>0</precision>
+<reference>false</reference>
+<scale>0</scale>
+<size>100</size>
+<type>LOGDT024</type>
+</Attribute>
+<Attribute name="HEAD" id="BA760B30-9CB6-4DB7-88B9-7669DFF26BBF">
+<createdBy>dnnxl</createdBy>
+<createdTime>2018-05-08 04:04:59 UTC</createdTime>
+<ownerDesignName>Modelo Relacional Objeto</ownerDesignName>
+<mandatory>false</mandatory>
+<precision>0</precision>
+<reference>false</reference>
+<scale>0</scale>
+<size>100</size>
+<type>LOGDT024</type>
+</Attribute>
+<Attribute name="PROF_ARRAY" id="EA552524-09AA-48A0-2464-2BAA8FA5BBCD">
+<createdBy>dnnxl</createdBy>
+<createdTime>2018-05-08 04:04:59 UTC</createdTime>
+<ownerDesignName>Modelo Relacional Objeto</ownerDesignName>
+<mandatory>false</mandatory>
+<precision>0</precision>
+<reference>false</reference>
+<referencerelation>892F1340-C9E9-44E1-F253-3F02664FD795</referencerelation>
+<scale>0</scale>
+<type>1824E1B8-E7C4-42B1-4A89-4F701FF22532</type>
+<referenceID>892F1340-C9E9-44E1-F253-3F02664FD795</referenceID>
+</Attribute>
+</attributes>
+</StructuredType>

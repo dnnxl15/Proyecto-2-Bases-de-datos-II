@@ -1,0 +1,38 @@
+<?xml version = '1.0' encoding = 'UTF-8'?>
+<ClusterOraclev10g class="oracle.dbtools.crest.model.design.storage.oracle.v10g.ClusterOraclev10g" name="BUILDING_CLUSTER" directorySegmentName="seg_0" id="C2AA412D-6FFA-6FF9-77D7-C6A1A5CA1AC4">
+<sourceConnName>Proyecto</sourceConnName>
+<sourceObjSchema>GRUPO10</sourceObjSchema>
+<sourceObjName>BUILDING_CLUSTER</sourceObjName>
+<createdBy>dnnxl</createdBy>
+<createdTime>2018-05-08 03:44:07 UTC</createdTime>
+<ownerDesignName>Modelo Relacional Objeto</ownerDesignName>
+<segment>5D41FDD1-9940-6A53-0272-E4CDAB9C9700</segment>
+<size>512</size>
+<tableSpace>6D976C34-B8EA-5911-8DF0-62156D9025B1</tableSpace>
+<user>E8B72E22-8E7E-1117-BFE8-A54D01A163C3</user>
+<columnsCollection>
+<Column class="oracle.dbtools.crest.model.design.storage.oracle.v10g.ClusterColumnOraclev10g" name="BUILDINGCODE" id="C07B431C-342C-01AA-7817-9DB7664DA7EF">
+<sourceConnName>Proyecto</sourceConnName>
+<sourceObjSchema>BUILDING_CLUSTER</sourceObjSchema>
+<sourceObjName>BUILDINGCODE</sourceObjName>
+<createdBy>dnnxl</createdBy>
+<createdTime>2018-05-08 03:45:28 UTC</createdTime>
+<ownerDesignName>Modelo Relacional Objeto</ownerDesignName>
+<dataType>VARCHAR2</dataType>
+<lengthPrecision>100 BYTE</lengthPrecision>
+</Column>
+</columnsCollection>
+<indexesCollection>
+<Index class="oracle.dbtools.crest.model.design.storage.oracle.v10g.ClusterIndexOraclev10g" name="IDX_BUILDING_CLUSTER" id="C8FE5A6A-10D8-E2EF-BA2A-4B1A0D91A487">
+<sourceConnName>Proyecto</sourceConnName>
+<sourceObjSchema>GRUPO10</sourceObjSchema>
+<sourceObjName>IDX_BUILDING_CLUSTER</sourceObjName>
+<createdBy>dnnxl</createdBy>
+<createdTime>2018-05-08 03:45:28 UTC</createdTime>
+<ownerDesignName>Modelo Relacional Objeto</ownerDesignName>
+<segment>5D41FDD1-9940-6A53-0272-E4CDAB9C9700</segment>
+<tableSpace>6D976C34-B8EA-5911-8DF0-62156D9025B1</tableSpace>
+<user>E8B72E22-8E7E-1117-BFE8-A54D01A163C3</user>
+</Index>
+</indexesCollection>
+</ClusterOraclev10g>

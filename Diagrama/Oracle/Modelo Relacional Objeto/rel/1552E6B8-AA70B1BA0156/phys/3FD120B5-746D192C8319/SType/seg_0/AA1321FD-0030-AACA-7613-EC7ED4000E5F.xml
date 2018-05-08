@@ -1,0 +1,22 @@
+<?xml version = '1.0' encoding = 'UTF-8'?>
+<StructuredTypeProxyOraclev10g class="oracle.dbtools.crest.model.design.storage.oracle.v10g.StructuredTypeProxyOraclev10g" name="ASSOCIATELECTURER_OBJ" directorySegmentName="seg_0" id="AA1321FD-0030-AACA-7613-EC7ED4000E5F">
+<sourceConnName>Proyecto</sourceConnName>
+<sourceObjSchema>GRUPO10</sourceObjSchema>
+<sourceObjName>ASSOCIATELECTURER_OBJ</sourceObjName>
+<createdBy>dnnxl</createdBy>
+<createdTime>2018-05-08 04:04:06 UTC</createdTime>
+<ownerDesignName>Modelo Relacional Objeto</ownerDesignName>
+<owner>3E16FD55-E612-8E91-F165-62612DAF21C1</owner>
+<attributes itemClass="oracle.dbtools.crest.model.design.storage.oracle.v9i.TypeElementProxyOraclev9i">
+<Attribute name="YEARJOIN" id="4BBBBE2D-2C0F-C172-CD74-D6464953A306">
+<createdBy>dnnxl</createdBy>
+<createdTime>2018-05-08 04:04:58 UTC</createdTime>
+<ownerDesignName>Modelo Relacional Objeto</ownerDesignName>
+</Attribute>
+<Attribute name="NUMBERHONOURS" id="5A2F4231-9617-598B-4235-335DC7E84EAF">
+<createdBy>dnnxl</createdBy>
+<createdTime>2018-05-08 04:04:58 UTC</createdTime>
+<ownerDesignName>Modelo Relacional Objeto</ownerDesignName>
+</Attribute>
+</attributes>
+</StructuredTypeProxyOraclev10g>

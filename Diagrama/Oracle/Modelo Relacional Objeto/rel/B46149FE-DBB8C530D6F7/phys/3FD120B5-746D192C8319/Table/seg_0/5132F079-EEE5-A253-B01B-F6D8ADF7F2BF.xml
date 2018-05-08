@@ -1,0 +1,85 @@
+<?xml version = '1.0' encoding = 'UTF-8'?>
+<TableProxyOraclev12c class="oracle.dbtools.crest.model.design.storage.oracle.v12c.TableProxyOraclev12c" name="STAFF_TABLE" directorySegmentName="seg_0" id="5132F079-EEE5-A253-B01B-F6D8ADF7F2BF">
+<createdBy>dnnxl</createdBy>
+<createdTime>2018-05-08 03:13:17 UTC</createdTime>
+<ownerDesignName>Modelo Relacional Objeto</ownerDesignName>
+<schemaObject>5395C3AD-8C36-165C-90D5-1BCB0B189456</schemaObject>
+<logging>YES</logging>
+<partitionedRowMovement>DISABLE</partitionedRowMovement>
+<segment>A9944621-F8E2-FD94-6896-94AF1917011C</segment>
+<tableSpace>6D976C34-B8EA-5911-8DF0-62156D9025B1</tableSpace>
+<temporaryChanged>false</temporaryChanged>
+<accessDriverType>oracle_loader</accessDriverType>
+<rejectLimit></rejectLimit>
+<inMemory>NO</inMemory>
+<columnProxies itemClass="oracle.dbtools.crest.model.design.storage.oracle.v12c.ColumnProxyOraclev12c">
+<ColumnProxy name="TITLE" id="27042AEF-D3FF-F610-C92D-F2BA659CE22F">
+<createdBy>dnnxl</createdBy>
+<createdTime>2018-05-08 04:04:59 UTC</createdTime>
+<ownerDesignName>Modelo Relacional Objeto</ownerDesignName>
+</ColumnProxy>
+<ColumnProxy name="FIRSTNAME" id="2F4A74BE-AF96-22BA-571B-74891337E64D">
+<createdBy>dnnxl</createdBy>
+<createdTime>2018-05-08 04:04:59 UTC</createdTime>
+<ownerDesignName>Modelo Relacional Objeto</ownerDesignName>
+</ColumnProxy>
+<ColumnProxy name="POSTCODE" id="4CDF238B-EAC1-4E8E-F368-E0CB718226FB">
+<createdBy>dnnxl</createdBy>
+<createdTime>2018-05-08 04:04:59 UTC</createdTime>
+<ownerDesignName>Modelo Relacional Objeto</ownerDesignName>
+</ColumnProxy>
+<ColumnProxy name="Oid" id="52CA84DB-0799-4456-9D86-A920966EBE5C">
+<createdBy>dnnxl</createdBy>
+<createdTime>2018-05-08 03:13:17 UTC</createdTime>
+<ownerDesignName>Modelo Relacional Objeto</ownerDesignName>
+</ColumnProxy>
+<ColumnProxy name="IDPERSON" id="60974916-2A0A-37A9-4781-8B0B196A71EA">
+<createdBy>dnnxl</createdBy>
+<createdTime>2018-05-08 04:04:59 UTC</createdTime>
+<ownerDesignName>Modelo Relacional Objeto</ownerDesignName>
+</ColumnProxy>
+<ColumnProxy name="STAFFTYPE" id="73783A8C-4ACE-35B8-3F64-8983F0B82B00">
+<createdBy>dnnxl</createdBy>
+<createdTime>2018-05-08 04:04:59 UTC</createdTime>
+<ownerDesignName>Modelo Relacional Objeto</ownerDesignName>
+</ColumnProxy>
+<ColumnProxy name="ADDRESS" id="8F031694-478A-83E6-35C3-230E6938356A">
+<createdBy>dnnxl</createdBy>
+<createdTime>2018-05-08 04:04:59 UTC</createdTime>
+<ownerDesignName>Modelo Relacional Objeto</ownerDesignName>
+</ColumnProxy>
+<ColumnProxy name="PHONE" id="9AF12A24-83F6-68EA-0227-4F7DF9A5C749">
+<createdBy>dnnxl</createdBy>
+<createdTime>2018-05-08 04:04:59 UTC</createdTime>
+<ownerDesignName>Modelo Relacional Objeto</ownerDesignName>
+</ColumnProxy>
+<ColumnProxy name="NUMBEROFFICE" id="C09181EC-6822-1227-1286-B24904E55464">
+<createdBy>dnnxl</createdBy>
+<createdTime>2018-05-08 04:04:59 UTC</createdTime>
+<ownerDesignName>Modelo Relacional Objeto</ownerDesignName>
+</ColumnProxy>
+<ColumnProxy name="IDBUILDING" id="C31B5704-7428-2A7F-05EE-D7F9926C6743">
+<createdBy>dnnxl</createdBy>
+<createdTime>2018-05-08 04:04:59 UTC</createdTime>
+<ownerDesignName>Modelo Relacional Objeto</ownerDesignName>
+</ColumnProxy>
+<ColumnProxy name="CAMPUSLOCATION" id="D315B79D-E5A0-0F8B-A432-9D602EE01903">
+<createdBy>dnnxl</createdBy>
+<createdTime>2018-05-08 04:04:59 UTC</createdTime>
+<ownerDesignName>Modelo Relacional Objeto</ownerDesignName>
+</ColumnProxy>
+<ColumnProxy name="SURNAME" id="F10D0D44-0DAA-7891-C951-798622F843DA">
+<createdBy>dnnxl</createdBy>
+<createdTime>2018-05-08 04:04:59 UTC</createdTime>
+<ownerDesignName>Modelo Relacional Objeto</ownerDesignName>
+</ColumnProxy>
+</columnProxies>
+<primaryKeys>
+<PrimaryKey class="oracle.dbtools.crest.model.design.storage.oracle.v10g.PKProxyOraclev10g" name="STAFF_TABLE_PK" id="8E8C9300-DB67-C3BE-DD5A-013B966E421B">
+<createdBy>dnnxl</createdBy>
+<createdTime>2018-05-08 03:45:28 UTC</createdTime>
+<ownerDesignName>Modelo Relacional Objeto</ownerDesignName>
+<indexSort>SORTED</indexSort>
+</PrimaryKey>
+</primaryKeys>
+</TableProxyOraclev12c>

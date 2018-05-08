@@ -1,0 +1,11 @@
+<?xml version = '1.0' encoding = 'UTF-8'?>
+<StoredProcedureOraclev10g class="oracle.dbtools.crest.model.design.storage.oracle.v10g.StoredProcedureOraclev10g" name="GETASSOCIATELECTURER" directorySegmentName="seg_0" id="0AC8CD73-EA93-98C6-19C6-6875143A2424">
+<sourceConnName>Proyecto</sourceConnName>
+<sourceObjSchema>GRUPO10</sourceObjSchema>
+<sourceObjName>GETASSOCIATELECTURER</sourceObjName>
+<createdBy>dnnxl</createdBy>
+<createdTime>2018-05-08 03:44:48 UTC</createdTime>
+<ownerDesignName>Modelo Relacional Objeto</ownerDesignName>
+<owner>E8B72E22-8E7E-1117-BFE8-A54D01A163C3</owner>
+<source>CREATE OR REPLACE PROCEDURE GRUPO10.GETASSOCIATELECTURER(cAssociateLecturer OUT SYS_REFCURSOR)&amp;amp;lt;br/&amp;amp;gt;IS&amp;amp;lt;br/&amp;amp;gt;BEGIN&amp;amp;lt;br/&amp;amp;gt;	OPEN cAssociateLecturer FOR &amp;amp;lt;br/&amp;amp;gt;	SELECT AssociateLecturer_table.idPerson, AssociateLecturer_table.surname, AssociateLecturer_table.firstName, &amp;amp;lt;br/&amp;amp;gt;	AssociateLecturer_table.title, AssociateLecturer_table.address, AssociateLecturer_table.phone, AssociateLecturer_table.postcode,&amp;amp;lt;br/&amp;amp;gt;	AssociateLecturer_table.campusLocation, AssociateLecturer_table.idBuilding, AssociateLecturer_table.numberOffice,&amp;amp;lt;br/&amp;amp;gt;	AssociateLecturer_table.staffType, &amp;amp;lt;br/&amp;amp;gt;	AssociateLecturer_table.area, AssociateLecturer_table.lectureType,AssociateLecturer_table.numberHonours, AssociateLecturer_table.yearJoin&amp;amp;lt;br/&amp;amp;gt;	FROM AssociateLecturer_table;&amp;amp;lt;br/&amp;amp;gt;END getAssociateLecturer;</source>
+</StoredProcedureOraclev10g>

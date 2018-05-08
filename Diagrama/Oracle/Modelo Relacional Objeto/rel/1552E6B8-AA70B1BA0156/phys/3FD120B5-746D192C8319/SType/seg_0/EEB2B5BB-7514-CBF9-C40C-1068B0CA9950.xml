@@ -1,0 +1,37 @@
+<?xml version = '1.0' encoding = 'UTF-8'?>
+<StructuredTypeProxyOraclev10g class="oracle.dbtools.crest.model.design.storage.oracle.v10g.StructuredTypeProxyOraclev10g" name="SUBJECT_OBJ" directorySegmentName="seg_0" id="EEB2B5BB-7514-CBF9-C40C-1068B0CA9950">
+<sourceConnName>Proyecto</sourceConnName>
+<sourceObjSchema>GRUPO10</sourceObjSchema>
+<sourceObjName>SUBJECT_OBJ</sourceObjName>
+<createdBy>dnnxl</createdBy>
+<createdTime>2018-05-08 04:04:06 UTC</createdTime>
+<ownerDesignName>Modelo Relacional Objeto</ownerDesignName>
+<owner>3E16FD55-E612-8E91-F165-62612DAF21C1</owner>
+<attributes itemClass="oracle.dbtools.crest.model.design.storage.oracle.v9i.TypeElementProxyOraclev9i">
+<Attribute name="IDPERSON" id="048E2C3F-573D-01E6-4A8D-D34870970BE3">
+<createdBy>dnnxl</createdBy>
+<createdTime>2018-05-08 04:04:59 UTC</createdTime>
+<ownerDesignName>Modelo Relacional Objeto</ownerDesignName>
+</Attribute>
+<Attribute name="SUBJECTNAME" id="1097106E-756E-BD8C-9BEA-48C64B2A4778">
+<createdBy>dnnxl</createdBy>
+<createdTime>2018-05-08 04:04:59 UTC</createdTime>
+<ownerDesignName>Modelo Relacional Objeto</ownerDesignName>
+</Attribute>
+<Attribute name="SUBJECTPREREQUISITES" id="8FC1085C-381B-4F21-C415-170A7F2E7C91">
+<createdBy>dnnxl</createdBy>
+<createdTime>2018-05-08 04:04:59 UTC</createdTime>
+<ownerDesignName>Modelo Relacional Objeto</ownerDesignName>
+</Attribute>
+<Attribute name="CREDIT" id="A625A8EF-ABDE-3C21-3910-2F60232128F1">
+<createdBy>dnnxl</createdBy>
+<createdTime>2018-05-08 04:04:59 UTC</createdTime>
+<ownerDesignName>Modelo Relacional Objeto</ownerDesignName>
+</Attribute>
+<Attribute name="IDSUBJECT" id="BC2E7A50-8DC6-1AF4-F10A-E759BA72AC47">
+<createdBy>dnnxl</createdBy>
+<createdTime>2018-05-08 04:04:59 UTC</createdTime>
+<ownerDesignName>Modelo Relacional Objeto</ownerDesignName>
+</Attribute>
+</attributes>
+</StructuredTypeProxyOraclev10g>

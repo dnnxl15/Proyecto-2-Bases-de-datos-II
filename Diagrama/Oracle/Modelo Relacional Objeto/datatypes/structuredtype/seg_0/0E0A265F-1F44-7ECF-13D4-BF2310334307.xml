@@ -1,0 +1,66 @@
+<?xml version = '1.0' encoding = 'UTF-8'?>
+<StructuredType class="oracle.dbtools.crest.model.design.datatypes.StructuredType" name="LAB_OBJ" directorySegmentName="seg_0" id="0E0A265F-1F44-7ECF-13D4-BF2310334307">
+<sourceConnName>Proyecto</sourceConnName>
+<sourceObjSchema>GRUPO10</sourceObjSchema>
+<sourceObjName>LAB_OBJ</sourceObjName>
+<createdBy>dnnxl</createdBy>
+<createdTime>2018-05-08 03:12:34 UTC</createdTime>
+<ownerDesignName>Modelo Relacional Objeto</ownerDesignName>
+<predefined>false</predefined>
+<final>false</final>
+<instantiable>true</instantiable>
+<attributes itemClass="oracle.dbtools.crest.model.design.datatypes.TypeElement">
+<Attribute name="IDLAB" id="47E34835-B4B1-A3DB-F7AA-442E85236A6A">
+<createdBy>dnnxl</createdBy>
+<createdTime>2018-05-08 04:04:58 UTC</createdTime>
+<ownerDesignName>Modelo Relacional Objeto</ownerDesignName>
+<mandatory>false</mandatory>
+<precision>0</precision>
+<reference>false</reference>
+<scale>0</scale>
+<type>LOGDT019</type>
+</Attribute>
+<Attribute name="BUILDINGCODE" id="0F93D878-8105-AE0F-E700-B1AE788BB4F7">
+<createdBy>dnnxl</createdBy>
+<createdTime>2018-05-08 04:04:58 UTC</createdTime>
+<ownerDesignName>Modelo Relacional Objeto</ownerDesignName>
+<mandatory>false</mandatory>
+<precision>0</precision>
+<reference>false</reference>
+<scale>0</scale>
+<size>100</size>
+<type>LOGDT024</type>
+</Attribute>
+<Attribute name="LABNUMBER" id="0A012151-9F93-C28F-C58E-BC2B6E95CCDF">
+<createdBy>dnnxl</createdBy>
+<createdTime>2018-05-08 04:04:58 UTC</createdTime>
+<ownerDesignName>Modelo Relacional Objeto</ownerDesignName>
+<mandatory>false</mandatory>
+<precision>0</precision>
+<reference>false</reference>
+<scale>0</scale>
+<size>100</size>
+<type>LOGDT024</type>
+</Attribute>
+<Attribute name="LABCAPACITY" id="597561EB-BEF6-1A24-2E41-15DA8AC92F10">
+<createdBy>dnnxl</createdBy>
+<createdTime>2018-05-08 04:04:58 UTC</createdTime>
+<ownerDesignName>Modelo Relacional Objeto</ownerDesignName>
+<mandatory>false</mandatory>
+<precision>0</precision>
+<reference>false</reference>
+<scale>0</scale>
+<type>LOGDT019</type>
+</Attribute>
+<Attribute name="LABEQUIPMENT" id="5A7318C1-0FC0-EEDB-29F6-C5D83C5879A6">
+<createdBy>dnnxl</createdBy>
+<createdTime>2018-05-08 04:04:58 UTC</createdTime>
+<ownerDesignName>Modelo Relacional Objeto</ownerDesignName>
+<mandatory>false</mandatory>
+<precision>0</precision>
+<reference>false</reference>
+<scale>0</scale>
+<type>31A9157E-5A1A-0EB9-03B2-056BE6D5A40D</type>
+</Attribute>
+</attributes>
+</StructuredType>

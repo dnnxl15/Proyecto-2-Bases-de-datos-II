@@ -1,0 +1,150 @@
+<?xml version = '1.0' encoding = 'UTF-8'?>
+<Table class="oracle.dbtools.crest.model.design.relational.Table" directorySegmentName="seg_0" id="14581FB7-5492-A3A6-EF2D-C46CD540A6DF" schemaObject="5395C3AD-8C36-165C-90D5-1BCB0B189456" name="BUILDING_TABLE">
+<sourceConnName>Proyecto</sourceConnName>
+<sourceObjSchema>GRUPO10</sourceObjSchema>
+<sourceObjName>BUILDING_TABLE</sourceObjName>
+<createdBy>dnnxl</createdBy>
+<createdTime>2018-05-08 03:12:53 UTC</createdTime>
+<ownerDesignName>Modelo Relacional Objeto</ownerDesignName>
+<basedOnStructuredType>1C6BFBAC-A13E-86C2-398A-405373DF9388</basedOnStructuredType>
+<allowColumnReorder>false</allowColumnReorder>
+<existDependencyGenerateInDDl>true</existDependencyGenerateInDDl>
+<parsed>true</parsed>
+<columns itemClass="oracle.dbtools.crest.model.design.relational.Column">
+<Column name="Oid" id="526375A4-FCE3-E7E3-825D-A699AA566E45">
+<createdBy>dnnxl</createdBy>
+<createdTime>2018-05-08 03:12:53 UTC</createdTime>
+<ownerDesignName>Modelo Relacional Objeto</ownerDesignName>
+<oid>true</oid>
+<useDomainConstraints>false</useDomainConstraints>
+<use>3</use>
+<structuredType>1C6BFBAC-A13E-86C2-398A-405373DF9388</structuredType>
+<reference>true</reference>
+<ownDataTypeParameters>,,</ownDataTypeParameters>
+<autoIncrementCycle>false</autoIncrementCycle>
+</Column>
+<Column name="IDBUILDING" id="1DAEDBE0-2FB9-5840-3CAB-D57C56A44216">
+<createdBy>dnnxl</createdBy>
+<createdTime>2018-05-08 04:04:58 UTC</createdTime>
+<ownerDesignName>Modelo Relacional Objeto</ownerDesignName>
+<nullsAllowed>true</nullsAllowed>
+<structAttributeID>4BB935AA-2649-479F-FB12-668224F7853C</structAttributeID>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT019</logicalDatatype>
+<dataTypePrecision>0</dataTypePrecision>
+<dataTypeScale>0</dataTypeScale>
+<ownDataTypeParameters>,0,0</ownDataTypeParameters>
+<autoIncrementCycle>false</autoIncrementCycle>
+</Column>
+<Column name="BUILDINGCODE" id="087C5F1F-F055-DBED-60F3-B98C6CFAD597">
+<createdBy>dnnxl</createdBy>
+<createdTime>2018-05-08 04:04:58 UTC</createdTime>
+<ownerDesignName>Modelo Relacional Objeto</ownerDesignName>
+<nullsAllowed>true</nullsAllowed>
+<structAttributeID>A85F5CA4-2AA4-7465-325E-1C7A04482FB2</structAttributeID>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT024</logicalDatatype>
+<dataTypePrecision>0</dataTypePrecision>
+<dataTypeScale>0</dataTypeScale>
+<dataTypeSize>100</dataTypeSize>
+<ownDataTypeParameters>100,0,0</ownDataTypeParameters>
+<autoIncrementCycle>false</autoIncrementCycle>
+</Column>
+<Column name="BUILDINGNAME" id="86C8D38B-0E23-91AC-964A-170DD991D149">
+<createdBy>dnnxl</createdBy>
+<createdTime>2018-05-08 04:04:58 UTC</createdTime>
+<ownerDesignName>Modelo Relacional Objeto</ownerDesignName>
+<nullsAllowed>true</nullsAllowed>
+<structAttributeID>089F2AA5-E3A3-6B59-111D-B25080AD4F6B</structAttributeID>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT024</logicalDatatype>
+<dataTypePrecision>0</dataTypePrecision>
+<dataTypeScale>0</dataTypeScale>
+<dataTypeSize>100</dataTypeSize>
+<ownDataTypeParameters>100,0,0</ownDataTypeParameters>
+<autoIncrementCycle>false</autoIncrementCycle>
+</Column>
+<Column name="BUILDINGLOCATION" id="5E6BA360-AC66-81D7-9F72-8F535372EB6C">
+<createdBy>dnnxl</createdBy>
+<createdTime>2018-05-08 04:04:58 UTC</createdTime>
+<ownerDesignName>Modelo Relacional Objeto</ownerDesignName>
+<nullsAllowed>true</nullsAllowed>
+<structAttributeID>8EA6B860-7A4E-DD3B-0161-B17154454ECC</structAttributeID>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT024</logicalDatatype>
+<dataTypePrecision>0</dataTypePrecision>
+<dataTypeScale>0</dataTypeScale>
+<dataTypeSize>100</dataTypeSize>
+<ownDataTypeParameters>100,0,0</ownDataTypeParameters>
+<autoIncrementCycle>false</autoIncrementCycle>
+</Column>
+<Column name="BUILDINGLEVEL" id="C8019399-2668-D7F8-A79F-5431EF0F6F0D">
+<createdBy>dnnxl</createdBy>
+<createdTime>2018-05-08 04:04:58 UTC</createdTime>
+<ownerDesignName>Modelo Relacional Objeto</ownerDesignName>
+<nullsAllowed>true</nullsAllowed>
+<structAttributeID>E32A078C-9C66-9692-D60F-45BAD870F72C</structAttributeID>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT019</logicalDatatype>
+<dataTypePrecision>0</dataTypePrecision>
+<dataTypeScale>0</dataTypeScale>
+<ownDataTypeParameters>,0,0</ownDataTypeParameters>
+<autoIncrementCycle>false</autoIncrementCycle>
+</Column>
+<Column name="CAMPUSLOCATION" id="79DB2216-F20C-7FBA-1AFF-A21722EBD894">
+<createdBy>dnnxl</createdBy>
+<createdTime>2018-05-08 04:04:58 UTC</createdTime>
+<ownerDesignName>Modelo Relacional Objeto</ownerDesignName>
+<nullsAllowed>true</nullsAllowed>
+<structAttributeID>95010E78-CC03-7F28-64FF-DD3A36BDEEAE</structAttributeID>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT024</logicalDatatype>
+<dataTypePrecision>0</dataTypePrecision>
+<dataTypeScale>0</dataTypeScale>
+<dataTypeSize>100</dataTypeSize>
+<ownDataTypeParameters>100,0,0</ownDataTypeParameters>
+<autoIncrementCycle>false</autoIncrementCycle>
+</Column>
+<Column name="IDFACULTY" id="DE85A946-B93F-4532-48F7-4354F2E5A180">
+<createdBy>dnnxl</createdBy>
+<createdTime>2018-05-08 04:04:58 UTC</createdTime>
+<ownerDesignName>Modelo Relacional Objeto</ownerDesignName>
+<nullsAllowed>true</nullsAllowed>
+<structAttributeID>D880648A-AA18-D05B-A71B-7A643F03481D</structAttributeID>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT019</logicalDatatype>
+<dataTypePrecision>0</dataTypePrecision>
+<dataTypeScale>0</dataTypeScale>
+<ownDataTypeParameters>,0,0</ownDataTypeParameters>
+<autoIncrementCycle>false</autoIncrementCycle>
+</Column>
+</columns>
+<indexes itemClass="oracle.dbtools.crest.model.design.relational.Index">
+<ind_PK_UK id="1640100F-7EC0-7D11-6446-46A3909E1569" name="BUILDING_TABLE_PK">
+<sourceConnName>Proyecto</sourceConnName>
+<sourceObjSchema>GRUPO10</sourceObjSchema>
+<sourceObjName>SYS_C0011997</sourceObjName>
+<createdBy>dnnxl</createdBy>
+<createdTime>2018-05-08 03:12:53 UTC</createdTime>
+<ownerDesignName>Modelo Relacional Objeto</ownerDesignName>
+<oidKey>true</oidKey>
+<pk>true</pk>
+<indexState>Primary Constraint</indexState>
+<isSurrogateKey>false</isSurrogateKey>
+</ind_PK_UK>
+<ind_PK_UK id="C34B2F5A-F26E-DBE6-9091-A53FC16A7EE6" name="FK_FACULTY_BUILDING">
+<createdBy>dnnxl</createdBy>
+<createdTime>2018-05-08 03:14:15 UTC</createdTime>
+<ownerDesignName>Modelo Relacional Objeto</ownerDesignName>
+<indexState>Foreign Key</indexState>
+<isSurrogateKey>false</isSurrogateKey>
+</ind_PK_UK>
+</indexes>
+</Table>

@@ -1,0 +1,113 @@
+<?xml version = '1.0' encoding = 'UTF-8'?>
+<Table class="oracle.dbtools.crest.model.design.relational.Table" directorySegmentName="seg_0" id="057D8B59-030F-C58F-0B61-6C4641AFE8D4" schemaObject="0EF7B3E1-761B-2C20-A420-D65FAD7E9A68" name="LAB_TABLE">
+<sourceConnName>Proyecto</sourceConnName>
+<sourceObjSchema>GRUPO10</sourceObjSchema>
+<sourceObjName>LAB_TABLE</sourceObjName>
+<createdBy>dnnxl</createdBy>
+<createdTime>2018-05-08 04:05:17 UTC</createdTime>
+<ownerDesignName>Modelo Relacional Objeto</ownerDesignName>
+<basedOnStructuredType>0E0A265F-1F44-7ECF-13D4-BF2310334307</basedOnStructuredType>
+<allowColumnReorder>false</allowColumnReorder>
+<existDependencyGenerateInDDl>true</existDependencyGenerateInDDl>
+<parsed>true</parsed>
+<columns itemClass="oracle.dbtools.crest.model.design.relational.Column">
+<Column name="Oid" id="E1D6E5A7-DC5A-6929-E14D-F5FF8A57A02A">
+<createdBy>dnnxl</createdBy>
+<createdTime>2018-05-08 04:05:17 UTC</createdTime>
+<ownerDesignName>Modelo Relacional Objeto</ownerDesignName>
+<oid>true</oid>
+<useDomainConstraints>false</useDomainConstraints>
+<use>3</use>
+<structuredType>0E0A265F-1F44-7ECF-13D4-BF2310334307</structuredType>
+<reference>true</reference>
+<ownDataTypeParameters>,,</ownDataTypeParameters>
+<autoIncrementCycle>false</autoIncrementCycle>
+</Column>
+<Column name="IDLAB" id="A94FB769-5B5D-4357-E66A-BA2B4C327BB1">
+<createdBy>dnnxl</createdBy>
+<createdTime>2018-05-08 04:05:17 UTC</createdTime>
+<ownerDesignName>Modelo Relacional Objeto</ownerDesignName>
+<nullsAllowed>true</nullsAllowed>
+<structAttributeID>47E34835-B4B1-A3DB-F7AA-442E85236A6A</structAttributeID>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT019</logicalDatatype>
+<dataTypePrecision>0</dataTypePrecision>
+<dataTypeScale>0</dataTypeScale>
+<ownDataTypeParameters>,0,0</ownDataTypeParameters>
+<autoIncrementCycle>false</autoIncrementCycle>
+</Column>
+<Column name="BUILDINGCODE" id="AA5EA4F7-770F-E541-C9AA-68CA58001994">
+<createdBy>dnnxl</createdBy>
+<createdTime>2018-05-08 04:05:17 UTC</createdTime>
+<ownerDesignName>Modelo Relacional Objeto</ownerDesignName>
+<nullsAllowed>true</nullsAllowed>
+<structAttributeID>0F93D878-8105-AE0F-E700-B1AE788BB4F7</structAttributeID>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT024</logicalDatatype>
+<dataTypePrecision>0</dataTypePrecision>
+<dataTypeScale>0</dataTypeScale>
+<dataTypeSize>100</dataTypeSize>
+<ownDataTypeParameters>100,0,0</ownDataTypeParameters>
+<autoIncrementCycle>false</autoIncrementCycle>
+</Column>
+<Column name="LABNUMBER" id="0576AC2D-4D06-06D9-6FAE-2920E1FC8214">
+<createdBy>dnnxl</createdBy>
+<createdTime>2018-05-08 04:05:17 UTC</createdTime>
+<ownerDesignName>Modelo Relacional Objeto</ownerDesignName>
+<structAttributeID>0A012151-9F93-C28F-C58E-BC2B6E95CCDF</structAttributeID>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT024</logicalDatatype>
+<dataTypePrecision>0</dataTypePrecision>
+<dataTypeScale>0</dataTypeScale>
+<dataTypeSize>100</dataTypeSize>
+<ownDataTypeParameters>100,0,0</ownDataTypeParameters>
+<autoIncrementCycle>false</autoIncrementCycle>
+</Column>
+<Column name="LABCAPACITY" id="DB92EF11-E6F5-53B7-8A8A-AD86EC9F5628">
+<createdBy>dnnxl</createdBy>
+<createdTime>2018-05-08 04:05:17 UTC</createdTime>
+<ownerDesignName>Modelo Relacional Objeto</ownerDesignName>
+<nullsAllowed>true</nullsAllowed>
+<structAttributeID>597561EB-BEF6-1A24-2E41-15DA8AC92F10</structAttributeID>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT019</logicalDatatype>
+<dataTypePrecision>0</dataTypePrecision>
+<dataTypeScale>0</dataTypeScale>
+<ownDataTypeParameters>,0,0</ownDataTypeParameters>
+<autoIncrementCycle>false</autoIncrementCycle>
+</Column>
+<Column name="LABEQUIPMENT" id="164EDF5B-E95C-5C5E-0A1F-D9DDDC33FBFB">
+<createdBy>dnnxl</createdBy>
+<createdTime>2018-05-08 04:05:17 UTC</createdTime>
+<ownerDesignName>Modelo Relacional Objeto</ownerDesignName>
+<nullsAllowed>true</nullsAllowed>
+<structAttributeID>5A7318C1-0FC0-EEDB-29F6-C5D83C5879A6</structAttributeID>
+<useDomainConstraints>false</useDomainConstraints>
+<use>4</use>
+<collectionType>31A9157E-5A1A-0EB9-03B2-056BE6D5A40D</collectionType>
+<ownDataTypeParameters>,,</ownDataTypeParameters>
+<autoIncrementCycle>false</autoIncrementCycle>
+</Column>
+</columns>
+<indexes itemClass="oracle.dbtools.crest.model.design.relational.Index">
+<ind_PK_UK id="CF4E4D53-8526-4FD8-0498-252261EE7C04" name="LAB_TABLE_PK">
+<sourceConnName>Proyecto</sourceConnName>
+<sourceObjSchema>GRUPO10</sourceObjSchema>
+<sourceObjName>SYS_C0012004</sourceObjName>
+<createdBy>dnnxl</createdBy>
+<createdTime>2018-05-08 04:05:17 UTC</createdTime>
+<ownerDesignName>Modelo Relacional Objeto</ownerDesignName>
+<oidKey>true</oidKey>
+<pk>true</pk>
+<indexState>Primary Constraint</indexState>
+<isSurrogateKey>false</isSurrogateKey>
+<indexColumnUsage>
+<colUsage columnID="0576AC2D-4D06-06D9-6FAE-2920E1FC8214"/>
+</indexColumnUsage>
+</ind_PK_UK>
+</indexes>
+</Table>

@@ -1,0 +1,11 @@
+<?xml version = '1.0' encoding = 'UTF-8'?>
+<StoredProcedureOraclev10g class="oracle.dbtools.crest.model.design.storage.oracle.v10g.StoredProcedureOraclev10g" name="GETADMIN" directorySegmentName="seg_0" id="816C4A4E-7D9A-A132-11B8-B21A3890BA06">
+<sourceConnName>Proyecto</sourceConnName>
+<sourceObjSchema>GRUPO10</sourceObjSchema>
+<sourceObjName>GETADMIN</sourceObjName>
+<createdBy>dnnxl</createdBy>
+<createdTime>2018-05-08 03:44:48 UTC</createdTime>
+<ownerDesignName>Modelo Relacional Objeto</ownerDesignName>
+<owner>E8B72E22-8E7E-1117-BFE8-A54D01A163C3</owner>
+<source>CREATE OR REPLACE PROCEDURE GRUPO10.GETADMIN(cAdmin OUT SYS_REFCURSOR)&amp;amp;lt;br/&amp;amp;gt;IS&amp;amp;lt;br/&amp;amp;gt;BEGIN&amp;amp;lt;br/&amp;amp;gt;	OPEN cAdmin FOR &amp;amp;lt;br/&amp;amp;gt;	SELECT Admin_table.idPerson, Admin_table.surname, Admin_table.firstName, &amp;amp;lt;br/&amp;amp;gt;	Admin_table.title, Admin_table.address, Admin_table.phone, Admin_table.postcode,&amp;amp;lt;br/&amp;amp;gt;	Admin_table.campusLocation, &amp;amp;lt;br/&amp;amp;gt;&amp;amp;lt;br/&amp;amp;gt;	Admin_table.idBuilding, Admin_table.numberOffice,&amp;amp;lt;br/&amp;amp;gt;	Admin_table.staffType, &amp;amp;lt;br/&amp;amp;gt;&amp;amp;lt;br/&amp;amp;gt;	Admin_table.admiTitle, Admin_table.computerSkill,Admin_table.officeSkill&amp;amp;lt;br/&amp;amp;gt;	FROM Admin_table;&amp;amp;lt;br/&amp;amp;gt;END getAdmin;</source>
+</StoredProcedureOraclev10g>

@@ -1,0 +1,36 @@
+<?xml version = '1.0' encoding = 'UTF-8'?>
+<StructuredType class="oracle.dbtools.crest.model.design.datatypes.StructuredType" name="TUTORSTAFF_OBJ" directorySegmentName="seg_0" id="E3B08F1E-ECFF-44B0-1D40-5F0A31D427FD">
+<sourceConnName>Proyecto</sourceConnName>
+<sourceObjSchema>GRUPO10</sourceObjSchema>
+<sourceObjName>TUTORSTAFF_OBJ</sourceObjName>
+<createdBy>dnnxl</createdBy>
+<createdTime>2018-05-08 03:12:34 UTC</createdTime>
+<ownerDesignName>Modelo Relacional Objeto</ownerDesignName>
+<predefined>false</predefined>
+<final>true</final>
+<inheritanceRelation>1938317C-6978-7597-E60F-5C62CFFEB043</inheritanceRelation>
+<instantiable>true</instantiable>
+<parentTypeID>E413CF18-C71A-23A4-6D97-61676817D5AC</parentTypeID>
+<attributes itemClass="oracle.dbtools.crest.model.design.datatypes.TypeElement">
+<Attribute name="NUMBERHOURS" id="863328F5-36DD-64D1-2167-6B5D05A6377C">
+<createdBy>dnnxl</createdBy>
+<createdTime>2018-05-08 04:04:59 UTC</createdTime>
+<ownerDesignName>Modelo Relacional Objeto</ownerDesignName>
+<mandatory>false</mandatory>
+<precision>0</precision>
+<reference>false</reference>
+<scale>0</scale>
+<type>LOGDT019</type>
+</Attribute>
+<Attribute name="RATE" id="FA156A12-60A4-60E0-16F4-0791C749AC82">
+<createdBy>dnnxl</createdBy>
+<createdTime>2018-05-08 04:04:59 UTC</createdTime>
+<ownerDesignName>Modelo Relacional Objeto</ownerDesignName>
+<mandatory>false</mandatory>
+<precision>0</precision>
+<reference>false</reference>
+<scale>0</scale>
+<type>LOGDT021</type>
+</Attribute>
+</attributes>
+</StructuredType>

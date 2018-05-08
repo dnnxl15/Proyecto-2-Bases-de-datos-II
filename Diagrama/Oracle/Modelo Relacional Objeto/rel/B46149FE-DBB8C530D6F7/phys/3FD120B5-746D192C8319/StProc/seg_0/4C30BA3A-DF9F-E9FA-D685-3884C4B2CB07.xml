@@ -1,0 +1,11 @@
+<?xml version = '1.0' encoding = 'UTF-8'?>
+<StoredProcedureOraclev10g class="oracle.dbtools.crest.model.design.storage.oracle.v10g.StoredProcedureOraclev10g" name="GETSTAFF" directorySegmentName="seg_0" id="4C30BA3A-DF9F-E9FA-D685-3884C4B2CB07">
+<sourceConnName>Proyecto</sourceConnName>
+<sourceObjSchema>GRUPO10</sourceObjSchema>
+<sourceObjName>GETSTAFF</sourceObjName>
+<createdBy>dnnxl</createdBy>
+<createdTime>2018-05-08 03:44:50 UTC</createdTime>
+<ownerDesignName>Modelo Relacional Objeto</ownerDesignName>
+<owner>E8B72E22-8E7E-1117-BFE8-A54D01A163C3</owner>
+<source>CREATE OR REPLACE PROCEDURE GRUPO10.GETSTAFF(cStaff OUT SYS_REFCURSOR)&amp;amp;lt;br/&amp;amp;gt;IS&amp;amp;lt;br/&amp;amp;gt;BEGIN&amp;amp;lt;br/&amp;amp;gt;	OPEN cStaff FOR &amp;amp;lt;br/&amp;amp;gt;	SELECT Staff_table.idPerson, Staff_table.surname, Staff_table.firstName, &amp;amp;lt;br/&amp;amp;gt;	Staff_table.title, Staff_table.address, Staff_table.phone, Staff_table.postcode,&amp;amp;lt;br/&amp;amp;gt;	Staff_table.campusLocation, Staff_table.idBuilding, Staff_table.numberOffice , Staff_table.staffType&amp;amp;lt;br/&amp;amp;gt;	FROM Staff_table;&amp;amp;lt;br/&amp;amp;gt;END getStaff;</source>
+</StoredProcedureOraclev10g>

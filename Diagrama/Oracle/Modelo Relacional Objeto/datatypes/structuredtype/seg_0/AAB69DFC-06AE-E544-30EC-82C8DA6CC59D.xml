@@ -1,0 +1,38 @@
+<?xml version = '1.0' encoding = 'UTF-8'?>
+<StructuredType class="oracle.dbtools.crest.model.design.datatypes.StructuredType" name="LECTURER_OBJ" directorySegmentName="seg_0" id="AAB69DFC-06AE-E544-30EC-82C8DA6CC59D">
+<sourceConnName>Proyecto</sourceConnName>
+<sourceObjSchema>GRUPO10</sourceObjSchema>
+<sourceObjName>LECTURER_OBJ</sourceObjName>
+<createdBy>dnnxl</createdBy>
+<createdTime>2018-05-08 03:12:34 UTC</createdTime>
+<ownerDesignName>Modelo Relacional Objeto</ownerDesignName>
+<predefined>false</predefined>
+<final>false</final>
+<inheritanceRelation>96D32D72-8CD8-FA50-E32D-287D9A2B7B6C</inheritanceRelation>
+<instantiable>true</instantiable>
+<parentTypeID>E413CF18-C71A-23A4-6D97-61676817D5AC</parentTypeID>
+<attributes itemClass="oracle.dbtools.crest.model.design.datatypes.TypeElement">
+<Attribute name="AREA" id="5E7BDF7C-4639-84DD-47ED-BD32801580D7">
+<createdBy>dnnxl</createdBy>
+<createdTime>2018-05-08 04:04:58 UTC</createdTime>
+<ownerDesignName>Modelo Relacional Objeto</ownerDesignName>
+<mandatory>false</mandatory>
+<precision>0</precision>
+<reference>false</reference>
+<scale>0</scale>
+<size>100</size>
+<type>LOGDT024</type>
+</Attribute>
+<Attribute name="LECTURETYPE" id="0CEFD459-E3AF-B2F9-76F7-D1C5D2E27E84">
+<createdBy>dnnxl</createdBy>
+<createdTime>2018-05-08 04:04:58 UTC</createdTime>
+<ownerDesignName>Modelo Relacional Objeto</ownerDesignName>
+<mandatory>false</mandatory>
+<precision>0</precision>
+<reference>false</reference>
+<scale>0</scale>
+<size>100</size>
+<type>LOGDT024</type>
+</Attribute>
+</attributes>
+</StructuredType>

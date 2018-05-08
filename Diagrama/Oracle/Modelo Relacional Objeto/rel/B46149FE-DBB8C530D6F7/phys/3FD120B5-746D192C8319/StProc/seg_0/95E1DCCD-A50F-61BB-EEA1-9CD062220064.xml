@@ -1,0 +1,11 @@
+<?xml version = '1.0' encoding = 'UTF-8'?>
+<StoredProcedureOraclev10g class="oracle.dbtools.crest.model.design.storage.oracle.v10g.StoredProcedureOraclev10g" name="UPDATEADMIN" directorySegmentName="seg_0" id="95E1DCCD-A50F-61BB-EEA1-9CD062220064">
+<sourceConnName>Proyecto</sourceConnName>
+<sourceObjSchema>GRUPO10</sourceObjSchema>
+<sourceObjName>UPDATEADMIN</sourceObjName>
+<createdBy>dnnxl</createdBy>
+<createdTime>2018-05-08 03:44:51 UTC</createdTime>
+<ownerDesignName>Modelo Relacional Objeto</ownerDesignName>
+<owner>E8B72E22-8E7E-1117-BFE8-A54D01A163C3</owner>
+<source>CREATE OR REPLACE PROCEDURE GRUPO10.UPDATEADMIN(pIDPerson IN NUMBER, pFirstName IN VARCHAR2, pSurname IN VARCHAR2,&amp;amp;lt;br/&amp;amp;gt;pTitle IN VARCHAR2, pAddress IN VARCHAR2, pPhone IN NUMBER, pPostcode IN NUMBER, pCampusLocation IN VARCHAR2, pIdBuilding IN VARCHAR2,&amp;amp;lt;br/&amp;amp;gt;pNumberOffice IN VARCHAR2, pStaffType IN VARCHAR2, pAdmiTitle IN VARCHAR2, pComputerSkill IN VARCHAR2,&amp;amp;lt;br/&amp;amp;gt;pOfficeSkill IN VARCHAR2) AS&amp;amp;lt;br/&amp;amp;gt;BEGIN &amp;amp;lt;br/&amp;amp;gt;	UPDATE Admin_table admin&amp;amp;lt;br/&amp;amp;gt;	SET admin.surname = pSurname,&amp;amp;lt;br/&amp;amp;gt;	admin.firstName = pFirstName,&amp;amp;lt;br/&amp;amp;gt;	admin.title = pTitle,&amp;amp;lt;br/&amp;amp;gt;	admin.address = pAddress,&amp;amp;lt;br/&amp;amp;gt;	admin.phone = pPhone,&amp;amp;lt;br/&amp;amp;gt;	admin.postcode = pPostcode,&amp;amp;lt;br/&amp;amp;gt;	admin.campusLocation = pCampusLocation,&amp;amp;lt;br/&amp;amp;gt;	admin.idBuilding = pIdBuilding,&amp;amp;lt;br/&amp;amp;gt;	admin.numberOffice = pNumberOffice,&amp;amp;lt;br/&amp;amp;gt;	admin.staffType = pStaffType,&amp;amp;lt;br/&amp;amp;gt;&amp;amp;lt;br/&amp;amp;gt;	admin.admiTitle = pAdmiTitle,&amp;amp;lt;br/&amp;amp;gt;	admin.computerSkill = pComputerSkill,&amp;amp;lt;br/&amp;amp;gt;	admin.officeSkill = pOfficeSkill&amp;amp;lt;br/&amp;amp;gt;	WHERE admin.idPerson = pIDPerson;&amp;amp;lt;br/&amp;amp;gt;END updateAdmin;</source>
+</StoredProcedureOraclev10g>

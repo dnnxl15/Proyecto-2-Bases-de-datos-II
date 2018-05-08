@@ -1,0 +1,11 @@
+<?xml version = '1.0' encoding = 'UTF-8'?>
+<StoredProcedureOraclev10g class="oracle.dbtools.crest.model.design.storage.oracle.v10g.StoredProcedureOraclev10g" name="UPDATEDEGREE" directorySegmentName="seg_0" id="20D39252-81CC-3FC1-28A2-DFBEBF3EB934">
+<sourceConnName>Proyecto</sourceConnName>
+<sourceObjSchema>GRUPO10</sourceObjSchema>
+<sourceObjName>UPDATEDEGREE</sourceObjName>
+<createdBy>dnnxl</createdBy>
+<createdTime>2018-05-08 03:44:51 UTC</createdTime>
+<ownerDesignName>Modelo Relacional Objeto</ownerDesignName>
+<owner>E8B72E22-8E7E-1117-BFE8-A54D01A163C3</owner>
+<source>CREATE OR REPLACE PROCEDURE GRUPO10.UPDATEDEGREE(pIDDegree IN NUMBER, pDegreeName IN VARCHAR2,&amp;amp;lt;br/&amp;amp;gt;pLength IN NUMBER, pDegreePrerequisites IN VARCHAR2, pIDFaculty IN NUMBER) AS&amp;amp;lt;br/&amp;amp;gt;BEGIN &amp;amp;lt;br/&amp;amp;gt;	UPDATE Degree_table deg&amp;amp;lt;br/&amp;amp;gt;	SET deg.degreeName = pDegreeName,&amp;amp;lt;br/&amp;amp;gt;	deg.length = pLength,&amp;amp;lt;br/&amp;amp;gt;	deg.degreePrerequisites = pDegreePrerequisites,&amp;amp;lt;br/&amp;amp;gt;	deg.idFaculty = pIDFaculty&amp;amp;lt;br/&amp;amp;gt;	WHERE deg.idDegree = pIDDegree;&amp;amp;lt;br/&amp;amp;gt;END updateDegree;</source>
+</StoredProcedureOraclev10g>

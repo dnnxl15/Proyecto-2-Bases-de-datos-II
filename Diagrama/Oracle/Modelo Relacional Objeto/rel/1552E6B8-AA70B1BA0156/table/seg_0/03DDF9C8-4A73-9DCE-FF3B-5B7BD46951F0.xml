@@ -1,0 +1,99 @@
+<?xml version = '1.0' encoding = 'UTF-8'?>
+<Table class="oracle.dbtools.crest.model.design.relational.Table" directorySegmentName="seg_0" id="03DDF9C8-4A73-9DCE-FF3B-5B7BD46951F0" schemaObject="0EF7B3E1-761B-2C20-A420-D65FAD7E9A68" name="SCHOOL_TABLE">
+<sourceConnName>Proyecto</sourceConnName>
+<sourceObjSchema>GRUPO10</sourceObjSchema>
+<sourceObjName>SCHOOL_TABLE</sourceObjName>
+<createdBy>dnnxl</createdBy>
+<createdTime>2018-05-08 04:05:23 UTC</createdTime>
+<ownerDesignName>Modelo Relacional Objeto</ownerDesignName>
+<basedOnStructuredType>E2B051EE-A79A-BEA6-7343-5F57A607EA09</basedOnStructuredType>
+<allowColumnReorder>false</allowColumnReorder>
+<existDependencyGenerateInDDl>true</existDependencyGenerateInDDl>
+<parsed>true</parsed>
+<columns itemClass="oracle.dbtools.crest.model.design.relational.Column">
+<Column name="Oid" id="7789F84A-D8A1-B418-DD13-558849653F64">
+<createdBy>dnnxl</createdBy>
+<createdTime>2018-05-08 04:05:23 UTC</createdTime>
+<ownerDesignName>Modelo Relacional Objeto</ownerDesignName>
+<oid>true</oid>
+<useDomainConstraints>false</useDomainConstraints>
+<use>3</use>
+<structuredType>E2B051EE-A79A-BEA6-7343-5F57A607EA09</structuredType>
+<reference>true</reference>
+<ownDataTypeParameters>,,</ownDataTypeParameters>
+<autoIncrementCycle>false</autoIncrementCycle>
+</Column>
+<Column name="IDSCHOOL" id="A8DA7921-5E0B-77A3-88E5-5F296E64D975">
+<createdBy>dnnxl</createdBy>
+<createdTime>2018-05-08 04:05:23 UTC</createdTime>
+<ownerDesignName>Modelo Relacional Objeto</ownerDesignName>
+<structAttributeID>F46824C1-C0CD-BEA3-78DB-A7AA28BC1BD9</structAttributeID>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT019</logicalDatatype>
+<dataTypePrecision>0</dataTypePrecision>
+<dataTypeScale>0</dataTypeScale>
+<ownDataTypeParameters>,0,0</ownDataTypeParameters>
+<autoIncrementCycle>false</autoIncrementCycle>
+</Column>
+<Column name="NAME" id="D1316851-0505-1040-7A5F-2D20A0A9E24E">
+<createdBy>dnnxl</createdBy>
+<createdTime>2018-05-08 04:05:23 UTC</createdTime>
+<ownerDesignName>Modelo Relacional Objeto</ownerDesignName>
+<nullsAllowed>true</nullsAllowed>
+<structAttributeID>C69F889C-13BD-A2E0-AB9A-ABB7FF260EFA</structAttributeID>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT024</logicalDatatype>
+<dataTypePrecision>0</dataTypePrecision>
+<dataTypeScale>0</dataTypeScale>
+<dataTypeSize>100</dataTypeSize>
+<ownDataTypeParameters>100,0,0</ownDataTypeParameters>
+<autoIncrementCycle>false</autoIncrementCycle>
+</Column>
+<Column name="HEAD" id="AC9C01C8-117C-8E19-7228-E08A4431D309">
+<createdBy>dnnxl</createdBy>
+<createdTime>2018-05-08 04:05:23 UTC</createdTime>
+<ownerDesignName>Modelo Relacional Objeto</ownerDesignName>
+<nullsAllowed>true</nullsAllowed>
+<structAttributeID>BA760B30-9CB6-4DB7-88B9-7669DFF26BBF</structAttributeID>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT024</logicalDatatype>
+<dataTypePrecision>0</dataTypePrecision>
+<dataTypeScale>0</dataTypeScale>
+<dataTypeSize>100</dataTypeSize>
+<ownDataTypeParameters>100,0,0</ownDataTypeParameters>
+<autoIncrementCycle>false</autoIncrementCycle>
+</Column>
+<Column name="PROF_ARRAY" id="57FD1AF7-31D5-5AAD-29B8-FB1CF7499AE6">
+<createdBy>dnnxl</createdBy>
+<createdTime>2018-05-08 04:05:23 UTC</createdTime>
+<ownerDesignName>Modelo Relacional Objeto</ownerDesignName>
+<nullsAllowed>true</nullsAllowed>
+<structAttributeID>EA552524-09AA-48A0-2464-2BAA8FA5BBCD</structAttributeID>
+<useDomainConstraints>false</useDomainConstraints>
+<use>4</use>
+<collectionType>1824E1B8-E7C4-42B1-4A89-4F701FF22532</collectionType>
+<ownDataTypeParameters>,,</ownDataTypeParameters>
+<autoIncrementCycle>false</autoIncrementCycle>
+</Column>
+</columns>
+<indexes itemClass="oracle.dbtools.crest.model.design.relational.Index">
+<ind_PK_UK id="00DBA31E-1CEE-D4E7-F36F-0E931F16F20F" name="SCHOOL_TABLE_PK">
+<sourceConnName>Proyecto</sourceConnName>
+<sourceObjSchema>GRUPO10</sourceObjSchema>
+<sourceObjName>SYS_C0011993</sourceObjName>
+<createdBy>dnnxl</createdBy>
+<createdTime>2018-05-08 04:05:23 UTC</createdTime>
+<ownerDesignName>Modelo Relacional Objeto</ownerDesignName>
+<oidKey>true</oidKey>
+<pk>true</pk>
+<indexState>Primary Constraint</indexState>
+<isSurrogateKey>false</isSurrogateKey>
+<indexColumnUsage>
+<colUsage columnID="A8DA7921-5E0B-77A3-88E5-5F296E64D975"/>
+</indexColumnUsage>
+</ind_PK_UK>
+</indexes>
+</Table>

@@ -1,0 +1,36 @@
+<?xml version = '1.0' encoding = 'UTF-8'?>
+<StructuredType class="oracle.dbtools.crest.model.design.datatypes.StructuredType" name="DEPTPROF_OBJ" directorySegmentName="seg_0" id="9D42B0D5-079F-4A42-456E-37172BFB733F">
+<sourceConnName>Proyecto</sourceConnName>
+<sourceObjSchema>GRUPO10</sourceObjSchema>
+<sourceObjName>DEPTPROF_OBJ</sourceObjName>
+<createdBy>dnnxl</createdBy>
+<createdTime>2018-05-08 03:20:56 UTC</createdTime>
+<ownerDesignName>Modelo Relacional Objeto</ownerDesignName>
+<importedID>3187753E-60EC-FB89-61E7-6BDAC0CFB0D0</importedID>
+<predefined>false</predefined>
+<final>false</final>
+<instantiable>true</instantiable>
+<attributes itemClass="oracle.dbtools.crest.model.design.datatypes.TypeElement">
+<Attribute name="DEPTPROFNAME" id="43D669B8-BE98-C3D7-D2E8-A9E42181D8DC">
+<createdBy>dnnxl</createdBy>
+<createdTime>2018-05-08 04:04:58 UTC</createdTime>
+<ownerDesignName>Modelo Relacional Objeto</ownerDesignName>
+<mandatory>false</mandatory>
+<precision>0</precision>
+<reference>false</reference>
+<scale>0</scale>
+<size>100</size>
+<type>LOGDT024</type>
+</Attribute>
+<Attribute name="DEPTPROFPHONE" id="6A79DCE8-DA7C-0B5A-8857-79B09A5C9038">
+<createdBy>dnnxl</createdBy>
+<createdTime>2018-05-08 04:04:58 UTC</createdTime>
+<ownerDesignName>Modelo Relacional Objeto</ownerDesignName>
+<mandatory>false</mandatory>
+<precision>0</precision>
+<reference>false</reference>
+<scale>0</scale>
+<type>LOGDT019</type>
+</Attribute>
+</attributes>
+</StructuredType>

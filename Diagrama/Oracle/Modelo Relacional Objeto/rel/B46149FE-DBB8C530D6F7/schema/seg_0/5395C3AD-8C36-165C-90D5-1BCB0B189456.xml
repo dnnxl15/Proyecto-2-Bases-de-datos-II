@@ -1,0 +1,7 @@
+<?xml version = '1.0' encoding = 'UTF-8'?>
+<SchemaObject class="oracle.dbtools.crest.model.design.relational.SchemaObject" name="GRUPO10" directorySegmentName="seg_0" id="5395C3AD-8C36-165C-90D5-1BCB0B189456">
+<createdBy>dnnxl</createdBy>
+<createdTime>2018-05-08 03:12:50 UTC</createdTime>
+<ownerDesignName>Modelo Relacional Objeto</ownerDesignName>
+<importedID>D6BA8DBE-6133-B912-4835-52A9BB93920B</importedID>
+</SchemaObject>

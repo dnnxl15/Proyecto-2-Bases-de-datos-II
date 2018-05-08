@@ -1,0 +1,11 @@
+<?xml version = '1.0' encoding = 'UTF-8'?>
+<StoredProcedureOraclev10g class="oracle.dbtools.crest.model.design.storage.oracle.v10g.StoredProcedureOraclev10g" name="DELETEOFFICE" directorySegmentName="seg_0" id="ACC0C71E-E470-47E5-89D0-734099A56D34">
+<sourceConnName>Proyecto</sourceConnName>
+<sourceObjSchema>GRUPO10</sourceObjSchema>
+<sourceObjName>DELETEOFFICE</sourceObjName>
+<createdBy>dnnxl</createdBy>
+<createdTime>2018-05-08 03:44:47 UTC</createdTime>
+<ownerDesignName>Modelo Relacional Objeto</ownerDesignName>
+<owner>E8B72E22-8E7E-1117-BFE8-A54D01A163C3</owner>
+<source>CREATE OR REPLACE PROCEDURE GRUPO10.DELETEOFFICE(pOfficeNum IN VARCHAR2) AS&amp;amp;lt;br/&amp;amp;gt;BEGIN&amp;amp;lt;br/&amp;amp;gt;	DELETE FROM Office_table office&amp;amp;lt;br/&amp;amp;gt;	WHERE office.officeNumber = pOfficeNum;&amp;amp;lt;br/&amp;amp;gt;	COMMIT;&amp;amp;lt;br/&amp;amp;gt;END deleteOffice;</source>
+</StoredProcedureOraclev10g>

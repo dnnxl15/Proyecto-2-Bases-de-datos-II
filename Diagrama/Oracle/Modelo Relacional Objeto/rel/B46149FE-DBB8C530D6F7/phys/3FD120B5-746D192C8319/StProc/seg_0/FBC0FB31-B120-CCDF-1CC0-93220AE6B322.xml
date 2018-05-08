@@ -1,0 +1,11 @@
+<?xml version = '1.0' encoding = 'UTF-8'?>
+<StoredProcedureOraclev10g class="oracle.dbtools.crest.model.design.storage.oracle.v10g.StoredProcedureOraclev10g" name="GETLAB" directorySegmentName="seg_0" id="FBC0FB31-B120-CCDF-1CC0-93220AE6B322">
+<sourceConnName>Proyecto</sourceConnName>
+<sourceObjSchema>GRUPO10</sourceObjSchema>
+<sourceObjName>GETLAB</sourceObjName>
+<createdBy>dnnxl</createdBy>
+<createdTime>2018-05-08 03:44:48 UTC</createdTime>
+<ownerDesignName>Modelo Relacional Objeto</ownerDesignName>
+<owner>E8B72E22-8E7E-1117-BFE8-A54D01A163C3</owner>
+<source>CREATE OR REPLACE PROCEDURE GRUPO10.GETLAB(cLab OUT SYS_REFCURSOR)&amp;amp;lt;br/&amp;amp;gt;IS&amp;amp;lt;br/&amp;amp;gt;BEGIN&amp;amp;lt;br/&amp;amp;gt;	OPEN cLab FOR &amp;amp;lt;br/&amp;amp;gt;	SELECT Lab_table.buildingCode, Lab_table.labNumber, Lab_table.labCapacity, Lab_table.labEquipment&amp;amp;lt;br/&amp;amp;gt;	FROM Lab_table;&amp;amp;lt;br/&amp;amp;gt;END getLab;</source>
+</StoredProcedureOraclev10g>

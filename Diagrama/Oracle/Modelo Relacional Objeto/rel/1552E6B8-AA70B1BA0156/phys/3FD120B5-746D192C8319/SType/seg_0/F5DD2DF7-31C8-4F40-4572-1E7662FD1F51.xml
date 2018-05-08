@@ -1,0 +1,32 @@
+<?xml version = '1.0' encoding = 'UTF-8'?>
+<StructuredTypeProxyOraclev10g class="oracle.dbtools.crest.model.design.storage.oracle.v10g.StructuredTypeProxyOraclev10g" name="RESEARCH_CENTER_OBJ" directorySegmentName="seg_0" id="F5DD2DF7-31C8-4F40-4572-1E7662FD1F51">
+<sourceConnName>Proyecto</sourceConnName>
+<sourceObjSchema>GRUPO10</sourceObjSchema>
+<sourceObjName>RESEARCH_CENTER_OBJ</sourceObjName>
+<createdBy>dnnxl</createdBy>
+<createdTime>2018-05-08 04:04:06 UTC</createdTime>
+<ownerDesignName>Modelo Relacional Objeto</ownerDesignName>
+<owner>3E16FD55-E612-8E91-F165-62612DAF21C1</owner>
+<attributes itemClass="oracle.dbtools.crest.model.design.storage.oracle.v9i.TypeElementProxyOraclev9i">
+<Attribute name="IDRESEARCHCENTER" id="10F04920-B80E-89F9-876F-820C19615F13">
+<createdBy>dnnxl</createdBy>
+<createdTime>2018-05-08 04:04:59 UTC</createdTime>
+<ownerDesignName>Modelo Relacional Objeto</ownerDesignName>
+</Attribute>
+<Attribute name="UNIT" id="6235357D-F30B-E57E-5274-040B9CBB8C59">
+<createdBy>dnnxl</createdBy>
+<createdTime>2018-05-08 04:04:59 UTC</createdTime>
+<ownerDesignName>Modelo Relacional Objeto</ownerDesignName>
+</Attribute>
+<Attribute name="NAME" id="77A7F4C3-5010-925E-A870-0CB178A04045">
+<createdBy>dnnxl</createdBy>
+<createdTime>2018-05-08 04:04:59 UTC</createdTime>
+<ownerDesignName>Modelo Relacional Objeto</ownerDesignName>
+</Attribute>
+<Attribute name="HEAD" id="96C22821-722F-BCE6-F42A-6BDA6E98696E">
+<createdBy>dnnxl</createdBy>
+<createdTime>2018-05-08 04:04:59 UTC</createdTime>
+<ownerDesignName>Modelo Relacional Objeto</ownerDesignName>
+</Attribute>
+</attributes>
+</StructuredTypeProxyOraclev10g>

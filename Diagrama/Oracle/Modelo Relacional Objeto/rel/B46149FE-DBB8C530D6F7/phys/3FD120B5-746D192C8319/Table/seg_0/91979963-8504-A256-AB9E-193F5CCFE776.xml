@@ -1,0 +1,95 @@
+<?xml version = '1.0' encoding = 'UTF-8'?>
+<TableProxyOraclev12c class="oracle.dbtools.crest.model.design.storage.oracle.v12c.TableProxyOraclev12c" name="FACULTY_TABLE" directorySegmentName="seg_0" id="91979963-8504-A256-AB9E-193F5CCFE776">
+<createdBy>dnnxl</createdBy>
+<createdTime>2018-05-08 03:13:04 UTC</createdTime>
+<ownerDesignName>Modelo Relacional Objeto</ownerDesignName>
+<schemaObject>5395C3AD-8C36-165C-90D5-1BCB0B189456</schemaObject>
+<logging>YES</logging>
+<partitionedRowMovement>DISABLE</partitionedRowMovement>
+<segment>A9944621-F8E2-FD94-6896-94AF1917011C</segment>
+<tableSpace>6D976C34-B8EA-5911-8DF0-62156D9025B1</tableSpace>
+<temporaryChanged>false</temporaryChanged>
+<accessDriverType>oracle_loader</accessDriverType>
+<rejectLimit></rejectLimit>
+<inMemory>NO</inMemory>
+<columnProxies itemClass="oracle.dbtools.crest.model.design.storage.oracle.v12c.ColumnProxyOraclev12c">
+<ColumnProxy name="Oid" id="10FD4494-EB10-0475-18BA-98FFFD66FE08">
+<createdBy>dnnxl</createdBy>
+<createdTime>2018-05-08 03:13:04 UTC</createdTime>
+<ownerDesignName>Modelo Relacional Objeto</ownerDesignName>
+</ColumnProxy>
+<ColumnProxy name="DEAN" id="68DC90D3-FA75-F6D9-D949-AECFC402DFE1">
+<createdBy>dnnxl</createdBy>
+<createdTime>2018-05-08 04:04:58 UTC</createdTime>
+<ownerDesignName>Modelo Relacional Objeto</ownerDesignName>
+</ColumnProxy>
+<ColumnProxy name="NAME" id="70E2DEDE-4321-D1C6-E634-A0B2C3A70FEE">
+<createdBy>dnnxl</createdBy>
+<createdTime>2018-05-08 04:04:58 UTC</createdTime>
+<ownerDesignName>Modelo Relacional Objeto</ownerDesignName>
+</ColumnProxy>
+<ColumnProxy name="IDFACULTY" id="89435821-0641-B283-3DBF-EB5E4F2D201B">
+<createdBy>dnnxl</createdBy>
+<createdTime>2018-05-08 04:04:58 UTC</createdTime>
+<ownerDesignName>Modelo Relacional Objeto</ownerDesignName>
+</ColumnProxy>
+<ColumnProxy name="RC_LIST" id="9CE86EFC-EC49-3F85-95E0-3C370EF2FCE7">
+<createdBy>dnnxl</createdBy>
+<createdTime>2018-05-08 04:04:58 UTC</createdTime>
+<ownerDesignName>Modelo Relacional Objeto</ownerDesignName>
+</ColumnProxy>
+<ColumnProxy name="SCHOOL_LIST" id="CA4E4538-79BC-F23F-2081-DC5BB06A060A">
+<createdBy>dnnxl</createdBy>
+<createdTime>2018-05-08 04:04:58 UTC</createdTime>
+<ownerDesignName>Modelo Relacional Objeto</ownerDesignName>
+</ColumnProxy>
+<ColumnProxy name="DEPARTMENT_LIST" id="E6C40D75-8B6E-EB6D-1A08-03092A17AAE5">
+<createdBy>dnnxl</createdBy>
+<createdTime>2018-05-08 04:04:58 UTC</createdTime>
+<ownerDesignName>Modelo Relacional Objeto</ownerDesignName>
+</ColumnProxy>
+</columnProxies>
+<primaryKeys>
+<PrimaryKey class="oracle.dbtools.crest.model.design.storage.oracle.v10g.PKProxyOraclev10g" name="FACULTY_TABLE_PK" id="DF66AD10-39BC-AE11-EBA6-BBB3838C7ACC">
+<createdBy>dnnxl</createdBy>
+<createdTime>2018-05-08 03:13:04 UTC</createdTime>
+<ownerDesignName>Modelo Relacional Objeto</ownerDesignName>
+<indexSort>SORTED</indexSort>
+</PrimaryKey>
+</primaryKeys>
+<uniqueKeys>
+<UniqueKey class="oracle.dbtools.crest.model.design.storage.oracle.v10g.UniqueOraclev10g" name="FACULTY_TABLE_RC_LIST_UN" id="0A1F60E9-2AA6-2EDF-7415-A6597D7846C1">
+<createdBy>dnnxl</createdBy>
+<createdTime>2018-05-08 03:13:58 UTC</createdTime>
+<ownerDesignName>Modelo Relacional Objeto</ownerDesignName>
+<schemaObject>5395C3AD-8C36-165C-90D5-1BCB0B189456</schemaObject>
+<segment>5D41FDD1-9940-6A53-0272-E4CDAB9C9700</segment>
+<tableSpace>6D976C34-B8EA-5911-8DF0-62156D9025B1</tableSpace>
+<indexSegment>5D41FDD1-9940-6A53-0272-E4CDAB9C9700</indexSegment>
+<indexSort>SORTED</indexSort>
+<usingIndex>BY INDEX NAME</usingIndex>
+</UniqueKey>
+<UniqueKey class="oracle.dbtools.crest.model.design.storage.oracle.v10g.UniqueOraclev10g" name="FACULTY_TABLE_SCHOOL_LIST_UN" id="27D833FC-3B32-7443-D5D4-51F71927D925">
+<createdBy>dnnxl</createdBy>
+<createdTime>2018-05-08 03:13:58 UTC</createdTime>
+<ownerDesignName>Modelo Relacional Objeto</ownerDesignName>
+<schemaObject>5395C3AD-8C36-165C-90D5-1BCB0B189456</schemaObject>
+<segment>5D41FDD1-9940-6A53-0272-E4CDAB9C9700</segment>
+<tableSpace>6D976C34-B8EA-5911-8DF0-62156D9025B1</tableSpace>
+<indexSegment>5D41FDD1-9940-6A53-0272-E4CDAB9C9700</indexSegment>
+<indexSort>SORTED</indexSort>
+<usingIndex>BY INDEX NAME</usingIndex>
+</UniqueKey>
+<UniqueKey class="oracle.dbtools.crest.model.design.storage.oracle.v10g.UniqueOraclev10g" name="FACULTY_TABLE_DEPARTMENT_LIST_UN" id="D9DB17D5-DFBE-C31E-D6A5-77CB73620C5A">
+<createdBy>dnnxl</createdBy>
+<createdTime>2018-05-08 03:13:58 UTC</createdTime>
+<ownerDesignName>Modelo Relacional Objeto</ownerDesignName>
+<schemaObject>5395C3AD-8C36-165C-90D5-1BCB0B189456</schemaObject>
+<segment>5D41FDD1-9940-6A53-0272-E4CDAB9C9700</segment>
+<tableSpace>6D976C34-B8EA-5911-8DF0-62156D9025B1</tableSpace>
+<indexSegment>5D41FDD1-9940-6A53-0272-E4CDAB9C9700</indexSegment>
+<indexSort>SORTED</indexSort>
+<usingIndex>BY INDEX NAME</usingIndex>
+</UniqueKey>
+</uniqueKeys>
+</TableProxyOraclev12c>

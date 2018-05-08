@@ -1,0 +1,36 @@
+<?xml version = '1.0' encoding = 'UTF-8'?>
+<StructuredType class="oracle.dbtools.crest.model.design.datatypes.StructuredType" name="ASSOCIATELECTURER_OBJ" directorySegmentName="seg_0" id="AA1321FD-0030-AACA-7613-EC7ED4000E5F">
+<sourceConnName>Proyecto</sourceConnName>
+<sourceObjSchema>GRUPO10</sourceObjSchema>
+<sourceObjName>ASSOCIATELECTURER_OBJ</sourceObjName>
+<createdBy>dnnxl</createdBy>
+<createdTime>2018-05-08 03:12:34 UTC</createdTime>
+<ownerDesignName>Modelo Relacional Objeto</ownerDesignName>
+<predefined>false</predefined>
+<final>true</final>
+<inheritanceRelation>E9AF8FF6-1240-4F04-F1B6-6F38F34DC9F2</inheritanceRelation>
+<instantiable>true</instantiable>
+<parentTypeID>AAB69DFC-06AE-E544-30EC-82C8DA6CC59D</parentTypeID>
+<attributes itemClass="oracle.dbtools.crest.model.design.datatypes.TypeElement">
+<Attribute name="NUMBERHONOURS" id="5A2F4231-9617-598B-4235-335DC7E84EAF">
+<createdBy>dnnxl</createdBy>
+<createdTime>2018-05-08 04:04:58 UTC</createdTime>
+<ownerDesignName>Modelo Relacional Objeto</ownerDesignName>
+<mandatory>false</mandatory>
+<precision>0</precision>
+<reference>false</reference>
+<scale>0</scale>
+<type>LOGDT019</type>
+</Attribute>
+<Attribute name="YEARJOIN" id="4BBBBE2D-2C0F-C172-CD74-D6464953A306">
+<createdBy>dnnxl</createdBy>
+<createdTime>2018-05-08 04:04:58 UTC</createdTime>
+<ownerDesignName>Modelo Relacional Objeto</ownerDesignName>
+<mandatory>false</mandatory>
+<precision>0</precision>
+<reference>false</reference>
+<scale>0</scale>
+<type>LOGDT019</type>
+</Attribute>
+</attributes>
+</StructuredType>

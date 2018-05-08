@@ -1,0 +1,82 @@
+<?xml version = '1.0' encoding = 'UTF-8'?>
+<StructuredType class="oracle.dbtools.crest.model.design.datatypes.StructuredType" name="FACULTY_OBJ" directorySegmentName="seg_0" id="0C1BE45F-7A78-C621-559B-7F0F9DEEDA57">
+<sourceConnName>Proyecto</sourceConnName>
+<sourceObjSchema>GRUPO10</sourceObjSchema>
+<sourceObjName>FACULTY_OBJ</sourceObjName>
+<createdBy>dnnxl</createdBy>
+<createdTime>2018-05-08 03:12:34 UTC</createdTime>
+<ownerDesignName>Modelo Relacional Objeto</ownerDesignName>
+<predefined>false</predefined>
+<final>false</final>
+<instantiable>true</instantiable>
+<attributes itemClass="oracle.dbtools.crest.model.design.datatypes.TypeElement">
+<Attribute name="IDFACULTY" id="55F6EF0C-1FD4-5911-87B7-1B86D43C1A9A">
+<createdBy>dnnxl</createdBy>
+<createdTime>2018-05-08 04:04:58 UTC</createdTime>
+<ownerDesignName>Modelo Relacional Objeto</ownerDesignName>
+<mandatory>false</mandatory>
+<precision>0</precision>
+<reference>false</reference>
+<scale>0</scale>
+<type>LOGDT019</type>
+</Attribute>
+<Attribute name="NAME" id="D2B9EE75-7583-59C3-BA81-3D327937414B">
+<createdBy>dnnxl</createdBy>
+<createdTime>2018-05-08 04:04:58 UTC</createdTime>
+<ownerDesignName>Modelo Relacional Objeto</ownerDesignName>
+<mandatory>false</mandatory>
+<precision>0</precision>
+<reference>false</reference>
+<scale>0</scale>
+<size>100</size>
+<type>LOGDT024</type>
+</Attribute>
+<Attribute name="DEAN" id="1B211A56-71E1-FBC6-69D5-8C29331BFBF5">
+<createdBy>dnnxl</createdBy>
+<createdTime>2018-05-08 04:04:58 UTC</createdTime>
+<ownerDesignName>Modelo Relacional Objeto</ownerDesignName>
+<mandatory>false</mandatory>
+<precision>0</precision>
+<reference>false</reference>
+<scale>0</scale>
+<size>100</size>
+<type>LOGDT024</type>
+</Attribute>
+<Attribute name="DEPARTMENT_LIST" id="04E60748-B9F5-8458-6259-FFAC1DB5D1E4">
+<createdBy>dnnxl</createdBy>
+<createdTime>2018-05-08 04:04:58 UTC</createdTime>
+<ownerDesignName>Modelo Relacional Objeto</ownerDesignName>
+<mandatory>false</mandatory>
+<precision>0</precision>
+<reference>false</reference>
+<referencerelation>19C123A7-3670-5DAE-B1BE-ABBD6A606C62</referencerelation>
+<scale>0</scale>
+<type>31872414-0B8C-C96F-6793-863E0B969712</type>
+<referenceID>19C123A7-3670-5DAE-B1BE-ABBD6A606C62</referenceID>
+</Attribute>
+<Attribute name="SCHOOL_LIST" id="1BA4F40C-50DC-2511-110D-1273579261D0">
+<createdBy>dnnxl</createdBy>
+<createdTime>2018-05-08 04:04:58 UTC</createdTime>
+<ownerDesignName>Modelo Relacional Objeto</ownerDesignName>
+<mandatory>false</mandatory>
+<precision>0</precision>
+<reference>false</reference>
+<referencerelation>F75C8D24-4135-410D-B4F3-628FF6AC43BE</referencerelation>
+<scale>0</scale>
+<type>349D3492-740D-4D9C-FCEF-060000B2479C</type>
+<referenceID>F75C8D24-4135-410D-B4F3-628FF6AC43BE</referenceID>
+</Attribute>
+<Attribute name="RC_LIST" id="B480DEFF-C3D7-F274-F651-13EE215F543B">
+<createdBy>dnnxl</createdBy>
+<createdTime>2018-05-08 04:04:58 UTC</createdTime>
+<ownerDesignName>Modelo Relacional Objeto</ownerDesignName>
+<mandatory>false</mandatory>
+<precision>0</precision>
+<reference>false</reference>
+<referencerelation>4CA05912-759F-1D56-2D19-4FC413EC6FEE</referencerelation>
+<scale>0</scale>
+<type>3956BC2E-2EE2-0A58-A450-A036AF89D8B8</type>
+<referenceID>4CA05912-759F-1D56-2D19-4FC413EC6FEE</referenceID>
+</Attribute>
+</attributes>
+</StructuredType>

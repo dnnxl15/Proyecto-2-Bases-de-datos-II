@@ -1,0 +1,11 @@
+<?xml version = '1.0' encoding = 'UTF-8'?>
+<StoredProcedureOraclev10g class="oracle.dbtools.crest.model.design.storage.oracle.v10g.StoredProcedureOraclev10g" name="GETSENIORLECTURER" directorySegmentName="seg_0" id="0D8FF7B9-7454-433A-C17F-A5B11E837346">
+<sourceConnName>Proyecto</sourceConnName>
+<sourceObjSchema>GRUPO10</sourceObjSchema>
+<sourceObjName>GETSENIORLECTURER</sourceObjName>
+<createdBy>dnnxl</createdBy>
+<createdTime>2018-05-08 03:44:48 UTC</createdTime>
+<ownerDesignName>Modelo Relacional Objeto</ownerDesignName>
+<owner>E8B72E22-8E7E-1117-BFE8-A54D01A163C3</owner>
+<source>CREATE OR REPLACE PROCEDURE GRUPO10.GETSENIORLECTURER(cSeniorLecturer OUT SYS_REFCURSOR)&amp;amp;lt;br/&amp;amp;gt;IS&amp;amp;lt;br/&amp;amp;gt;BEGIN&amp;amp;lt;br/&amp;amp;gt;	OPEN cSeniorLecturer FOR &amp;amp;lt;br/&amp;amp;gt;	SELECT SeniorLecturer_table.idPerson, SeniorLecturer_table.surname, SeniorLecturer_table.firstName, &amp;amp;lt;br/&amp;amp;gt;	SeniorLecturer_table.title, SeniorLecturer_table.address, SeniorLecturer_table.phone, SeniorLecturer_table.postcode,&amp;amp;lt;br/&amp;amp;gt;	SeniorLecturer_table.campusLocation, SeniorLecturer_table.idBuilding, SeniorLecturer_table.numberOffice,&amp;amp;lt;br/&amp;amp;gt;	SeniorLecturer_table.staffType, &amp;amp;lt;br/&amp;amp;gt;	SeniorLecturer_table.area, SeniorLecturer_table.lectureType,SeniorLecturer_table.numberPhd, SeniorLecturer_table.numberMaster,&amp;amp;lt;br/&amp;amp;gt;	SeniorLecturer_table.numberHonours&amp;amp;lt;br/&amp;amp;gt;	FROM SeniorLecturer_table;&amp;amp;lt;br/&amp;amp;gt;END getSeniorLecturer;</source>
+</StoredProcedureOraclev10g>

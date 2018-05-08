@@ -1,0 +1,45 @@
+<?xml version = '1.0' encoding = 'UTF-8'?>
+<TableProxyOraclev12c class="oracle.dbtools.crest.model.design.storage.oracle.v12c.TableProxyOraclev12c" name="ENROLLSIN_TABLE" directorySegmentName="seg_0" id="487298F4-C703-0951-E6D1-A53ADC8BDB37">
+<createdBy>dnnxl</createdBy>
+<createdTime>2018-05-08 04:05:14 UTC</createdTime>
+<ownerDesignName>Modelo Relacional Objeto</ownerDesignName>
+<schemaObject>0EF7B3E1-761B-2C20-A420-D65FAD7E9A68</schemaObject>
+<logging>YES</logging>
+<partitionedRowMovement>DISABLE</partitionedRowMovement>
+<segment>3F8F198C-0ABB-B63A-D2DF-A759764E0DC6</segment>
+<tableSpace>FC9B9FF6-0563-4E75-73E8-BF6411758E82</tableSpace>
+<temporaryChanged>false</temporaryChanged>
+<accessDriverType>oracle_loader</accessDriverType>
+<rejectLimit></rejectLimit>
+<inMemory>NO</inMemory>
+<columnProxies itemClass="oracle.dbtools.crest.model.design.storage.oracle.v12c.ColumnProxyOraclev12c">
+<ColumnProxy name="DEGREEN" id="304C797C-2DFC-2EC1-5E13-9CCB3AB39519">
+<createdBy>dnnxl</createdBy>
+<createdTime>2018-05-08 04:05:14 UTC</createdTime>
+<ownerDesignName>Modelo Relacional Objeto</ownerDesignName>
+</ColumnProxy>
+<ColumnProxy name="IDENROLL" id="4EE39372-F3AA-CE50-1B0B-609C132CE6BA">
+<createdBy>dnnxl</createdBy>
+<createdTime>2018-05-08 04:05:14 UTC</createdTime>
+<ownerDesignName>Modelo Relacional Objeto</ownerDesignName>
+</ColumnProxy>
+<ColumnProxy name="STUDENTN" id="B483A501-B66B-8CF2-78C2-D82B0B119E62">
+<createdBy>dnnxl</createdBy>
+<createdTime>2018-05-08 04:05:14 UTC</createdTime>
+<ownerDesignName>Modelo Relacional Objeto</ownerDesignName>
+</ColumnProxy>
+<ColumnProxy name="Oid" id="BBEEAE7C-B6A5-E374-F649-7C5629452DC2">
+<createdBy>dnnxl</createdBy>
+<createdTime>2018-05-08 04:05:14 UTC</createdTime>
+<ownerDesignName>Modelo Relacional Objeto</ownerDesignName>
+</ColumnProxy>
+</columnProxies>
+<primaryKeys>
+<PrimaryKey class="oracle.dbtools.crest.model.design.storage.oracle.v10g.PKProxyOraclev10g" name="ENROLLSIN_TABLE_PK" id="0A2BDA8B-52A2-6BCD-AB00-D942A457733F">
+<createdBy>dnnxl</createdBy>
+<createdTime>2018-05-08 04:05:14 UTC</createdTime>
+<ownerDesignName>Modelo Relacional Objeto</ownerDesignName>
+<indexSort>SORTED</indexSort>
+</PrimaryKey>
+</primaryKeys>
+</TableProxyOraclev12c>

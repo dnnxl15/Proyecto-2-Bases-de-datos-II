@@ -1,0 +1,11 @@
+<?xml version = '1.0' encoding = 'UTF-8'?>
+<StoredProcedureOraclev10g class="oracle.dbtools.crest.model.design.storage.oracle.v10g.StoredProcedureOraclev10g" name="DELETELAB" directorySegmentName="seg_0" id="BA318B25-33C8-E776-3171-A1C7B37A58AD">
+<sourceConnName>Proyecto</sourceConnName>
+<sourceObjSchema>GRUPO10</sourceObjSchema>
+<sourceObjName>DELETELAB</sourceObjName>
+<createdBy>dnnxl</createdBy>
+<createdTime>2018-05-08 03:44:47 UTC</createdTime>
+<ownerDesignName>Modelo Relacional Objeto</ownerDesignName>
+<owner>E8B72E22-8E7E-1117-BFE8-A54D01A163C3</owner>
+<source>CREATE OR REPLACE PROCEDURE GRUPO10.DELETELAB(pLabNumber IN VARCHAR2) AS&amp;amp;lt;br/&amp;amp;gt;BEGIN&amp;amp;lt;br/&amp;amp;gt;	DELETE FROM Lab_table &amp;amp;lt;br/&amp;amp;gt;	WHERE labNumber = pLabNumber;&amp;amp;lt;br/&amp;amp;gt;	COMMIT;&amp;amp;lt;br/&amp;amp;gt;END deleteLab;</source>
+</StoredProcedureOraclev10g>

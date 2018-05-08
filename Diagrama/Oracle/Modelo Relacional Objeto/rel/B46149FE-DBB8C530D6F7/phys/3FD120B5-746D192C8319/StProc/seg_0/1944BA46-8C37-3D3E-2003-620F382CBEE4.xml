@@ -1,0 +1,11 @@
+<?xml version = '1.0' encoding = 'UTF-8'?>
+<StoredProcedureOraclev10g class="oracle.dbtools.crest.model.design.storage.oracle.v10g.StoredProcedureOraclev10g" name="UPDATESUBJECT" directorySegmentName="seg_0" id="1944BA46-8C37-3D3E-2003-620F382CBEE4">
+<sourceConnName>Proyecto</sourceConnName>
+<sourceObjSchema>GRUPO10</sourceObjSchema>
+<sourceObjName>UPDATESUBJECT</sourceObjName>
+<createdBy>dnnxl</createdBy>
+<createdTime>2018-05-08 03:44:51 UTC</createdTime>
+<ownerDesignName>Modelo Relacional Objeto</ownerDesignName>
+<owner>E8B72E22-8E7E-1117-BFE8-A54D01A163C3</owner>
+<source>CREATE OR REPLACE PROCEDURE GRUPO10.UPDATESUBJECT(pIDSubject IN NUMBER, pSubjectName IN VARCHAR2,&amp;amp;lt;br/&amp;amp;gt;pCredit IN NUMBER, pSubjectPrerequisites IN VARCHAR2, pIDPerson IN NUMBER) AS&amp;amp;lt;br/&amp;amp;gt;BEGIN &amp;amp;lt;br/&amp;amp;gt;	UPDATE Subject_table subj&amp;amp;lt;br/&amp;amp;gt;	SET subj.subjectName = pSubjectName,&amp;amp;lt;br/&amp;amp;gt;	subj.credit = pCredit,&amp;amp;lt;br/&amp;amp;gt;	subj.subjectPrerequisites = pSubjectPrerequisites,&amp;amp;lt;br/&amp;amp;gt;	subj.idPerson = pIDPerson&amp;amp;lt;br/&amp;amp;gt;	WHERE subj.idSubject = pIDSubject;&amp;amp;lt;br/&amp;amp;gt;END updateSubject;</source>
+</StoredProcedureOraclev10g>

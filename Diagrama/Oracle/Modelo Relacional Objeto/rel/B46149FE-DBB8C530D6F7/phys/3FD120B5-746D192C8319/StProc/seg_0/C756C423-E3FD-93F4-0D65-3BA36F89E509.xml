@@ -1,0 +1,11 @@
+<?xml version = '1.0' encoding = 'UTF-8'?>
+<StoredProcedureOraclev10g class="oracle.dbtools.crest.model.design.storage.oracle.v10g.StoredProcedureOraclev10g" name="INSERTFACULTY" directorySegmentName="seg_0" id="C756C423-E3FD-93F4-0D65-3BA36F89E509">
+<sourceConnName>Proyecto</sourceConnName>
+<sourceObjSchema>GRUPO10</sourceObjSchema>
+<sourceObjName>INSERTFACULTY</sourceObjName>
+<createdBy>dnnxl</createdBy>
+<createdTime>2018-05-08 03:44:50 UTC</createdTime>
+<ownerDesignName>Modelo Relacional Objeto</ownerDesignName>
+<owner>E8B72E22-8E7E-1117-BFE8-A54D01A163C3</owner>
+<source>CREATE OR REPLACE PROCEDURE GRUPO10.INSERTFACULTY(pFacultyName IN VARCHAR2, pFacultyDean IN VARCHAR2) AS&amp;amp;lt;br/&amp;amp;gt;BEGIN&amp;amp;lt;br/&amp;amp;gt;	INSERT INTO Faculty_table &amp;amp;lt;br/&amp;amp;gt;	VALUES(Faculty_obj(seqFaculty.Nextval, pFacultyName, pFacultyDean, &amp;amp;lt;br/&amp;amp;gt;		List_Department(Department_obj(NULL, NULL, NULL, NULL)),&amp;amp;lt;br/&amp;amp;gt;		List_School(School_obj(NULL, NULL, NULL, NULL)), &amp;amp;lt;br/&amp;amp;gt;		List_RC(Research_Center_obj(NULL, NULL, NULL, NULL))));&amp;amp;lt;br/&amp;amp;gt;	COMMIT;&amp;amp;lt;br/&amp;amp;gt;END insertFaculty;</source>
+</StoredProcedureOraclev10g>

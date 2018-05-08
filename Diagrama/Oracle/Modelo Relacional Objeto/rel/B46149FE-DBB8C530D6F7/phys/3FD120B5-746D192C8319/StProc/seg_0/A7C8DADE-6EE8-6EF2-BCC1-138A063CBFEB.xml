@@ -1,0 +1,11 @@
+<?xml version = '1.0' encoding = 'UTF-8'?>
+<StoredProcedureOraclev10g class="oracle.dbtools.crest.model.design.storage.oracle.v10g.StoredProcedureOraclev10g" name="UPDATELAB" directorySegmentName="seg_0" id="A7C8DADE-6EE8-6EF2-BCC1-138A063CBFEB">
+<sourceConnName>Proyecto</sourceConnName>
+<sourceObjSchema>GRUPO10</sourceObjSchema>
+<sourceObjName>UPDATELAB</sourceObjName>
+<createdBy>dnnxl</createdBy>
+<createdTime>2018-05-08 03:44:51 UTC</createdTime>
+<ownerDesignName>Modelo Relacional Objeto</ownerDesignName>
+<owner>E8B72E22-8E7E-1117-BFE8-A54D01A163C3</owner>
+<source>CREATE OR REPLACE PROCEDURE GRUPO10.UPDATELAB(pOldNum IN VARCHAR2, pBuildingCode IN VARCHAR, pNewNum IN VARCHAR2, &amp;amp;lt;br/&amp;amp;gt;	pLabCapacity IN NUMBER, pLabEquipment IN Equipment_list) AS&amp;amp;lt;br/&amp;amp;gt;BEGIN &amp;amp;lt;br/&amp;amp;gt;	UPDATE Lab_table lab&amp;amp;lt;br/&amp;amp;gt;	SET lab.buildingCode = pBuildingCode,&amp;amp;lt;br/&amp;amp;gt;	lab.labNumber = pNewNum,&amp;amp;lt;br/&amp;amp;gt;	lab.labCapacity = pLabCapacity,&amp;amp;lt;br/&amp;amp;gt;	lab.labEquipment = pLabEquipment&amp;amp;lt;br/&amp;amp;gt;	WHERE lab.labNumber = pOldNum;&amp;amp;lt;br/&amp;amp;gt;END updateLab;</source>
+</StoredProcedureOraclev10g>

@@ -1,0 +1,22 @@
+<?xml version = '1.0' encoding = 'UTF-8'?>
+<StructuredTypeProxyOraclev10g class="oracle.dbtools.crest.model.design.storage.oracle.v10g.StructuredTypeProxyOraclev10g" name="TECHNICIAN_OBJ" directorySegmentName="seg_0" id="CC4AE6CE-C0C0-7483-A954-0F960F08B469">
+<sourceConnName>Proyecto</sourceConnName>
+<sourceObjSchema>GRUPO10</sourceObjSchema>
+<sourceObjName>TECHNICIAN_OBJ</sourceObjName>
+<createdBy>dnnxl</createdBy>
+<createdTime>2018-05-08 04:04:06 UTC</createdTime>
+<ownerDesignName>Modelo Relacional Objeto</ownerDesignName>
+<owner>3E16FD55-E612-8E91-F165-62612DAF21C1</owner>
+<attributes itemClass="oracle.dbtools.crest.model.design.storage.oracle.v9i.TypeElementProxyOraclev9i">
+<Attribute name="TECHTITLE" id="5F84B90F-DB1D-643D-3A2D-E8BF6130076D">
+<createdBy>dnnxl</createdBy>
+<createdTime>2018-05-08 04:04:59 UTC</createdTime>
+<ownerDesignName>Modelo Relacional Objeto</ownerDesignName>
+</Attribute>
+<Attribute name="TECHSKILL" id="73882E62-C0FC-8269-A79A-C604A1A7D84E">
+<createdBy>dnnxl</createdBy>
+<createdTime>2018-05-08 04:04:59 UTC</createdTime>
+<ownerDesignName>Modelo Relacional Objeto</ownerDesignName>
+</Attribute>
+</attributes>
+</StructuredTypeProxyOraclev10g>

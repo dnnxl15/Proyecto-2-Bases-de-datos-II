@@ -1,0 +1,6 @@
+<?xml version = '1.0' encoding = 'UTF-8'?>
+<StorageDesignOraclev12c class="oracle.dbtools.crest.model.design.storage.oracle.v12c.StorageDesignOraclev12c" name="Oracle Database 12c" id="2B94BB0C-E1F8-8E0B-396F-03B7DDFF19DD" siteID="3FD120B5-9F4E-6278-D5E2-746D192C8319" siteName="Oracle Database 12c" siteType="11">
+<createdBy>dnnxl</createdBy>
+<createdTime>2018-05-08 04:04:06 UTC</createdTime>
+<ownerDesignName>Modelo Relacional Objeto</ownerDesignName>
+</StorageDesignOraclev12c>

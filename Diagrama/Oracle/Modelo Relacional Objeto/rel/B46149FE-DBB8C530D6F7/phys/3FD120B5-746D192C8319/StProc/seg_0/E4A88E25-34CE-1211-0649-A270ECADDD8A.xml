@@ -1,0 +1,11 @@
+<?xml version = '1.0' encoding = 'UTF-8'?>
+<StoredProcedureOraclev10g class="oracle.dbtools.crest.model.design.storage.oracle.v10g.StoredProcedureOraclev10g" name="UPDATECLASSROOM" directorySegmentName="seg_0" id="E4A88E25-34CE-1211-0649-A270ECADDD8A">
+<sourceConnName>Proyecto</sourceConnName>
+<sourceObjSchema>GRUPO10</sourceObjSchema>
+<sourceObjName>UPDATECLASSROOM</sourceObjName>
+<createdBy>dnnxl</createdBy>
+<createdTime>2018-05-08 03:44:51 UTC</createdTime>
+<ownerDesignName>Modelo Relacional Objeto</ownerDesignName>
+<owner>E8B72E22-8E7E-1117-BFE8-A54D01A163C3</owner>
+<source>CREATE OR REPLACE PROCEDURE GRUPO10.UPDATECLASSROOM(pOldNum IN VARCHAR2, pBuildingCode IN VARCHAR2, &amp;amp;lt;br/&amp;amp;gt;	pNewNum IN VARCHAR2, pClassCapacity IN NUMBER) AS&amp;amp;lt;br/&amp;amp;gt;BEGIN &amp;amp;lt;br/&amp;amp;gt;	UPDATE Classroom_table clsr&amp;amp;lt;br/&amp;amp;gt;	SET clsr.buildingCode = pBuildingCode,&amp;amp;lt;br/&amp;amp;gt;	clsr.classNumber = pNewNum,&amp;amp;lt;br/&amp;amp;gt;	clsr.classCapacity = pClassCapacity&amp;amp;lt;br/&amp;amp;gt;	WHERE clsr.classNumber = pOldNum;&amp;amp;lt;br/&amp;amp;gt;END updateClassroom;</source>
+</StoredProcedureOraclev10g>

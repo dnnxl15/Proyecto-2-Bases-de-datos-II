@@ -1,0 +1,11 @@
+<?xml version = '1.0' encoding = 'UTF-8'?>
+<StoredProcedureOraclev10g class="oracle.dbtools.crest.model.design.storage.oracle.v10g.StoredProcedureOraclev10g" name="INSERTADMIN" directorySegmentName="seg_0" id="D38786D4-F032-84B0-313D-45B9ACBEC99A">
+<sourceConnName>Proyecto</sourceConnName>
+<sourceObjSchema>GRUPO10</sourceObjSchema>
+<sourceObjName>INSERTADMIN</sourceObjName>
+<createdBy>dnnxl</createdBy>
+<createdTime>2018-05-08 03:44:50 UTC</createdTime>
+<ownerDesignName>Modelo Relacional Objeto</ownerDesignName>
+<owner>E8B72E22-8E7E-1117-BFE8-A54D01A163C3</owner>
+<source>CREATE OR REPLACE PROCEDURE GRUPO10.INSERTADMIN(pFirstName IN VARCHAR2, pSurname IN VARCHAR2,&amp;amp;lt;br/&amp;amp;gt;pTitle IN VARCHAR2, pAddress IN VARCHAR2, pPhone IN NUMBER, pPostcode IN NUMBER,&amp;amp;lt;br/&amp;amp;gt;pCampusLocation IN VARCHAR2, pIdBuilding IN VARCHAR2, pNumberOffice IN VARCHAR2, pStaffType IN VARCHAR2,&amp;amp;lt;br/&amp;amp;gt;pAdminTitle IN VARCHAR2, pComputerSkill IN VARCHAR2, pOfficeSkill IN VARCHAR2) AS&amp;amp;lt;br/&amp;amp;gt;BEGIN&amp;amp;lt;br/&amp;amp;gt;	INSERT INTO Admin_table &amp;amp;lt;br/&amp;amp;gt;	VALUES(Admin_obj(sequenceAdminID.Nextval, pSurname, pFirstName, pTitle, pAddress, pPhone, pPostcode, &amp;amp;lt;br/&amp;amp;gt;		pCampusLocation, pIdBuilding, pNumberOffice, pStaffType, pAdminTitle, pComputerSkill, pOfficeSkill));&amp;amp;lt;br/&amp;amp;gt;	COMMIT;&amp;amp;lt;br/&amp;amp;gt;END insertAdmin;</source>
+</StoredProcedureOraclev10g>

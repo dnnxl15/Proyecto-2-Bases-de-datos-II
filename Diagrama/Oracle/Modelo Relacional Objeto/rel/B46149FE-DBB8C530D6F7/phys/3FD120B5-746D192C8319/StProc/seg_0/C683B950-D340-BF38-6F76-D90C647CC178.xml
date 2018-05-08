@@ -1,0 +1,11 @@
+<?xml version = '1.0' encoding = 'UTF-8'?>
+<StoredProcedureOraclev10g class="oracle.dbtools.crest.model.design.storage.oracle.v10g.StoredProcedureOraclev10g" name="INSERTCLASSROOM" directorySegmentName="seg_0" id="C683B950-D340-BF38-6F76-D90C647CC178">
+<sourceConnName>Proyecto</sourceConnName>
+<sourceObjSchema>GRUPO10</sourceObjSchema>
+<sourceObjName>INSERTCLASSROOM</sourceObjName>
+<createdBy>dnnxl</createdBy>
+<createdTime>2018-05-08 03:44:50 UTC</createdTime>
+<ownerDesignName>Modelo Relacional Objeto</ownerDesignName>
+<owner>E8B72E22-8E7E-1117-BFE8-A54D01A163C3</owner>
+<source>CREATE OR REPLACE PROCEDURE GRUPO10.INSERTCLASSROOM(pBuildingCode IN VARCHAR2, pClassNumber IN VARCHAR2, pClassCapacity IN NUMBER) AS&amp;amp;lt;br/&amp;amp;gt;BEGIN&amp;amp;lt;br/&amp;amp;gt;	INSERT INTO Classroom_table&amp;amp;lt;br/&amp;amp;gt;	VALUES(Classroom_obj(seqClassroom.Nextval, pBuildingCode, pClassNumber, pClassCapacity));&amp;amp;lt;br/&amp;amp;gt;	COMMIT;&amp;amp;lt;br/&amp;amp;gt;END insertClassroom;</source>
+</StoredProcedureOraclev10g>

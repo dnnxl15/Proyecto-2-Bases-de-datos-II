@@ -1,0 +1,11 @@
+<?xml version = '1.0' encoding = 'UTF-8'?>
+<StoredProcedureOraclev10g class="oracle.dbtools.crest.model.design.storage.oracle.v10g.StoredProcedureOraclev10g" name="INSERTTUTORSTUDENT" directorySegmentName="seg_0" id="1ADBA020-EAA5-0CBE-97CC-A02FB1D180A9">
+<sourceConnName>Proyecto</sourceConnName>
+<sourceObjSchema>GRUPO10</sourceObjSchema>
+<sourceObjName>INSERTTUTORSTUDENT</sourceObjName>
+<createdBy>dnnxl</createdBy>
+<createdTime>2018-05-08 03:44:51 UTC</createdTime>
+<ownerDesignName>Modelo Relacional Objeto</ownerDesignName>
+<owner>E8B72E22-8E7E-1117-BFE8-A54D01A163C3</owner>
+<source>CREATE OR REPLACE PROCEDURE GRUPO10.INSERTTUTORSTUDENT(pFirstName IN VARCHAR2, pSurname IN VARCHAR2,&amp;amp;lt;br/&amp;amp;gt;pTitle IN VARCHAR2, pAddress IN VARCHAR2, pPhone IN NUMBER, pPostcode IN NUMBER,&amp;amp;lt;br/&amp;amp;gt;campusLocation IN VARCHAR2, pYear IN NUMBER, pNumberHours IN NUMBER, pRate IN FLOAT) AS&amp;amp;lt;br/&amp;amp;gt;BEGIN&amp;amp;lt;br/&amp;amp;gt;	INSERT INTO TutorStudent_table &amp;amp;lt;br/&amp;amp;gt;	VALUES(TutorStudent_obj(sequenceTutorStudentID.Nextval, pSurname, pFirstName, pTitle, pAddress, pPhone, pPostcode, campusLocation, &amp;amp;lt;br/&amp;amp;gt;		pYear, pNumberHours, pRate));&amp;amp;lt;br/&amp;amp;gt;	COMMIT;&amp;amp;lt;br/&amp;amp;gt;END insertTutorStudent;</source>
+</StoredProcedureOraclev10g>

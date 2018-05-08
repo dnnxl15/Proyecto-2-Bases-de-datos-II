@@ -1,0 +1,11 @@
+<?xml version = '1.0' encoding = 'UTF-8'?>
+<StoredProcedureOraclev10g class="oracle.dbtools.crest.model.design.storage.oracle.v10g.StoredProcedureOraclev10g" name="DELETERC" directorySegmentName="seg_0" id="C733C3CF-BCD7-FC83-F34D-A472A5A80C99">
+<sourceConnName>Proyecto</sourceConnName>
+<sourceObjSchema>GRUPO10</sourceObjSchema>
+<sourceObjName>DELETERC</sourceObjName>
+<createdBy>dnnxl</createdBy>
+<createdTime>2018-05-08 03:44:47 UTC</createdTime>
+<ownerDesignName>Modelo Relacional Objeto</ownerDesignName>
+<owner>E8B72E22-8E7E-1117-BFE8-A54D01A163C3</owner>
+<source>CREATE OR REPLACE PROCEDURE GRUPO10.DELETERC(pFaculty IN VARCHAR2, pName IN VARCHAR2) AS&amp;amp;lt;br/&amp;amp;gt;BEGIN&amp;amp;lt;br/&amp;amp;gt;	DELETE&amp;amp;lt;br/&amp;amp;gt;	TABLE(SELECT faculty_table.rc_List&amp;amp;lt;br/&amp;amp;gt;	FROM faculty_table&amp;amp;lt;br/&amp;amp;gt;	WHERE faculty_table.name = pFaculty)&amp;amp;lt;br/&amp;amp;gt;	WHERE name = pName;&amp;amp;lt;br/&amp;amp;gt;	COMMIT;&amp;amp;lt;br/&amp;amp;gt;END deleteRC;</source>
+</StoredProcedureOraclev10g>

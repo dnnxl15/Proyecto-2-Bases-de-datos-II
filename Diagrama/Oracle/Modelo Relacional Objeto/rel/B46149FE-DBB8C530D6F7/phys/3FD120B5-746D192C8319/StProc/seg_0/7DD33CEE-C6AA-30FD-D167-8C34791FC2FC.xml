@@ -1,0 +1,11 @@
+<?xml version = '1.0' encoding = 'UTF-8'?>
+<StoredProcedureOraclev10g class="oracle.dbtools.crest.model.design.storage.oracle.v10g.StoredProcedureOraclev10g" name="INSERTCAMPUS" directorySegmentName="seg_0" id="7DD33CEE-C6AA-30FD-D167-8C34791FC2FC">
+<sourceConnName>Proyecto</sourceConnName>
+<sourceObjSchema>GRUPO10</sourceObjSchema>
+<sourceObjName>INSERTCAMPUS</sourceObjName>
+<createdBy>dnnxl</createdBy>
+<createdTime>2018-05-08 03:44:50 UTC</createdTime>
+<ownerDesignName>Modelo Relacional Objeto</ownerDesignName>
+<owner>E8B72E22-8E7E-1117-BFE8-A54D01A163C3</owner>
+<source>CREATE OR REPLACE PROCEDURE GRUPO10.INSERTCAMPUS(pName IN VARCHAR2, pLocation IN VARCHAR2, pAddress IN VARCHAR2,&amp;amp;lt;br/&amp;amp;gt;pPhone IN NUMBER, pFax IN NUMBER, pHead IN VARCHAR2) AS&amp;amp;lt;br/&amp;amp;gt;BEGIN&amp;amp;lt;br/&amp;amp;gt;	INSERT INTO Campus_table &amp;amp;lt;br/&amp;amp;gt;	VALUES(Campus_obj(seqCampus.Nextval, pName, pLocation, pAddress, pPhone, pFax, pHead));&amp;amp;lt;br/&amp;amp;gt;	COMMIT;&amp;amp;lt;br/&amp;amp;gt;END insertCampus;</source>
+</StoredProcedureOraclev10g>

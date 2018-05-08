@@ -1,0 +1,11 @@
+<?xml version = '1.0' encoding = 'UTF-8'?>
+<StoredProcedureOraclev10g class="oracle.dbtools.crest.model.design.storage.oracle.v10g.StoredProcedureOraclev10g" name="UPDATETUTORSTUDENT" directorySegmentName="seg_1" id="041D47F9-74A6-E06F-3C02-088270433049">
+<sourceConnName>Proyecto</sourceConnName>
+<sourceObjSchema>GRUPO10</sourceObjSchema>
+<sourceObjName>UPDATETUTORSTUDENT</sourceObjName>
+<createdBy>dnnxl</createdBy>
+<createdTime>2018-05-08 03:44:51 UTC</createdTime>
+<ownerDesignName>Modelo Relacional Objeto</ownerDesignName>
+<owner>E8B72E22-8E7E-1117-BFE8-A54D01A163C3</owner>
+<source>CREATE OR REPLACE PROCEDURE GRUPO10.UPDATETUTORSTUDENT(pIDPerson IN NUMBER, pFirstName IN VARCHAR2, pSurname IN VARCHAR2,&amp;amp;lt;br/&amp;amp;gt;pTitle IN VARCHAR2, pAddress IN VARCHAR2, pPhone IN NUMBER, pPostcode IN NUMBER,&amp;amp;lt;br/&amp;amp;gt;pCampusLocation IN VARCHAR2, pYear IN NUMBER, pNumberHours IN NUMBER, pRate IN FLOAT) AS&amp;amp;lt;br/&amp;amp;gt;BEGIN &amp;amp;lt;br/&amp;amp;gt;	UPDATE TutorStudent_table tutorS&amp;amp;lt;br/&amp;amp;gt;	SET tutorS.surname = pSurname,&amp;amp;lt;br/&amp;amp;gt;	tutorS.firstName = pFirstName,&amp;amp;lt;br/&amp;amp;gt;	tutorS.title = pTitle,&amp;amp;lt;br/&amp;amp;gt;	tutorS.address = pAddress,&amp;amp;lt;br/&amp;amp;gt;	tutorS.phone = pPhone,&amp;amp;lt;br/&amp;amp;gt;	tutorS.postcode = pPostcode,&amp;amp;lt;br/&amp;amp;gt;	tutorS.campusLocation = pCampusLocation,&amp;amp;lt;br/&amp;amp;gt;	tutorS.year = pYear,&amp;amp;lt;br/&amp;amp;gt;	tutorS.numberHours = pNumberHours,&amp;amp;lt;br/&amp;amp;gt;	tutorS.rate = pRate&amp;amp;lt;br/&amp;amp;gt;	WHERE tutorS.idPerson = pIDPerson;&amp;amp;lt;br/&amp;amp;gt;END updateTutorStudent;</source>
+</StoredProcedureOraclev10g>

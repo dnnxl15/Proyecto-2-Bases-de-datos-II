@@ -1,0 +1,16 @@
+<?xml version = '1.0' encoding = 'UTF-8'?>
+<CollectionType class="oracle.dbtools.crest.model.design.datatypes.CollectionType" name="EQUIPMENT_LIST" directorySegmentName="seg_0" id="31A9157E-5A1A-0EB9-03B2-056BE6D5A40D">
+<createdBy>dnnxl</createdBy>
+<createdTime>2018-05-08 03:20:56 UTC</createdTime>
+<generatorID>AFA2698E-89AF-F51F-9D73-2B874E65ABC5</generatorID>
+<ownerDesignName>Modelo Relacional Objeto</ownerDesignName>
+<importedID>AFA2698E-89AF-F51F-9D73-2B874E65ABC5</importedID>
+<predefined>false</predefined>
+<dataTypeDescr class="oracle.dbtools.crest.model.design.datatypes.CollectionType$DataTypeWrapper">
+<size>50</size>
+<type>LOGDT024</type>
+<isreference>false</isreference>
+</dataTypeDescr>
+<maxElement>20</maxElement>
+<type>ARRAY</type>
+</CollectionType>

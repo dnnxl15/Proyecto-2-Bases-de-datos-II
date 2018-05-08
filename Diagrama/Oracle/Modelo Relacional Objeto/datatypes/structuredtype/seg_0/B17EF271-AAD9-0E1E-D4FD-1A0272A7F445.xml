@@ -1,0 +1,58 @@
+<?xml version = '1.0' encoding = 'UTF-8'?>
+<StructuredType class="oracle.dbtools.crest.model.design.datatypes.StructuredType" name="TAKES_OBJ" directorySegmentName="seg_0" id="B17EF271-AAD9-0E1E-D4FD-1A0272A7F445">
+<sourceConnName>Proyecto</sourceConnName>
+<sourceObjSchema>GRUPO10</sourceObjSchema>
+<sourceObjName>TAKES_OBJ</sourceObjName>
+<createdBy>dnnxl</createdBy>
+<createdTime>2018-05-08 03:12:34 UTC</createdTime>
+<ownerDesignName>Modelo Relacional Objeto</ownerDesignName>
+<predefined>false</predefined>
+<final>false</final>
+<instantiable>true</instantiable>
+<attributes itemClass="oracle.dbtools.crest.model.design.datatypes.TypeElement">
+<Attribute name="IDTAKES" id="4E5DE30D-8C6E-8673-DD31-C7D04FF9923F">
+<createdBy>dnnxl</createdBy>
+<createdTime>2018-05-08 04:04:59 UTC</createdTime>
+<ownerDesignName>Modelo Relacional Objeto</ownerDesignName>
+<mandatory>false</mandatory>
+<precision>0</precision>
+<reference>false</reference>
+<scale>0</scale>
+<type>LOGDT019</type>
+</Attribute>
+<Attribute name="STUDENTN" id="7CC0A82A-0BAD-87E7-E036-80A940A044AD">
+<createdBy>dnnxl</createdBy>
+<createdTime>2018-05-08 04:04:59 UTC</createdTime>
+<ownerDesignName>Modelo Relacional Objeto</ownerDesignName>
+<mandatory>false</mandatory>
+<precision>0</precision>
+<reference>true</reference>
+<referencerelation>20755A70-0745-42A7-3E0A-DB39E90ABA58</referencerelation>
+<scale>0</scale>
+<type>B3AB79AB-C0E9-B9D3-E0F6-728260BC0187</type>
+<referenceID>20755A70-0745-42A7-3E0A-DB39E90ABA58</referenceID>
+</Attribute>
+<Attribute name="SUBJECTN" id="67D34238-E622-0D71-8342-D995B67A09D4">
+<createdBy>dnnxl</createdBy>
+<createdTime>2018-05-08 04:04:59 UTC</createdTime>
+<ownerDesignName>Modelo Relacional Objeto</ownerDesignName>
+<mandatory>false</mandatory>
+<precision>0</precision>
+<reference>true</reference>
+<referencerelation>11C09A70-1F67-E18D-DC8D-F6D4366EF6FE</referencerelation>
+<scale>0</scale>
+<type>EEB2B5BB-7514-CBF9-C40C-1068B0CA9950</type>
+<referenceID>11C09A70-1F67-E18D-DC8D-F6D4366EF6FE</referenceID>
+</Attribute>
+<Attribute name="MARKS" id="6158B9E3-3231-87EC-4DF3-81F90E175454">
+<createdBy>dnnxl</createdBy>
+<createdTime>2018-05-08 04:04:59 UTC</createdTime>
+<ownerDesignName>Modelo Relacional Objeto</ownerDesignName>
+<mandatory>false</mandatory>
+<precision>0</precision>
+<reference>false</reference>
+<scale>0</scale>
+<type>LOGDT019</type>
+</Attribute>
+</attributes>
+</StructuredType>

@@ -1,0 +1,105 @@
+<?xml version = '1.0' encoding = 'UTF-8'?>
+<TableProxyOraclev12c class="oracle.dbtools.crest.model.design.storage.oracle.v12c.TableProxyOraclev12c" name="ASSOCIATELECTURER_TABLE" directorySegmentName="seg_0" id="2E0DDD29-1F9E-9FE7-3AC5-100403BB13CD">
+<createdBy>dnnxl</createdBy>
+<createdTime>2018-05-08 04:05:05 UTC</createdTime>
+<ownerDesignName>Modelo Relacional Objeto</ownerDesignName>
+<schemaObject>0EF7B3E1-761B-2C20-A420-D65FAD7E9A68</schemaObject>
+<logging>YES</logging>
+<partitionedRowMovement>DISABLE</partitionedRowMovement>
+<segment>3F8F198C-0ABB-B63A-D2DF-A759764E0DC6</segment>
+<tableSpace>FC9B9FF6-0563-4E75-73E8-BF6411758E82</tableSpace>
+<temporaryChanged>false</temporaryChanged>
+<accessDriverType>oracle_loader</accessDriverType>
+<rejectLimit></rejectLimit>
+<inMemory>NO</inMemory>
+<columnProxies itemClass="oracle.dbtools.crest.model.design.storage.oracle.v12c.ColumnProxyOraclev12c">
+<ColumnProxy name="CAMPUSLOCATION" id="09DED279-B73B-FFF8-487B-9D26E65AE6D9">
+<createdBy>dnnxl</createdBy>
+<createdTime>2018-05-08 04:05:05 UTC</createdTime>
+<ownerDesignName>Modelo Relacional Objeto</ownerDesignName>
+</ColumnProxy>
+<ColumnProxy name="YEARJOIN" id="1A479079-7294-1723-C040-0E3824956E63">
+<createdBy>dnnxl</createdBy>
+<createdTime>2018-05-08 04:05:05 UTC</createdTime>
+<ownerDesignName>Modelo Relacional Objeto</ownerDesignName>
+</ColumnProxy>
+<ColumnProxy name="IDBUILDING" id="2EA99EA1-EB6A-6AC6-910B-47E1826351B8">
+<createdBy>dnnxl</createdBy>
+<createdTime>2018-05-08 04:05:05 UTC</createdTime>
+<ownerDesignName>Modelo Relacional Objeto</ownerDesignName>
+</ColumnProxy>
+<ColumnProxy name="IDPERSON" id="38DFD7A5-C2EB-21D6-5E51-D23588E4FD4E">
+<createdBy>dnnxl</createdBy>
+<createdTime>2018-05-08 04:05:05 UTC</createdTime>
+<ownerDesignName>Modelo Relacional Objeto</ownerDesignName>
+</ColumnProxy>
+<ColumnProxy name="NUMBEROFFICE" id="3BD8D311-72A5-C031-2967-61F1F8CCEF52">
+<createdBy>dnnxl</createdBy>
+<createdTime>2018-05-08 04:05:05 UTC</createdTime>
+<ownerDesignName>Modelo Relacional Objeto</ownerDesignName>
+</ColumnProxy>
+<ColumnProxy name="AREA" id="42D9105C-E676-7A8F-E67E-D2805EBBDA58">
+<createdBy>dnnxl</createdBy>
+<createdTime>2018-05-08 04:05:05 UTC</createdTime>
+<ownerDesignName>Modelo Relacional Objeto</ownerDesignName>
+</ColumnProxy>
+<ColumnProxy name="NUMBERHONOURS" id="4F34B708-45AE-4C77-6561-03D1FF135E29">
+<createdBy>dnnxl</createdBy>
+<createdTime>2018-05-08 04:05:05 UTC</createdTime>
+<ownerDesignName>Modelo Relacional Objeto</ownerDesignName>
+</ColumnProxy>
+<ColumnProxy name="PHONE" id="627DAB00-C985-3BB6-E12B-09D3DC34D596">
+<createdBy>dnnxl</createdBy>
+<createdTime>2018-05-08 04:05:05 UTC</createdTime>
+<ownerDesignName>Modelo Relacional Objeto</ownerDesignName>
+</ColumnProxy>
+<ColumnProxy name="FIRSTNAME" id="634AB9CA-E6FA-C1FC-02CA-0572FB236EDD">
+<createdBy>dnnxl</createdBy>
+<createdTime>2018-05-08 04:05:05 UTC</createdTime>
+<ownerDesignName>Modelo Relacional Objeto</ownerDesignName>
+</ColumnProxy>
+<ColumnProxy name="SURNAME" id="69997E5B-AA26-DA78-0893-8E50A0B22B4B">
+<createdBy>dnnxl</createdBy>
+<createdTime>2018-05-08 04:05:05 UTC</createdTime>
+<ownerDesignName>Modelo Relacional Objeto</ownerDesignName>
+</ColumnProxy>
+<ColumnProxy name="TITLE" id="809B18B6-9082-AC61-64E9-AE0ADD71D82F">
+<createdBy>dnnxl</createdBy>
+<createdTime>2018-05-08 04:05:05 UTC</createdTime>
+<ownerDesignName>Modelo Relacional Objeto</ownerDesignName>
+</ColumnProxy>
+<ColumnProxy name="POSTCODE" id="947F9F40-D0CA-49B0-414A-9DCFCFF926BF">
+<createdBy>dnnxl</createdBy>
+<createdTime>2018-05-08 04:05:05 UTC</createdTime>
+<ownerDesignName>Modelo Relacional Objeto</ownerDesignName>
+</ColumnProxy>
+<ColumnProxy name="Oid" id="9B963736-7DD3-B1D0-CF33-33EB62F2378B">
+<createdBy>dnnxl</createdBy>
+<createdTime>2018-05-08 04:05:05 UTC</createdTime>
+<ownerDesignName>Modelo Relacional Objeto</ownerDesignName>
+</ColumnProxy>
+<ColumnProxy name="STAFFTYPE" id="C3721523-60EB-FB89-1F0B-51B973609661">
+<createdBy>dnnxl</createdBy>
+<createdTime>2018-05-08 04:05:05 UTC</createdTime>
+<ownerDesignName>Modelo Relacional Objeto</ownerDesignName>
+</ColumnProxy>
+<ColumnProxy name="ADDRESS" id="C6A818F0-3853-1598-F575-7BED89A67298">
+<createdBy>dnnxl</createdBy>
+<createdTime>2018-05-08 04:05:05 UTC</createdTime>
+<ownerDesignName>Modelo Relacional Objeto</ownerDesignName>
+</ColumnProxy>
+<ColumnProxy name="LECTURETYPE" id="EF556537-0A4C-4749-EB5F-54EEB817A97C">
+<createdBy>dnnxl</createdBy>
+<createdTime>2018-05-08 04:05:05 UTC</createdTime>
+<ownerDesignName>Modelo Relacional Objeto</ownerDesignName>
+</ColumnProxy>
+</columnProxies>
+<primaryKeys>
+<PrimaryKey class="oracle.dbtools.crest.model.design.storage.oracle.v10g.PKProxyOraclev10g" name="ASSOCIATELECTURER_TABLE_PK" id="02A5FED4-1D9F-CAE0-3D63-C7875C8CE0DC">
+<createdBy>dnnxl</createdBy>
+<createdTime>2018-05-08 04:05:05 UTC</createdTime>
+<ownerDesignName>Modelo Relacional Objeto</ownerDesignName>
+<indexSort>SORTED</indexSort>
+</PrimaryKey>
+</primaryKeys>
+</TableProxyOraclev12c>

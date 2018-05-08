@@ -1,0 +1,11 @@
+<?xml version = '1.0' encoding = 'UTF-8'?>
+<StoredProcedureOraclev10g class="oracle.dbtools.crest.model.design.storage.oracle.v10g.StoredProcedureOraclev10g" name="GETTUTORSTUDENT" directorySegmentName="seg_0" id="1006EDF0-BE4B-45EA-CB6E-9418E75DE907">
+<sourceConnName>Proyecto</sourceConnName>
+<sourceObjSchema>GRUPO10</sourceObjSchema>
+<sourceObjName>GETTUTORSTUDENT</sourceObjName>
+<createdBy>dnnxl</createdBy>
+<createdTime>2018-05-08 03:44:50 UTC</createdTime>
+<ownerDesignName>Modelo Relacional Objeto</ownerDesignName>
+<owner>E8B72E22-8E7E-1117-BFE8-A54D01A163C3</owner>
+<source>CREATE OR REPLACE PROCEDURE GRUPO10.GETTUTORSTUDENT(cTutorStudent OUT SYS_REFCURSOR)&amp;amp;lt;br/&amp;amp;gt;IS&amp;amp;lt;br/&amp;amp;gt;BEGIN&amp;amp;lt;br/&amp;amp;gt;	OPEN cTutorStudent FOR &amp;amp;lt;br/&amp;amp;gt;	SELECT TutorStudent_table.idPerson, TutorStudent_table.surname, TutorStudent_table.firstName, &amp;amp;lt;br/&amp;amp;gt;	TutorStudent_table.title, TutorStudent_table.address, TutorStudent_table.phone, TutorStudent_table.postcode,&amp;amp;lt;br/&amp;amp;gt;	TutorStudent_table.campusLocation, TutorStudent_table.year, TutorStudent_table.numberHours, TutorStudent_table.rate&amp;amp;lt;br/&amp;amp;gt;	FROM TutorStudent_table;&amp;amp;lt;br/&amp;amp;gt;END getTutorStudent;</source>
+</StoredProcedureOraclev10g>

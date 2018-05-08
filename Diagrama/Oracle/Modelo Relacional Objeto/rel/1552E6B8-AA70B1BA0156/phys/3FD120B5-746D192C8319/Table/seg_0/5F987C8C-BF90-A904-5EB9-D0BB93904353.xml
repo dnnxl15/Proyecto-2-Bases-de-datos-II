@@ -1,0 +1,65 @@
+<?xml version = '1.0' encoding = 'UTF-8'?>
+<TableProxyOraclev12c class="oracle.dbtools.crest.model.design.storage.oracle.v12c.TableProxyOraclev12c" name="CAMPUS_TABLE" directorySegmentName="seg_0" id="5F987C8C-BF90-A904-5EB9-D0BB93904353">
+<createdBy>dnnxl</createdBy>
+<createdTime>2018-05-08 04:05:08 UTC</createdTime>
+<ownerDesignName>Modelo Relacional Objeto</ownerDesignName>
+<schemaObject>0EF7B3E1-761B-2C20-A420-D65FAD7E9A68</schemaObject>
+<logging>YES</logging>
+<partitionedRowMovement>DISABLE</partitionedRowMovement>
+<segment>3F8F198C-0ABB-B63A-D2DF-A759764E0DC6</segment>
+<tableSpace>FC9B9FF6-0563-4E75-73E8-BF6411758E82</tableSpace>
+<temporaryChanged>false</temporaryChanged>
+<accessDriverType>oracle_loader</accessDriverType>
+<rejectLimit></rejectLimit>
+<inMemory>NO</inMemory>
+<columnProxies itemClass="oracle.dbtools.crest.model.design.storage.oracle.v12c.ColumnProxyOraclev12c">
+<ColumnProxy name="PHONE" id="38E03724-CAD6-DDCC-5573-BBDA71921FA9">
+<createdBy>dnnxl</createdBy>
+<createdTime>2018-05-08 04:05:08 UTC</createdTime>
+<ownerDesignName>Modelo Relacional Objeto</ownerDesignName>
+</ColumnProxy>
+<ColumnProxy name="ADDRESS" id="5952846E-A2A0-32C6-6987-1525C61F1E68">
+<createdBy>dnnxl</createdBy>
+<createdTime>2018-05-08 04:05:08 UTC</createdTime>
+<ownerDesignName>Modelo Relacional Objeto</ownerDesignName>
+</ColumnProxy>
+<ColumnProxy name="HEAD" id="85512FBA-7430-B12C-11E3-635C17DA771C">
+<createdBy>dnnxl</createdBy>
+<createdTime>2018-05-08 04:05:08 UTC</createdTime>
+<ownerDesignName>Modelo Relacional Objeto</ownerDesignName>
+</ColumnProxy>
+<ColumnProxy name="LOCATIONCAMPUS" id="9DA68373-E368-4E23-AFDB-7F8ED2F4FE13">
+<createdBy>dnnxl</createdBy>
+<createdTime>2018-05-08 04:05:08 UTC</createdTime>
+<ownerDesignName>Modelo Relacional Objeto</ownerDesignName>
+</ColumnProxy>
+<ColumnProxy name="Oid" id="BC39A4DC-88C0-4006-9BFA-2D7DD3FDCA20">
+<createdBy>dnnxl</createdBy>
+<createdTime>2018-05-08 04:05:08 UTC</createdTime>
+<ownerDesignName>Modelo Relacional Objeto</ownerDesignName>
+</ColumnProxy>
+<ColumnProxy name="IDCAMPUS" id="C80960F3-657F-8AD6-E0B7-582A788F6AD4">
+<createdBy>dnnxl</createdBy>
+<createdTime>2018-05-08 04:05:08 UTC</createdTime>
+<ownerDesignName>Modelo Relacional Objeto</ownerDesignName>
+</ColumnProxy>
+<ColumnProxy name="NAMECAMPUS" id="D00A8F19-D657-F7C3-5E91-7E8B1E301733">
+<createdBy>dnnxl</createdBy>
+<createdTime>2018-05-08 04:05:08 UTC</createdTime>
+<ownerDesignName>Modelo Relacional Objeto</ownerDesignName>
+</ColumnProxy>
+<ColumnProxy name="FAX" id="D06E8845-DA56-A0BE-6645-7F784ED72FF1">
+<createdBy>dnnxl</createdBy>
+<createdTime>2018-05-08 04:05:08 UTC</createdTime>
+<ownerDesignName>Modelo Relacional Objeto</ownerDesignName>
+</ColumnProxy>
+</columnProxies>
+<primaryKeys>
+<PrimaryKey class="oracle.dbtools.crest.model.design.storage.oracle.v10g.PKProxyOraclev10g" name="CAMPUS_TABLE_PK" id="4E7CCC66-B49C-215A-94F0-3FC922E46D29">
+<createdBy>dnnxl</createdBy>
+<createdTime>2018-05-08 04:05:08 UTC</createdTime>
+<ownerDesignName>Modelo Relacional Objeto</ownerDesignName>
+<indexSort>SORTED</indexSort>
+</PrimaryKey>
+</primaryKeys>
+</TableProxyOraclev12c>

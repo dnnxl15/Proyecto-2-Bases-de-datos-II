@@ -1,0 +1,85 @@
+<?xml version = '1.0' encoding = 'UTF-8'?>
+<TableProxyOraclev12c class="oracle.dbtools.crest.model.design.storage.oracle.v12c.TableProxyOraclev12c" name="TUTORSTUDENT_TABLE" directorySegmentName="seg_0" id="624808E1-8D51-40CA-FAEA-28BD6ED82404">
+<createdBy>dnnxl</createdBy>
+<createdTime>2018-05-08 04:05:36 UTC</createdTime>
+<ownerDesignName>Modelo Relacional Objeto</ownerDesignName>
+<schemaObject>0EF7B3E1-761B-2C20-A420-D65FAD7E9A68</schemaObject>
+<logging>YES</logging>
+<partitionedRowMovement>DISABLE</partitionedRowMovement>
+<segment>3F8F198C-0ABB-B63A-D2DF-A759764E0DC6</segment>
+<tableSpace>FC9B9FF6-0563-4E75-73E8-BF6411758E82</tableSpace>
+<temporaryChanged>false</temporaryChanged>
+<accessDriverType>oracle_loader</accessDriverType>
+<rejectLimit></rejectLimit>
+<inMemory>NO</inMemory>
+<columnProxies itemClass="oracle.dbtools.crest.model.design.storage.oracle.v12c.ColumnProxyOraclev12c">
+<ColumnProxy name="ADDRESS" id="0C53A438-CBA2-924B-6B84-60209674A184">
+<createdBy>dnnxl</createdBy>
+<createdTime>2018-05-08 04:05:36 UTC</createdTime>
+<ownerDesignName>Modelo Relacional Objeto</ownerDesignName>
+</ColumnProxy>
+<ColumnProxy name="YEAR" id="2084829F-D2E5-AF4C-9EF5-244C95E08F10">
+<createdBy>dnnxl</createdBy>
+<createdTime>2018-05-08 04:05:36 UTC</createdTime>
+<ownerDesignName>Modelo Relacional Objeto</ownerDesignName>
+</ColumnProxy>
+<ColumnProxy name="FIRSTNAME" id="27FF1BE9-93D3-1027-9089-40C63481FAEB">
+<createdBy>dnnxl</createdBy>
+<createdTime>2018-05-08 04:05:36 UTC</createdTime>
+<ownerDesignName>Modelo Relacional Objeto</ownerDesignName>
+</ColumnProxy>
+<ColumnProxy name="IDPERSON" id="45BEC9BE-5D9E-90A4-B19E-DCEA6457C04A">
+<createdBy>dnnxl</createdBy>
+<createdTime>2018-05-08 04:05:36 UTC</createdTime>
+<ownerDesignName>Modelo Relacional Objeto</ownerDesignName>
+</ColumnProxy>
+<ColumnProxy name="POSTCODE" id="71A784CB-B267-0BFF-0A0C-2FFBD7AD48E7">
+<createdBy>dnnxl</createdBy>
+<createdTime>2018-05-08 04:05:36 UTC</createdTime>
+<ownerDesignName>Modelo Relacional Objeto</ownerDesignName>
+</ColumnProxy>
+<ColumnProxy name="CAMPUSLOCATION" id="84B3135E-20C1-ED93-70BE-095FBEFD7CE0">
+<createdBy>dnnxl</createdBy>
+<createdTime>2018-05-08 04:05:36 UTC</createdTime>
+<ownerDesignName>Modelo Relacional Objeto</ownerDesignName>
+</ColumnProxy>
+<ColumnProxy name="SURNAME" id="9BE3A921-B553-8350-9B55-C86F3A061911">
+<createdBy>dnnxl</createdBy>
+<createdTime>2018-05-08 04:05:36 UTC</createdTime>
+<ownerDesignName>Modelo Relacional Objeto</ownerDesignName>
+</ColumnProxy>
+<ColumnProxy name="NUMBERHOURS" id="A7841FED-6164-19E9-F7B1-1165F9A2F5B5">
+<createdBy>dnnxl</createdBy>
+<createdTime>2018-05-08 04:05:36 UTC</createdTime>
+<ownerDesignName>Modelo Relacional Objeto</ownerDesignName>
+</ColumnProxy>
+<ColumnProxy name="Oid" id="C54D02CF-1849-5D90-0861-A1FD1C68E8DF">
+<createdBy>dnnxl</createdBy>
+<createdTime>2018-05-08 04:05:36 UTC</createdTime>
+<ownerDesignName>Modelo Relacional Objeto</ownerDesignName>
+</ColumnProxy>
+<ColumnProxy name="TITLE" id="DF6B5040-4FBE-456B-E3D3-CE9C602EBE65">
+<createdBy>dnnxl</createdBy>
+<createdTime>2018-05-08 04:05:36 UTC</createdTime>
+<ownerDesignName>Modelo Relacional Objeto</ownerDesignName>
+</ColumnProxy>
+<ColumnProxy name="PHONE" id="E63E9A75-D7AB-D319-884C-CF1FE757AD2B">
+<createdBy>dnnxl</createdBy>
+<createdTime>2018-05-08 04:05:36 UTC</createdTime>
+<ownerDesignName>Modelo Relacional Objeto</ownerDesignName>
+</ColumnProxy>
+<ColumnProxy name="RATE" id="ECA7412E-302D-B116-D1CD-5AB37B9F89B6">
+<createdBy>dnnxl</createdBy>
+<createdTime>2018-05-08 04:05:36 UTC</createdTime>
+<ownerDesignName>Modelo Relacional Objeto</ownerDesignName>
+</ColumnProxy>
+</columnProxies>
+<primaryKeys>
+<PrimaryKey class="oracle.dbtools.crest.model.design.storage.oracle.v10g.PKProxyOraclev10g" name="TUTORSTUDENT_TABLE_PK" id="603F3F45-5BBA-2C01-CEC0-BE4A359FC70B">
+<createdBy>dnnxl</createdBy>
+<createdTime>2018-05-08 04:05:36 UTC</createdTime>
+<ownerDesignName>Modelo Relacional Objeto</ownerDesignName>
+<indexSort>SORTED</indexSort>
+</PrimaryKey>
+</primaryKeys>
+</TableProxyOraclev12c>

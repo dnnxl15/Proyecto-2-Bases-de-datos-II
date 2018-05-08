@@ -1,0 +1,66 @@
+<?xml version = '1.0' encoding = 'UTF-8'?>
+<TableProxyOraclev12c class="oracle.dbtools.crest.model.design.storage.oracle.v12c.TableProxyOraclev12c" name="FACULTY_TABLE" directorySegmentName="seg_0" id="94DBDE05-E056-9D76-45C9-939EE3AA80F6">
+<createdBy>dnnxl</createdBy>
+<createdTime>2018-05-08 04:05:16 UTC</createdTime>
+<ownerDesignName>Modelo Relacional Objeto</ownerDesignName>
+<schemaObject>0EF7B3E1-761B-2C20-A420-D65FAD7E9A68</schemaObject>
+<logging>YES</logging>
+<partitionedRowMovement>DISABLE</partitionedRowMovement>
+<segment>3F8F198C-0ABB-B63A-D2DF-A759764E0DC6</segment>
+<tableSpace>FC9B9FF6-0563-4E75-73E8-BF6411758E82</tableSpace>
+<temporaryChanged>false</temporaryChanged>
+<accessDriverType>oracle_loader</accessDriverType>
+<rejectLimit></rejectLimit>
+<inMemory>NO</inMemory>
+<columnProxies itemClass="oracle.dbtools.crest.model.design.storage.oracle.v12c.ColumnProxyOraclev12c">
+<ColumnProxy name="SCHOOL_LIST" id="2E14157A-EC31-5ADF-7B37-7608BA27F7D4">
+<createdBy>dnnxl</createdBy>
+<createdTime>2018-05-08 04:05:16 UTC</createdTime>
+<ownerDesignName>Modelo Relacional Objeto</ownerDesignName>
+<ntReturn>VALUE</ntReturn>
+<ntStorageTable>TABLE_SCHOOL</ntStorageTable>
+</ColumnProxy>
+<ColumnProxy name="Oid" id="4808A1E9-41E8-ECF1-5149-E2D4DF4E8BCA">
+<createdBy>dnnxl</createdBy>
+<createdTime>2018-05-08 04:05:16 UTC</createdTime>
+<ownerDesignName>Modelo Relacional Objeto</ownerDesignName>
+</ColumnProxy>
+<ColumnProxy name="RC_LIST" id="A8E1E8B5-2C54-C08F-8C1F-39AD3B99B626">
+<createdBy>dnnxl</createdBy>
+<createdTime>2018-05-08 04:05:16 UTC</createdTime>
+<ownerDesignName>Modelo Relacional Objeto</ownerDesignName>
+<ntReturn>VALUE</ntReturn>
+<ntStorageTable>TABLE_RC</ntStorageTable>
+</ColumnProxy>
+<ColumnProxy name="IDFACULTY" id="B3F56F19-C9D1-9E62-13B7-AF743D5C0AB6">
+<createdBy>dnnxl</createdBy>
+<createdTime>2018-05-08 04:05:16 UTC</createdTime>
+<ownerDesignName>Modelo Relacional Objeto</ownerDesignName>
+</ColumnProxy>
+<ColumnProxy name="DEAN" id="BDCFDACC-5FBB-0CF6-426D-C819A7DB10D7">
+<createdBy>dnnxl</createdBy>
+<createdTime>2018-05-08 04:05:16 UTC</createdTime>
+<ownerDesignName>Modelo Relacional Objeto</ownerDesignName>
+</ColumnProxy>
+<ColumnProxy name="DEPARTMENT_LIST" id="C52C9B0F-607A-FC22-A322-A2D5B8C9F245">
+<createdBy>dnnxl</createdBy>
+<createdTime>2018-05-08 04:05:16 UTC</createdTime>
+<ownerDesignName>Modelo Relacional Objeto</ownerDesignName>
+<ntReturn>VALUE</ntReturn>
+<ntStorageTable>TABLE_DEPARTMENT</ntStorageTable>
+</ColumnProxy>
+<ColumnProxy name="NAME" id="F366AA81-2605-61BA-823F-BC0401573C52">
+<createdBy>dnnxl</createdBy>
+<createdTime>2018-05-08 04:05:16 UTC</createdTime>
+<ownerDesignName>Modelo Relacional Objeto</ownerDesignName>
+</ColumnProxy>
+</columnProxies>
+<primaryKeys>
+<PrimaryKey class="oracle.dbtools.crest.model.design.storage.oracle.v10g.PKProxyOraclev10g" name="FACULTY_TABLE_PK" id="5E6789C0-E5E8-CF9B-DCE0-7BE807ADBB8B">
+<createdBy>dnnxl</createdBy>
+<createdTime>2018-05-08 04:05:16 UTC</createdTime>
+<ownerDesignName>Modelo Relacional Objeto</ownerDesignName>
+<indexSort>SORTED</indexSort>
+</PrimaryKey>
+</primaryKeys>
+</TableProxyOraclev12c>

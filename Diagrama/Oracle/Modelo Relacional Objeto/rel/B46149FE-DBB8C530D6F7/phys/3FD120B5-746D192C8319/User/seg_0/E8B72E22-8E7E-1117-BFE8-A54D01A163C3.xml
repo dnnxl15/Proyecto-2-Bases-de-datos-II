@@ -1,0 +1,9 @@
+<?xml version = '1.0' encoding = 'UTF-8'?>
+<UserOraclev10g class="oracle.dbtools.crest.model.design.storage.oracle.v10g.UserOraclev10g" name="GRUPO10" directorySegmentName="seg_0" id="E8B72E22-8E7E-1117-BFE8-A54D01A163C3">
+<sourceConnName>Proyecto</sourceConnName>
+<sourceObjName>GRUPO10</sourceObjName>
+<createdBy>dnnxl</createdBy>
+<createdTime>2018-05-08 03:12:34 UTC</createdTime>
+<ownerDesignName>Modelo Relacional Objeto</ownerDesignName>
+<schemaObject>5395C3AD-8C36-165C-90D5-1BCB0B189456</schemaObject>
+</UserOraclev10g>

@@ -1,0 +1,11 @@
+<?xml version = '1.0' encoding = 'UTF-8'?>
+<StoredProcedureOraclev10g class="oracle.dbtools.crest.model.design.storage.oracle.v10g.StoredProcedureOraclev10g" name="UPDATETUTORTECHINICIAN" directorySegmentName="seg_1" id="9815C291-22F9-D96C-DB7A-E2F9E096F3F7">
+<sourceConnName>Proyecto</sourceConnName>
+<sourceObjSchema>GRUPO10</sourceObjSchema>
+<sourceObjName>UPDATETUTORTECHINICIAN</sourceObjName>
+<createdBy>dnnxl</createdBy>
+<createdTime>2018-05-08 03:44:52 UTC</createdTime>
+<ownerDesignName>Modelo Relacional Objeto</ownerDesignName>
+<owner>E8B72E22-8E7E-1117-BFE8-A54D01A163C3</owner>
+<source>CREATE OR REPLACE PROCEDURE GRUPO10.UPDATETUTORTECHINICIAN(pIDPerson IN NUMBER, pFirstName IN VARCHAR2, pSurname IN VARCHAR2,&amp;amp;lt;br/&amp;amp;gt;pTitle IN VARCHAR2, pAddress IN VARCHAR2, pPhone IN NUMBER, pPostcode IN NUMBER,&amp;amp;lt;br/&amp;amp;gt;pCampusLocation IN VARCHAR2, pIdBuilding IN VARCHAR2, pNumberOffice IN VARCHAR2, pStaffType IN VARCHAR2, &amp;amp;lt;br/&amp;amp;gt;pTechTitle IN VARCHAR2, pTechSkill IN VARCHAR2) AS&amp;amp;lt;br/&amp;amp;gt;BEGIN &amp;amp;lt;br/&amp;amp;gt;	UPDATE Technician_table tech&amp;amp;lt;br/&amp;amp;gt;	SET tech.surname = pSurname,&amp;amp;lt;br/&amp;amp;gt;	tech.firstName = pFirstName,&amp;amp;lt;br/&amp;amp;gt;	tech.title = pTitle,&amp;amp;lt;br/&amp;amp;gt;	tech.address = pAddress,&amp;amp;lt;br/&amp;amp;gt;	tech.phone = pPhone,&amp;amp;lt;br/&amp;amp;gt;	tech.postcode = pPostcode,&amp;amp;lt;br/&amp;amp;gt;	tech.campusLocation = pCampusLocation,&amp;amp;lt;br/&amp;amp;gt;&amp;amp;lt;br/&amp;amp;gt;	tech.idBuilding = pIdBuilding,&amp;amp;lt;br/&amp;amp;gt;	tech.numberOffice = pNumberOffice,&amp;amp;lt;br/&amp;amp;gt;	tech.staffType = pStaffType,&amp;amp;lt;br/&amp;amp;gt;	tech.techTitle = pTechTitle,&amp;amp;lt;br/&amp;amp;gt;	tech.techSkill = pTechSkill&amp;amp;lt;br/&amp;amp;gt;	WHERE tech.idPerson = pIDPerson;&amp;amp;lt;br/&amp;amp;gt;END updateTutorTechinician;</source>
+</StoredProcedureOraclev10g>

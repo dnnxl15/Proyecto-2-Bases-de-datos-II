@@ -1,0 +1,16 @@
+<?xml version = '1.0' encoding = 'UTF-8'?>
+<CollectionType class="oracle.dbtools.crest.model.design.datatypes.CollectionType" name="LIST_SCHOOL" directorySegmentName="seg_0" id="349D3492-740D-4D9C-FCEF-060000B2479C">
+<createdBy>dnnxl</createdBy>
+<createdTime>2018-05-08 03:20:56 UTC</createdTime>
+<generatorID>9B66DF8C-FF5C-B910-E812-E21D1FA10D8C</generatorID>
+<ownerDesignName>Modelo Relacional Objeto</ownerDesignName>
+<importedID>9B66DF8C-FF5C-B910-E812-E21D1FA10D8C</importedID>
+<predefined>false</predefined>
+<dataTypeDescr class="oracle.dbtools.crest.model.design.datatypes.CollectionType$DataTypeWrapper">
+<size></size>
+<type>E2B051EE-A79A-BEA6-7343-5F57A607EA09</type>
+<isreference>false</isreference>
+</dataTypeDescr>
+<maxElement>1</maxElement>
+<type>COLLECTION</type>
+</CollectionType>

@@ -1,0 +1,19 @@
+<?xml version = '1.0' encoding = 'UTF-8'?>
+<FKIndexAssociation class="oracle.dbtools.crest.model.design.relational.FKIndexAssociation" directorySegmentName="seg_0" id="FDC2392E-C365-F8BA-D1A2-7129AC271265" containerWithKeyObject="958D8197-214E-1AA4-8476-673C0E76123F" localFKIndex="E41A6F62-C5B6-54ED-9AC2-44DD8EFBEA67" name="FK_FACULTY_DEGREE">
+<sourceConnName>Proyecto</sourceConnName>
+<sourceObjSchema>GRUPO10</sourceObjSchema>
+<sourceObjName>FK_FACULTY_DEGREE</sourceObjName>
+<createdBy>dnnxl</createdBy>
+<createdTime>2018-05-08 03:14:15 UTC</createdTime>
+<ownerDesignName>Modelo Relacional Objeto</ownerDesignName>
+<referredTableLongName>GRUPO10.FACULTY_TABLE</referredTableLongName>
+<deleteRule>CASCADE</deleteRule>
+<referredTableID>91979963-8504-A256-AB9E-193F5CCFE776</referredTableID>
+<keyObject>DF66AD10-39BC-AE11-EBA6-BBB3838C7ACC</keyObject>
+<referredKeyID>DF66AD10-39BC-AE11-EBA6-BBB3838C7ACC</referredKeyID>
+<mandatory>false</mandatory>
+<refColNames>IDFACULTY</refColNames>
+<transferable>true</transferable>
+<rely>false</rely>
+<columnDependencyConstraintGenerateInDDL>true</columnDependencyConstraintGenerateInDDL>
+</FKIndexAssociation>

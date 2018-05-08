@@ -1,0 +1,72 @@
+<?xml version = '1.0' encoding = 'UTF-8'?>
+<TableProxyOraclev12c class="oracle.dbtools.crest.model.design.storage.oracle.v12c.TableProxyOraclev12c" name="BUILDING_TABLE" directorySegmentName="seg_0" id="2F088F34-3361-D3B2-9578-41049EFA385E">
+<createdBy>dnnxl</createdBy>
+<createdTime>2018-05-08 04:05:07 UTC</createdTime>
+<ownerDesignName>Modelo Relacional Objeto</ownerDesignName>
+<schemaObject>0EF7B3E1-761B-2C20-A420-D65FAD7E9A68</schemaObject>
+<logging>YES</logging>
+<partitionedRowMovement>DISABLE</partitionedRowMovement>
+<segment>3F8F198C-0ABB-B63A-D2DF-A759764E0DC6</segment>
+<tableSpace>FC9B9FF6-0563-4E75-73E8-BF6411758E82</tableSpace>
+<temporaryChanged>false</temporaryChanged>
+<accessDriverType>oracle_loader</accessDriverType>
+<rejectLimit></rejectLimit>
+<inMemory>NO</inMemory>
+<columnProxies itemClass="oracle.dbtools.crest.model.design.storage.oracle.v12c.ColumnProxyOraclev12c">
+<ColumnProxy name="IDFACULTY" id="06E13238-D4B1-73FC-8FCF-66034E26179D">
+<createdBy>dnnxl</createdBy>
+<createdTime>2018-05-08 04:05:07 UTC</createdTime>
+<ownerDesignName>Modelo Relacional Objeto</ownerDesignName>
+</ColumnProxy>
+<ColumnProxy name="BUILDINGCODE" id="2E8AADFA-8B50-B80A-F865-C6E2948AC1DB">
+<createdBy>dnnxl</createdBy>
+<createdTime>2018-05-08 04:05:07 UTC</createdTime>
+<ownerDesignName>Modelo Relacional Objeto</ownerDesignName>
+</ColumnProxy>
+<ColumnProxy name="CAMPUSLOCATION" id="4ABDE3D7-8FD6-5A28-1DD7-8F9EC15AC3E0">
+<createdBy>dnnxl</createdBy>
+<createdTime>2018-05-08 04:05:07 UTC</createdTime>
+<ownerDesignName>Modelo Relacional Objeto</ownerDesignName>
+</ColumnProxy>
+<ColumnProxy name="IDBUILDING" id="507F09DE-5C48-173D-1692-621CBE4B0784">
+<createdBy>dnnxl</createdBy>
+<createdTime>2018-05-08 04:05:07 UTC</createdTime>
+<ownerDesignName>Modelo Relacional Objeto</ownerDesignName>
+</ColumnProxy>
+<ColumnProxy name="BUILDINGLEVEL" id="AA025040-DAAD-AF4A-6CFA-933A912D614F">
+<createdBy>dnnxl</createdBy>
+<createdTime>2018-05-08 04:05:07 UTC</createdTime>
+<ownerDesignName>Modelo Relacional Objeto</ownerDesignName>
+</ColumnProxy>
+<ColumnProxy name="BUILDINGLOCATION" id="DC966257-C82D-3D49-7877-2F4AEDCB7CDC">
+<createdBy>dnnxl</createdBy>
+<createdTime>2018-05-08 04:05:07 UTC</createdTime>
+<ownerDesignName>Modelo Relacional Objeto</ownerDesignName>
+</ColumnProxy>
+<ColumnProxy name="BUILDINGNAME" id="DCC1DE4B-42B4-3430-070C-8F79A3C871CC">
+<createdBy>dnnxl</createdBy>
+<createdTime>2018-05-08 04:05:07 UTC</createdTime>
+<ownerDesignName>Modelo Relacional Objeto</ownerDesignName>
+</ColumnProxy>
+<ColumnProxy name="Oid" id="EE2430C6-8935-D146-C1EB-D4ED5D1440F9">
+<createdBy>dnnxl</createdBy>
+<createdTime>2018-05-08 04:05:07 UTC</createdTime>
+<ownerDesignName>Modelo Relacional Objeto</ownerDesignName>
+</ColumnProxy>
+</columnProxies>
+<foreignKeys>
+<ForeignKey class="oracle.dbtools.crest.model.design.storage.oracle.v10g.FKProxyOraclev10g" name="FK_FACULTY_BUILDING" id="72F1B86D-B516-6F67-CFDA-0A5BD7E93858">
+<createdBy>dnnxl</createdBy>
+<createdTime>2018-05-08 04:05:38 UTC</createdTime>
+<ownerDesignName>Modelo Relacional Objeto</ownerDesignName>
+</ForeignKey>
+</foreignKeys>
+<primaryKeys>
+<PrimaryKey class="oracle.dbtools.crest.model.design.storage.oracle.v10g.PKProxyOraclev10g" name="BUILDING_TABLE_PK" id="FC61C559-CDC1-7D0E-B4FE-67B132E397D7">
+<createdBy>dnnxl</createdBy>
+<createdTime>2018-05-08 04:05:07 UTC</createdTime>
+<ownerDesignName>Modelo Relacional Objeto</ownerDesignName>
+<indexSort>SORTED</indexSort>
+</PrimaryKey>
+</primaryKeys>
+</TableProxyOraclev12c>

@@ -1,0 +1,14 @@
+<?xml version = '1.0' encoding = 'UTF-8'?>
+<SequenceOraclev10g class="oracle.dbtools.crest.model.design.storage.oracle.v10g.SequenceOraclev10g" name="SEQUENCESENIORLECTURERID" directorySegmentName="seg_0" id="AF5827E8-B4C3-09C6-D4F6-ECD1F6B41E86">
+<sourceConnName>Proyecto</sourceConnName>
+<sourceObjSchema>GRUPO10</sourceObjSchema>
+<sourceObjName>SEQUENCESENIORLECTURERID</sourceObjName>
+<createdBy>dnnxl</createdBy>
+<createdTime>2018-05-08 03:44:07 UTC</createdTime>
+<ownerDesignName>Modelo Relacional Objeto</ownerDesignName>
+<incrementBy>1</incrementBy>
+<maxValue>10000000</maxValue>
+<minValue>0</minValue>
+<noCache>YES</noCache>
+<user>E8B72E22-8E7E-1117-BFE8-A54D01A163C3</user>
+</SequenceOraclev10g>

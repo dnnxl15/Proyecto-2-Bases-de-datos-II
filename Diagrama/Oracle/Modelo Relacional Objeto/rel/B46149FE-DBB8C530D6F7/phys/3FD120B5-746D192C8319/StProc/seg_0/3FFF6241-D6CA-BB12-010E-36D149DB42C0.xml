@@ -1,0 +1,11 @@
+<?xml version = '1.0' encoding = 'UTF-8'?>
+<StoredProcedureOraclev10g class="oracle.dbtools.crest.model.design.storage.oracle.v10g.StoredProcedureOraclev10g" name="INSERTRC" directorySegmentName="seg_0" id="3FFF6241-D6CA-BB12-010E-36D149DB42C0">
+<sourceConnName>Proyecto</sourceConnName>
+<sourceObjSchema>GRUPO10</sourceObjSchema>
+<sourceObjName>INSERTRC</sourceObjName>
+<createdBy>dnnxl</createdBy>
+<createdTime>2018-05-08 03:44:50 UTC</createdTime>
+<ownerDesignName>Modelo Relacional Objeto</ownerDesignName>
+<owner>E8B72E22-8E7E-1117-BFE8-A54D01A163C3</owner>
+<source>CREATE OR REPLACE PROCEDURE GRUPO10.INSERTRC(pFaculty IN VARCHAR2, pName IN VARCHAR2, pHead IN VARCHAR2, pUnit RC_Unit_array) AS&amp;amp;lt;br/&amp;amp;gt;BEGIN&amp;amp;lt;br/&amp;amp;gt;	INSERT INTO&amp;amp;lt;br/&amp;amp;gt;	TABLE(SELECT faculty_table.rc_List&amp;amp;lt;br/&amp;amp;gt;	FROM faculty_table&amp;amp;lt;br/&amp;amp;gt;	WHERE faculty_table.name = pFaculty)&amp;amp;lt;br/&amp;amp;gt;	VALUES(seqResearchCenter.Nextval, pName, pHead, pUnit);&amp;amp;lt;br/&amp;amp;gt;	COMMIT;&amp;amp;lt;br/&amp;amp;gt;END insertRC;</source>
+</StoredProcedureOraclev10g>

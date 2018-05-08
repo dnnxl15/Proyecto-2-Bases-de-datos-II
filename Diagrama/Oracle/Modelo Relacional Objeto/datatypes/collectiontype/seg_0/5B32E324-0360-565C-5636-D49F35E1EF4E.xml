@@ -1,0 +1,16 @@
+<?xml version = '1.0' encoding = 'UTF-8'?>
+<CollectionType class="oracle.dbtools.crest.model.design.datatypes.CollectionType" name="DEPTPROF_ARRAY" directorySegmentName="seg_0" id="5B32E324-0360-565C-5636-D49F35E1EF4E">
+<createdBy>dnnxl</createdBy>
+<createdTime>2018-05-08 03:20:56 UTC</createdTime>
+<generatorID>AE7E753A-161D-760D-5105-3C346F0422BF</generatorID>
+<ownerDesignName>Modelo Relacional Objeto</ownerDesignName>
+<importedID>AE7E753A-161D-760D-5105-3C346F0422BF</importedID>
+<predefined>false</predefined>
+<dataTypeDescr class="oracle.dbtools.crest.model.design.datatypes.CollectionType$DataTypeWrapper">
+<size></size>
+<type>9D42B0D5-079F-4A42-456E-37172BFB733F</type>
+<isreference>false</isreference>
+</dataTypeDescr>
+<maxElement>10</maxElement>
+<type>ARRAY</type>
+</CollectionType>

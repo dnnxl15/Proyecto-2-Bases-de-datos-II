@@ -1,0 +1,50 @@
+<?xml version = '1.0' encoding = 'UTF-8'?>
+<TableProxyOraclev12c class="oracle.dbtools.crest.model.design.storage.oracle.v12c.TableProxyOraclev12c" name="SCHOOL_TABLE" directorySegmentName="seg_0" id="03DDF9C8-4A73-9DCE-FF3B-5B7BD46951F0">
+<createdBy>dnnxl</createdBy>
+<createdTime>2018-05-08 04:05:23 UTC</createdTime>
+<ownerDesignName>Modelo Relacional Objeto</ownerDesignName>
+<schemaObject>0EF7B3E1-761B-2C20-A420-D65FAD7E9A68</schemaObject>
+<logging>YES</logging>
+<partitionedRowMovement>DISABLE</partitionedRowMovement>
+<segment>3F8F198C-0ABB-B63A-D2DF-A759764E0DC6</segment>
+<tableSpace>FC9B9FF6-0563-4E75-73E8-BF6411758E82</tableSpace>
+<temporaryChanged>false</temporaryChanged>
+<accessDriverType>oracle_loader</accessDriverType>
+<rejectLimit></rejectLimit>
+<inMemory>NO</inMemory>
+<columnProxies itemClass="oracle.dbtools.crest.model.design.storage.oracle.v12c.ColumnProxyOraclev12c">
+<ColumnProxy name="PROF_ARRAY" id="57FD1AF7-31D5-5AAD-29B8-FB1CF7499AE6">
+<createdBy>dnnxl</createdBy>
+<createdTime>2018-05-08 04:05:23 UTC</createdTime>
+<ownerDesignName>Modelo Relacional Objeto</ownerDesignName>
+</ColumnProxy>
+<ColumnProxy name="Oid" id="7789F84A-D8A1-B418-DD13-558849653F64">
+<createdBy>dnnxl</createdBy>
+<createdTime>2018-05-08 04:05:23 UTC</createdTime>
+<ownerDesignName>Modelo Relacional Objeto</ownerDesignName>
+</ColumnProxy>
+<ColumnProxy name="IDSCHOOL" id="A8DA7921-5E0B-77A3-88E5-5F296E64D975">
+<createdBy>dnnxl</createdBy>
+<createdTime>2018-05-08 04:05:23 UTC</createdTime>
+<ownerDesignName>Modelo Relacional Objeto</ownerDesignName>
+</ColumnProxy>
+<ColumnProxy name="HEAD" id="AC9C01C8-117C-8E19-7228-E08A4431D309">
+<createdBy>dnnxl</createdBy>
+<createdTime>2018-05-08 04:05:23 UTC</createdTime>
+<ownerDesignName>Modelo Relacional Objeto</ownerDesignName>
+</ColumnProxy>
+<ColumnProxy name="NAME" id="D1316851-0505-1040-7A5F-2D20A0A9E24E">
+<createdBy>dnnxl</createdBy>
+<createdTime>2018-05-08 04:05:23 UTC</createdTime>
+<ownerDesignName>Modelo Relacional Objeto</ownerDesignName>
+</ColumnProxy>
+</columnProxies>
+<primaryKeys>
+<PrimaryKey class="oracle.dbtools.crest.model.design.storage.oracle.v10g.PKProxyOraclev10g" name="SCHOOL_TABLE_PK" id="00DBA31E-1CEE-D4E7-F36F-0E931F16F20F">
+<createdBy>dnnxl</createdBy>
+<createdTime>2018-05-08 04:05:23 UTC</createdTime>
+<ownerDesignName>Modelo Relacional Objeto</ownerDesignName>
+<indexSort>SORTED</indexSort>
+</PrimaryKey>
+</primaryKeys>
+</TableProxyOraclev12c>

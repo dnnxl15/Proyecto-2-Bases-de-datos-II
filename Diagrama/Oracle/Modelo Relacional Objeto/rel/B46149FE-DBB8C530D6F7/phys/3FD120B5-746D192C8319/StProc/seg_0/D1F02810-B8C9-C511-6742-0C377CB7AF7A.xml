@@ -1,0 +1,11 @@
+<?xml version = '1.0' encoding = 'UTF-8'?>
+<StoredProcedureOraclev10g class="oracle.dbtools.crest.model.design.storage.oracle.v10g.StoredProcedureOraclev10g" name="UPDATEASSOCIATELECTURER" directorySegmentName="seg_0" id="D1F02810-B8C9-C511-6742-0C377CB7AF7A">
+<sourceConnName>Proyecto</sourceConnName>
+<sourceObjSchema>GRUPO10</sourceObjSchema>
+<sourceObjName>UPDATEASSOCIATELECTURER</sourceObjName>
+<createdBy>dnnxl</createdBy>
+<createdTime>2018-05-08 03:44:51 UTC</createdTime>
+<ownerDesignName>Modelo Relacional Objeto</ownerDesignName>
+<owner>E8B72E22-8E7E-1117-BFE8-A54D01A163C3</owner>
+<source>CREATE OR REPLACE PROCEDURE GRUPO10.UPDATEASSOCIATELECTURER(pIDPerson IN NUMBER, pFirstName IN VARCHAR2, pSurname IN VARCHAR2,&amp;amp;lt;br/&amp;amp;gt;pTitle IN VARCHAR2, pAddress IN VARCHAR2, pPhone IN NUMBER, pPostcode IN NUMBER, pCampusLocation IN VARCHAR2, pIdBuilding IN VARCHAR2,&amp;amp;lt;br/&amp;amp;gt;pNumberOffice IN VARCHAR2, pStaffType IN VARCHAR2, pArea IN VARCHAR2, pLecturerType IN VARCHAR2, pNumberHours IN NUMBER, pYearJoin IN NUMBER) AS&amp;amp;lt;br/&amp;amp;gt;BEGIN &amp;amp;lt;br/&amp;amp;gt;	UPDATE AssociateLecturer_table lecA&amp;amp;lt;br/&amp;amp;gt;	SET lecA.surname = pSurname,&amp;amp;lt;br/&amp;amp;gt;	lecA.firstName = pFirstName,&amp;amp;lt;br/&amp;amp;gt;	lecA.title = pTitle,&amp;amp;lt;br/&amp;amp;gt;	lecA.address = pAddress,&amp;amp;lt;br/&amp;amp;gt;	lecA.phone = pPhone,&amp;amp;lt;br/&amp;amp;gt;	lecA.postcode = pPostcode,&amp;amp;lt;br/&amp;amp;gt;	lecA.campusLocation = pCampusLocation,&amp;amp;lt;br/&amp;amp;gt;	lecA.idBuilding = pIdBuilding,&amp;amp;lt;br/&amp;amp;gt;	lecA.numberOffice = pNumberOffice,&amp;amp;lt;br/&amp;amp;gt;	lecA.staffType = pStaffType,&amp;amp;lt;br/&amp;amp;gt;	lecA.area = pArea,&amp;amp;lt;br/&amp;amp;gt;	lecA.lectureType = pLecturerType,&amp;amp;lt;br/&amp;amp;gt;	lecA.numberHonours = pNumberHours,&amp;amp;lt;br/&amp;amp;gt;	lecA.yearJoin = pYearJoin&amp;amp;lt;br/&amp;amp;gt;	WHERE lecA.idPerson = pIDPerson;&amp;amp;lt;br/&amp;amp;gt;END updateAssociateLecturer;</source>
+</StoredProcedureOraclev10g>

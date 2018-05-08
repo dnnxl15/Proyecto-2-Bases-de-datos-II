@@ -1,0 +1,26 @@
+<?xml version = '1.0' encoding = 'UTF-8'?>
+<StructuredType class="oracle.dbtools.crest.model.design.datatypes.StructuredType" name="STUDENT_OBJ" directorySegmentName="seg_0" id="B3AB79AB-C0E9-B9D3-E0F6-728260BC0187">
+<sourceConnName>Proyecto</sourceConnName>
+<sourceObjSchema>GRUPO10</sourceObjSchema>
+<sourceObjName>STUDENT_OBJ</sourceObjName>
+<createdBy>dnnxl</createdBy>
+<createdTime>2018-05-08 03:12:34 UTC</createdTime>
+<ownerDesignName>Modelo Relacional Objeto</ownerDesignName>
+<predefined>false</predefined>
+<final>false</final>
+<inheritanceRelation>A22337D3-D57B-2982-1FF7-E3F36C354172</inheritanceRelation>
+<instantiable>true</instantiable>
+<parentTypeID>0547DE93-1AB4-8137-811B-50D00B98DFEF</parentTypeID>
+<attributes itemClass="oracle.dbtools.crest.model.design.datatypes.TypeElement">
+<Attribute name="YEAR" id="5191426C-A07E-BFD3-6FAE-AAEF1C5CC917">
+<createdBy>dnnxl</createdBy>
+<createdTime>2018-05-08 04:04:59 UTC</createdTime>
+<ownerDesignName>Modelo Relacional Objeto</ownerDesignName>
+<mandatory>false</mandatory>
+<precision>0</precision>
+<reference>false</reference>
+<scale>0</scale>
+<type>LOGDT019</type>
+</Attribute>
+</attributes>
+</StructuredType>

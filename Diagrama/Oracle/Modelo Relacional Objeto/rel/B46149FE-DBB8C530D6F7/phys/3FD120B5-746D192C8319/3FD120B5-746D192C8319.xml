@@ -1,0 +1,6 @@
+<?xml version = '1.0' encoding = 'UTF-8'?>
+<StorageDesignOraclev12c class="oracle.dbtools.crest.model.design.storage.oracle.v12c.StorageDesignOraclev12c" name="Oracle Database 12c" id="F60332BF-42CB-85C6-32AF-6413239C1433" siteID="3FD120B5-9F4E-6278-D5E2-746D192C8319" siteName="Oracle Database 12c" siteType="11">
+<createdBy>dnnxl</createdBy>
+<createdTime>2018-05-08 03:11:27 UTC</createdTime>
+<ownerDesignName>Diagrama_relacional</ownerDesignName>
+</StorageDesignOraclev12c>

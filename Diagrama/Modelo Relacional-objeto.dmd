@@ -1,0 +1,22 @@
+<?xml version = '1.0' encoding = 'UTF-8'?>
+<OSDM_Design class="oracle.dbtools.crest.model.design.Design" name="Modelo Relacional-objeto" id="27B1DA44-C155-7065-13BB-66D8A8292E5C" version="3.5">
+<createdBy>dnnxl</createdBy>
+<createdTime>2018-05-08 02:58:25 UTC</createdTime>
+<ownerDesignName>Modelo Relacional-objeto</ownerDesignName>
+<capitalNames>false</capitalNames>
+<designId>27B1DA44-C155-7065-13BB-66D8A8292E5C</designId>
+<usedDesignStorageDescriptors>
+<designDescr class="oracle.dbtools.crest.model.design.Design$DesignStorageDesc" id="A01622D7-F22F-8377-0903-3EBEA7A2E1D6">
+<designStoragePath>C:\Users\dnnxl\Diagrama</designStoragePath>
+</designDescr>
+<designDescr class="oracle.dbtools.crest.model.design.Design$DesignStorageDesc" id="3718C34F-06C8-C894-6197-C5C508A555DC">
+<designStoragePath>C:\</designStoragePath>
+</designDescr>
+<designDescr class="oracle.dbtools.crest.model.design.Design$DesignStorageDesc" id="F38AF878-ED04-1259-4429-EE942F42DBD8">
+<designStoragePath>C:\Users\dnnxl\Diagrama</designStoragePath>
+</designDescr>
+<designDescr class="oracle.dbtools.crest.model.design.Design$DesignStorageDesc" id="86082F7F-FC51-4F94-2457-B7DC9A072B8C">
+<designStoragePath>C:\Users\dnnxl\Diagrama</designStoragePath>
+</designDescr>
+</usedDesignStorageDescriptors>
+</OSDM_Design>

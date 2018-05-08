@@ -1,0 +1,11 @@
+<?xml version = '1.0' encoding = 'UTF-8'?>
+<StoredProcedureOraclev10g class="oracle.dbtools.crest.model.design.storage.oracle.v10g.StoredProcedureOraclev10g" name="INSERTASSOCIATELECTURER" directorySegmentName="seg_0" id="4479FCF9-4BB0-0CAC-D8A6-EFFD947FDC15">
+<sourceConnName>Proyecto</sourceConnName>
+<sourceObjSchema>GRUPO10</sourceObjSchema>
+<sourceObjName>INSERTASSOCIATELECTURER</sourceObjName>
+<createdBy>dnnxl</createdBy>
+<createdTime>2018-05-08 03:44:50 UTC</createdTime>
+<ownerDesignName>Modelo Relacional Objeto</ownerDesignName>
+<owner>E8B72E22-8E7E-1117-BFE8-A54D01A163C3</owner>
+<source>CREATE OR REPLACE PROCEDURE GRUPO10.INSERTASSOCIATELECTURER(pFirstName IN VARCHAR2, pSurname IN VARCHAR2,&amp;amp;lt;br/&amp;amp;gt;pTitle IN VARCHAR2, pAddress IN VARCHAR2, pPhone IN NUMBER, pPostcode IN NUMBER,&amp;amp;lt;br/&amp;amp;gt;pCampusLocation IN VARCHAR2, pIdBuilding IN VARCHAR2, pNumberOffice IN VARCHAR2, pStaffType IN VARCHAR2,&amp;amp;lt;br/&amp;amp;gt; pArea IN VARCHAR2, pLecturerType IN VARCHAR2, pNumberHours IN NUMBER, &amp;amp;lt;br/&amp;amp;gt;pYearJoin IN NUMBER) AS&amp;amp;lt;br/&amp;amp;gt;BEGIN&amp;amp;lt;br/&amp;amp;gt;	INSERT INTO AssociateLecturer_table &amp;amp;lt;br/&amp;amp;gt;	VALUES(AssociateLecturer_obj(sequenceAssociateLecturerID.Nextval, pSurname, pFirstName, pTitle, pAddress, pPhone, pPostcode, &amp;amp;lt;br/&amp;amp;gt;		pCampusLocation, pIdBuilding, pNumberOffice, pStaffType, pArea, pLecturerType, pNumberHours, pYearJoin));&amp;amp;lt;br/&amp;amp;gt;	COMMIT;&amp;amp;lt;br/&amp;amp;gt;END insertAssociateLecturer;</source>
+</StoredProcedureOraclev10g>

@@ -1,0 +1,11 @@
+<?xml version = '1.0' encoding = 'UTF-8'?>
+<StoredProcedureOraclev10g class="oracle.dbtools.crest.model.design.storage.oracle.v10g.StoredProcedureOraclev10g" name="GETDEGREE" directorySegmentName="seg_0" id="CE2F1924-2C7C-612C-9F49-6327C52FCC40">
+<sourceConnName>Proyecto</sourceConnName>
+<sourceObjSchema>GRUPO10</sourceObjSchema>
+<sourceObjName>GETDEGREE</sourceObjName>
+<createdBy>dnnxl</createdBy>
+<createdTime>2018-05-08 03:44:48 UTC</createdTime>
+<ownerDesignName>Modelo Relacional Objeto</ownerDesignName>
+<owner>E8B72E22-8E7E-1117-BFE8-A54D01A163C3</owner>
+<source>CREATE OR REPLACE PROCEDURE GRUPO10.GETDEGREE(cDegree OUT SYS_REFCURSOR)&amp;amp;lt;br/&amp;amp;gt;IS&amp;amp;lt;br/&amp;amp;gt;BEGIN&amp;amp;lt;br/&amp;amp;gt;	OPEN cDegree FOR &amp;amp;lt;br/&amp;amp;gt;	SELECT Degree_table.idDegree, Degree_table.degreeName, Degree_table.length,&amp;amp;lt;br/&amp;amp;gt;	Degree_table.degreePrerequisites, Degree_table.idFaculty&amp;amp;lt;br/&amp;amp;gt;	FROM Degree_table;&amp;amp;lt;br/&amp;amp;gt;END getDegree;</source>
+</StoredProcedureOraclev10g>

@@ -1,0 +1,11 @@
+<?xml version = '1.0' encoding = 'UTF-8'?>
+<StoredProcedureOraclev10g class="oracle.dbtools.crest.model.design.storage.oracle.v10g.StoredProcedureOraclev10g" name="GETTUTORSTAFF" directorySegmentName="seg_0" id="4AA3F5E0-3C0B-E9E5-6492-C63C7F0615FF">
+<sourceConnName>Proyecto</sourceConnName>
+<sourceObjSchema>GRUPO10</sourceObjSchema>
+<sourceObjName>GETTUTORSTAFF</sourceObjName>
+<createdBy>dnnxl</createdBy>
+<createdTime>2018-05-08 03:44:50 UTC</createdTime>
+<ownerDesignName>Modelo Relacional Objeto</ownerDesignName>
+<owner>E8B72E22-8E7E-1117-BFE8-A54D01A163C3</owner>
+<source>CREATE OR REPLACE PROCEDURE GRUPO10.GETTUTORSTAFF(cTutorStaff OUT SYS_REFCURSOR)&amp;amp;lt;br/&amp;amp;gt;IS&amp;amp;lt;br/&amp;amp;gt;BEGIN&amp;amp;lt;br/&amp;amp;gt;	OPEN cTutorStaff FOR &amp;amp;lt;br/&amp;amp;gt;	SELECT TutorStaff_table.idPerson, TutorStaff_table.surname, TutorStaff_table.firstName, &amp;amp;lt;br/&amp;amp;gt;	TutorStaff_table.title, TutorStaff_table.address, TutorStaff_table.phone, TutorStaff_table.postcode,&amp;amp;lt;br/&amp;amp;gt;	TutorStaff_table.campusLocation, TutorStaff_table.idBuilding,TutorStaff_table.numberOffice,&amp;amp;lt;br/&amp;amp;gt;	TutorStaff_table.staffType, TutorStaff_table.numberHours, TutorStaff_table.rate&amp;amp;lt;br/&amp;amp;gt;	FROM TutorStaff_table;&amp;amp;lt;br/&amp;amp;gt;END getTutorStaff;</source>
+</StoredProcedureOraclev10g>

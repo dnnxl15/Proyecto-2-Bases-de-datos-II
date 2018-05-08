@@ -1,0 +1,11 @@
+<?xml version = '1.0' encoding = 'UTF-8'?>
+<StoredProcedureOraclev10g class="oracle.dbtools.crest.model.design.storage.oracle.v10g.StoredProcedureOraclev10g" name="INSERTTAKES" directorySegmentName="seg_0" id="ADCBB9EA-2739-4515-3840-3655EBF72F6D">
+<sourceConnName>Proyecto</sourceConnName>
+<sourceObjSchema>GRUPO10</sourceObjSchema>
+<sourceObjName>INSERTTAKES</sourceObjName>
+<createdBy>dnnxl</createdBy>
+<createdTime>2018-05-08 03:44:50 UTC</createdTime>
+<ownerDesignName>Modelo Relacional Objeto</ownerDesignName>
+<owner>E8B72E22-8E7E-1117-BFE8-A54D01A163C3</owner>
+<source>CREATE OR REPLACE PROCEDURE GRUPO10.INSERTTAKES(pStudent IN NUMBER, pSubject IN NUMBER, pMarks IN NUMBER) AS&amp;amp;lt;br/&amp;amp;gt;BEGIN&amp;amp;lt;br/&amp;amp;gt;	INSERT INTO Takes_table&amp;amp;lt;br/&amp;amp;gt;	SELECT seqTakes.Nextval, REF(std), REF(subj), pMarks&amp;amp;lt;br/&amp;amp;gt;	FROM Student_table std, Subject_table subj&amp;amp;lt;br/&amp;amp;gt;	WHERE std.idPerson = pStudent AND subj.idSubject = pSubject;&amp;amp;lt;br/&amp;amp;gt;	COMMIT;&amp;amp;lt;br/&amp;amp;gt;END insertTakes;</source>
+</StoredProcedureOraclev10g>

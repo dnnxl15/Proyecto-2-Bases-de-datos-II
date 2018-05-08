@@ -1,0 +1,11 @@
+<?xml version = '1.0' encoding = 'UTF-8'?>
+<StoredProcedureOraclev10g class="oracle.dbtools.crest.model.design.storage.oracle.v10g.StoredProcedureOraclev10g" name="GETSUBJECT" directorySegmentName="seg_0" id="AE43D78F-70CC-A196-C7FA-2C3116E5074A">
+<sourceConnName>Proyecto</sourceConnName>
+<sourceObjSchema>GRUPO10</sourceObjSchema>
+<sourceObjName>GETSUBJECT</sourceObjName>
+<createdBy>dnnxl</createdBy>
+<createdTime>2018-05-08 03:44:50 UTC</createdTime>
+<ownerDesignName>Modelo Relacional Objeto</ownerDesignName>
+<owner>E8B72E22-8E7E-1117-BFE8-A54D01A163C3</owner>
+<source>CREATE OR REPLACE PROCEDURE GRUPO10.GETSUBJECT(cSubject OUT SYS_REFCURSOR)&amp;amp;lt;br/&amp;amp;gt;IS&amp;amp;lt;br/&amp;amp;gt;BEGIN&amp;amp;lt;br/&amp;amp;gt;	OPEN cSubject FOR &amp;amp;lt;br/&amp;amp;gt;	SELECT Subject_table.idSubject, Subject_table.subjectName, Subject_table.credit,&amp;amp;lt;br/&amp;amp;gt;	Subject_table.subjectPrerequisites, Subject_table.idPerson&amp;amp;lt;br/&amp;amp;gt;	FROM Subject_table;&amp;amp;lt;br/&amp;amp;gt;END getSubject;</source>
+</StoredProcedureOraclev10g>

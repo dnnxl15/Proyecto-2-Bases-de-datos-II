@@ -1,0 +1,7 @@
+<?xml version = '1.0' encoding = 'UTF-8'?>
+<LogicalDesign class="oracle.dbtools.crest.model.design.logical.LogicalDesign" name="Logical" id="7F8414D5-C4D6-7049-B7FE-E98904E88225" mainViewID="9C5D69DF-EE39-D53B-C902-04E739E056EC">
+<createdBy>dnnxl</createdBy>
+<createdTime>2018-05-08 02:58:25 UTC</createdTime>
+<ownerDesignName>Modelo Relacional Objeto</ownerDesignName>
+<shouldBeOpen>false</shouldBeOpen>
+</LogicalDesign>
