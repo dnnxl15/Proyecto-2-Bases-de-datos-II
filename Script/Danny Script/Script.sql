@@ -256,6 +256,21 @@ END insertStudent;
 CALL insertStudent('Billy', 'Gomez', 'Master', 'Pavas', 12365478, 1452,'Cartago', 2011); 
 
 /*
+* Procedure: getStudentsUsingSelect
+* Author: Danny Xie Li
+* Description: This procedure get student in the table Student_table and have a out parameter as a cursor.
+* Created: 08/05/18
+* Last modification: 08/05/18
+* Last modification by: Danny Xie Li
+*/
+CREATE PROCEDURE getStudentsUsingSelect
+AS
+BEGIN
+	SELECT *
+	FROM Student_table;
+END getStudentsUsingSelect;
+
+/*
 * Procedure: deleteStudent
 * Author: Danny Xie Li
 * Description: This procedure delete student in the table Student_table.
@@ -362,6 +377,19 @@ END deleteStaff;
 CALL deleteStaff(0);
 
 /*
+* Procedure: getStaffUsingSelect
+* Author: Danny Xie Li
+* Description: This procedure get staff in the table Staff_table and have a out parameter as a cursor.
+* Created: 08/05/18
+* Last modification: 08/05/18
+* Last modification by: Danny Xie Li
+*/
+CREATE PROCEDURE getStaffUsingSelect AS
+BEGIN
+	SELECT * FROM Staff_table;
+END getStaffUsingSelect;
+
+/*
 * Procedure: getStaff
 * Author: Danny Xie Li
 * Description: This procedure get staff in the table Staff_table and have a out parameter as a cursor.
@@ -448,6 +476,21 @@ END deleteTutorStudent;
 /* PRUEBA DE DELETE TUTOR STUDENT*/
 
 CALL deleteTutorStudent(0);
+
+/*
+* Procedure: getTutorStudentUsingSelect
+* Author: Danny Xie Li
+* Description: This procedure get tutor student in the table TutorStudent_table and have a out parameter as a cursor.
+* Created: 08/05/18
+* Last modification: 08/05/18
+* Last modification by: Danny Xie Li
+*/
+CREATE OR REPLACE PROCEDURE getTutorStudentUsingSelect
+AS
+BEGIN
+	SELECT *
+	FROM TutorStudent_table;
+END getTutorStudentUsingSelect;
 
 /*
 * Procedure: getTutorStudent
@@ -537,6 +580,21 @@ END deleteTutorStaff;
 /* PRUEBA DE DELETE TUTOR STUDENT*/
 
 CALL deleteTutorStaff(0);
+
+/*
+* Procedure: getTutorStaffUsingSelect
+* Author: Danny Xie Li
+* Description: This procedure get tutor student in the table TutorStudent_table.
+* Created: 08/05/18
+* Last modification: 08/05/18
+* Last modification by: Danny Xie Li
+*/
+CREATE OR REPLACE PROCEDURE getTutorStaffUsingSelect
+AS
+BEGIN
+	SELECT *
+	FROM TutorStudent_table;
+END getTutorStaffUsingSelect;
 
 /*
 * Procedure: getTutorStaff
@@ -686,6 +744,21 @@ END updateTutorTechinician;
 CALL updateTutorTechinician(0, 'Juanes', 'Gomez', 'Master', 'Pavas', 12365478, 1452,'Cartago', 10, 'BCGH6', 'Secretario', 'Master', 'Habilidoso'); 
 
 /*
+* Procedure: getTechnicianUsingSelect
+* Author: Danny Xie Li
+* Description: This procedure get Technician in the table Technician_table.
+* Created: 08/05/18
+* Last modification: 08/05/18
+* Last modification by: Danny Xie Li
+*/
+CREATE OR REPLACE PROCEDURE getTechnicianUsingSelect
+AS
+BEGIN
+	SELECT *
+	FROM Technician_table;
+END getTechnicianUsingSelect;
+
+/*
 * Procedure: insertAssociateLecturer
 * Author: Danny Xie Li
 * Description: This procedure insert associate Lecturer in the table Technician_table.
@@ -747,6 +820,21 @@ BEGIN
 	AssociateLecturer_table.area, AssociateLecturer_table.lectureType,AssociateLecturer_table.numberHonours, AssociateLecturer_table.yearJoin
 	FROM AssociateLecturer_table;
 END getAssociateLecturer;
+
+/*
+* Procedure: getAssociateLecturerUsingSelect
+* Author: Danny Xie Li
+* Description: This procedure get AssociateLecturer in the table AssociateLecturer_table.
+* Created: 08/05/18
+* Last modification: 08/05/18
+* Last modification by: Danny Xie Li
+*/
+CREATE OR REPLACE PROCEDURE getAssociateLecturerUsingSelect
+AS
+BEGIN
+	SELECT *
+	FROM AssociateLecturer_table;
+END getAssociateLecturerUsingSelect;
 
 /*
 * Procedure: updateAssociateLecturer
@@ -847,6 +935,21 @@ BEGIN
 	Admin_table.admiTitle, Admin_table.computerSkill,Admin_table.officeSkill
 	FROM Admin_table;
 END getAdmin;
+
+/*
+* Procedure: getAdminUsingSelect
+* Author: Danny Xie Li
+* Description: This procedure get Admin in the table Admin_table.
+* Created: 08/05/18
+* Last modification: 08/05/18
+* Last modification by: Danny Xie Li
+*/
+CREATE OR REPLACE PROCEDURE getAdminUsingSelect
+AS
+BEGIN
+	SELECT *
+	FROM Admin_table;
+END getAdminUsingSelect;
 
 /*
 * Procedure: updateAdmin
