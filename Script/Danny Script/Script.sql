@@ -141,13 +141,44 @@ CREATE TABLE Technician_table OF Technician_obj (idPerson PRIMARY KEY)
 * Author: Danny Xie Li
 * Description: This is the object Lecturer, that herence from Staff
 * Created: 22/04/18
-* Last modification: 22/04/18
+* Last modification: 07/05/18
 * Last modification by: Danny Xie Li
 */
-CREATE TYPE Lecturer_obj UNDER Staff_obj ( 
+CREATE OR REPLACE TYPE Lecturer_obj UNDER Staff_obj ( 
 	area VARCHAR2(100),
-	lectureType VARCHAR2(100)
+	lectureType VARCHAR2(100),
+	MEMBER PROCEDURE display_details ( SELF IN OUT NOCOPY person_typ )
 ) NOT FINAL;
+
+CREATE TYPE BODY Lecturer_obj AS
+  MEMBER PROCEDURE display_details ( SELF IN OUT NOCOPY person_typ ) IS
+  BEGIN
+    -- use the PUT_LINE procedure of the DBMS_OUTPUT package to display details
+    DBMS_OUTPUT.PUT_LINE(TO_CHAR(idPerson) || ' ' || firstName || ' ' || surname || ' ' || title || ' ' || address || ' ' || TO_CHAR(phone) 
+    	|| ' ' || TO_CHAR(postcode) || ' ' || campusLocation || ' ' || idBuilding || ' ' || numberOffice || ' ' || staffType);
+    DBMS_OUTPUT.PUT_LINE(area || ' '  || lectureType);
+  END;
+END;
+
+/*TEST display_details*/
+/*FALTA DE PRUEBA*/
+DECLARE
+  lecturer Lecturer_obj;
+BEGIN -- PL/SQL block for selecting a person and displaying details
+  SELECT VALUE(lec) INTO lecturer FROM Lecturer_table lec;
+  lecturer.display_details();
+END;
+
+/*
+* Table: Administrator 
+* Author: Danny Xie Li
+* Description: This is the table lecturer, use the primary key from person id.
+* Created: 07/05/18
+* Last modification: 07/05/18
+* Last modification by: Danny Xie Li
+*/
+CREATE TABLE Lecturer_table OF Lecturer_obj (idPerson PRIMARY KEY)
+	OBJECT IDENTIFIER IS PRIMARY KEY
 
 /*
 * Type: Admin
