@@ -24,7 +24,13 @@ CREATE TYPE Building_obj AS OBJECT(
 * Last modification: 01/05/18
 * Last modification by: Esteban Coto Alfaro
 */
-CREATE TABLE Building_table OF Building_obj(PRIMARY KEY (idBuilding));
+CREATE TABLE Building_table OF Building_obj(
+	PRIMARY KEY (idBuilding),
+	CONSTRAINT fk_faculty_building
+		FOREIGN KEY (idFaculty)
+		REFERENCES Faculty_table(idFaculty)
+		ON DELETE CASCADE
+);
 
 /*
 * Type: Building_cluster
@@ -34,7 +40,7 @@ CREATE TABLE Building_table OF Building_obj(PRIMARY KEY (idBuilding));
 * Last modification: 02/05/18
 * Last modification by: Johan Torres Creed
 */
-CREATE CLUSTER Building_cluster (buildingCode VARCHAR2) SIZE 512;
+CREATE CLUSTER Building_cluster (buildingCode VARCHAR2(100)) SIZE 512;
 
 /*
 * Type: idx_building_cluster
@@ -155,8 +161,13 @@ CREATE TYPE Degree_obj AS OBJECT (
 * Last modification: 28/04/18
 * Last modification by: Johan Torres Creed
 */
-CREATE TABLE Degree_table OF Degree_obj (idDegree PRIMARY KEY)
-	OBJECT IDENTIFIER IS PRIMARY KEY
+CREATE TABLE Degree_table OF Degree_obj (
+	PRIMARY KEY(idDegree),
+	CONSTRAINT fk_faculty_degree
+		FOREIGN KEY (idFaculty) 
+		REFERENCES Faculty_table(idFaculty)
+		ON DELETE CASCADE
+);
 
 /*
 * Type: EnrollsIn_obj
@@ -168,8 +179,8 @@ CREATE TABLE Degree_table OF Degree_obj (idDegree PRIMARY KEY)
 */
 CREATE TYPE EnrollsIn_obj AS OBJECT (
 	idEnroll NUMBER,
-	studentID REF Student_obj,
-	degreeID REF Degree_obj
+	studentN REF Student_obj,
+	degreeN REF Degree_obj
 )NOT FINAL;
 
 /*
@@ -181,9 +192,9 @@ CREATE TYPE EnrollsIn_obj AS OBJECT (
 * Last modification by: Johan Torres Creed
 */
 CREATE TABLE EnrollsIn_table OF EnrollsIn_obj (
-	PRIMARY KEY (studentID),
-	SCOPE FOR (studentID) IS Student_table,
-	SCOPE FOR (degreeID) IS Degree_table
+	PRIMARY KEY (idEnroll),
+	SCOPE FOR (studentN) IS Student_table,
+	SCOPE FOR (degreeN) IS Degree_table
 );
 
 /*
@@ -196,8 +207,8 @@ CREATE TABLE EnrollsIn_table OF EnrollsIn_obj (
 */
 CREATE TYPE Takes_obj AS OBJECT (
 	idTakes NUMBER,
-	studentID REF Student_obj,
-	subjectID REF Subject_obj,
+	studentN REF Student_obj,
+	subjectN REF Subject_obj,
 	marks NUMBER
 )NOT FINAL;
 
@@ -210,9 +221,9 @@ CREATE TYPE Takes_obj AS OBJECT (
 * Last modification by: Johan Torres Creed
 */
 CREATE TABLE Takes_table OF Takes_obj (
-	PRIMARY KEY (studentID),
-	SCOPE FOR (studentID) IS Student_table,
-	SCOPE FOR (subjectID) IS Subject_table
+	PRIMARY KEY (idTakes),
+	SCOPE FOR (studentN) IS Student_table,
+	SCOPE FOR (subjectN) IS Subject_table
 );
 
 /*
@@ -239,8 +250,13 @@ CREATE TYPE Subject_obj AS OBJECT (
 * Last modification: 28/04/18
 * Last modification by: Johan Torres Creed
 */
-CREATE TABLE Subject_table OF Subject_obj (idSubject PRIMARY KEY)
-	OBJECT IDENTIFIER IS PRIMARY KEY
+CREATE TABLE Subject_table OF Subject_obj (
+	PRIMARY KEY (idSubject),
+	CONSTRAINT fk_student_subject
+		FOREIGN KEY (idPerson)
+		REFERENCES Student_table(idPerson)
+		ON DELETE CASCADE
+);
 
 /*
 * Type: SeniorLecturer
@@ -281,8 +297,8 @@ CREATE TABLE SeniorLecturer_table OF SeniorLecturer_obj (idPerson PRIMARY KEY)
 * Last modification: 01/05/18
 * Last modification by: Esteban Coto Alfaro
 */
-CREATE PROCEDURE insertBuilding(pBuildingCode IN VARCHAR2(100), pBuildingName IN VARCHAR2(100),
-pBuildingLocation IN VARCHAR2(100), pBuildingLevel IN NUMBER, pCampusLocation IN VARCHAR2(100),
+CREATE PROCEDURE insertBuilding(pBuildingCode IN VARCHAR2, pBuildingName IN VARCHAR2,
+pBuildingLocation IN VARCHAR2, pBuildingLevel IN NUMBER, pCampusLocation IN VARCHAR2,
 pFacultyID IN NUMBER) AS
 BEGIN
 	INSERT INTO Building_table 
@@ -298,8 +314,8 @@ END insertBuilding;
 * Last modification: 01/05/18
 * Last modification by: Esteban Coto Alfaro
 */
-CREATE PROCEDURE updateBuilding(pOldCode IN VARCHAR2(100), pNewCode IN VARCHAR2(100), pBuildingName IN VARCHAR2(100),
-	pBuildingLocation IN VARCHAR2(100), pBuildingLevel IN VARCHAR2(100), pCampusLocation IN VARCHAR2(100), pFacultyID IN NUMBER) AS
+CREATE PROCEDURE updateBuilding(pOldCode IN VARCHAR2, pNewCode IN VARCHAR2, pBuildingName IN VARCHAR2,
+	pBuildingLocation IN VARCHAR2, pBuildingLevel IN VARCHAR2, pCampusLocation IN VARCHAR2, pFacultyID IN NUMBER) AS
 BEGIN
 	UPDATE Building_table building
 	SET building.buildingCode = pNewCode,
@@ -319,7 +335,7 @@ END updateBuilding;
 * Last modification: 01/05/18
 * Last modification by: Esteban Coto Alfaro
 */
-CREATE PROCEDURE deleteBuilding(pBuildingCode IN VARCHAR2(100)) AS
+CREATE PROCEDURE deleteBuilding(pBuildingCode IN VARCHAR2) AS
 BEGIN
 	DELETE FROM Building_table building
 	WHERE building.buildingCode = pBuildingCode;
@@ -334,7 +350,7 @@ END deleteBuilding;
 * Last modification: 29/04/18
 * Last modification by: Esteban Coto Alfaro
 */
-CREATE PROCEDURE insertOffice(pBuildingCode IN VARCHAR2(100), pOfficeNum IN VARCHAR2(100),
+CREATE PROCEDURE insertOffice(pBuildingCode IN VARCHAR2, pOfficeNum IN VARCHAR2,
 pOfficePhone IN NUMBER) AS
 BEGIN
 	INSERT INTO Office_table 
@@ -350,8 +366,8 @@ END insertOffice;
 * Last modification: 29/04/18
 * Last modification by: Esteban Coto Alfaro
 */
-CREATE PROCEDURE updateOffice(pOldNum IN VARCHAR2(100), pBuildingCode IN VARCHAR2(100), 
-	pNewNum IN VARCHAR2(100), pOfficePhone IN NUMBER) AS
+CREATE PROCEDURE updateOffice(pOldNum IN VARCHAR2, pBuildingCode IN VARCHAR2, 
+	pNewNum IN VARCHAR2, pOfficePhone IN NUMBER) AS
 BEGIN
 	UPDATE Office_table office
 	SET office.buildingCode = pBuildingCode,
@@ -368,7 +384,7 @@ END updateOffice;
 * Last modification: 29/04/18
 * Last modification by: Esteban Coto Alfaro
 */
-CREATE PROCEDURE deleteOffice(pOfficeNum IN VARCHAR2(100)) AS
+CREATE PROCEDURE deleteOffice(pOfficeNum IN VARCHAR2) AS
 BEGIN
 	DELETE FROM Office_table office
 	WHERE office.officeNumber = pOfficeNum;
@@ -383,7 +399,7 @@ END deleteOffice;
 * Last modification: 04/05/18
 * Last modification by: Johan Torres Creed
 */
-CREATE PROCEDURE insertClassroom(pBuildingCode IN VARCHAR2(100), pClassNumber IN VARCHAR2, pClassCapacity IN NUMBER) AS
+CREATE PROCEDURE insertClassroom(pBuildingCode IN VARCHAR2, pClassNumber IN VARCHAR2, pClassCapacity IN NUMBER) AS
 BEGIN
 	INSERT INTO Classroom_table
 	VALUES(Classroom_obj(seqClassroom.Nextval, pBuildingCode, pClassNumber, pClassCapacity));
@@ -414,8 +430,8 @@ END getClassroom;
 * Last modification: 04/05/18
 * Last modification by: Johan Torres Creed
 */
-CREATE OR REPLACE PROCEDURE updateClassroom(pOldNum IN VARCHAR2, pBuildingCode IN VARCHAR2(100), 
-	pNewNum IN VARCHAR2(100), pClassCapacity IN NUMBER) AS
+CREATE OR REPLACE PROCEDURE updateClassroom(pOldNum IN VARCHAR2, pBuildingCode IN VARCHAR2, 
+	pNewNum IN VARCHAR2, pClassCapacity IN NUMBER) AS
 BEGIN 
 	UPDATE Classroom_table clsr
 	SET clsr.buildingCode = pBuildingCode,
@@ -447,7 +463,7 @@ END deleteClassroom;
 * Last modification: 05/05/18
 * Last modification by: Johan Torres Creed
 */
-CREATE PROCEDURE insertLab(pBuildingCode IN VARCHAR2(100), pLabNumber IN VARCHAR2(100), 
+CREATE PROCEDURE insertLab(pBuildingCode IN VARCHAR2, pLabNumber IN VARCHAR2, 
 	pLabCapacity IN NUMBER, pLabEquipment in Equipment_list) AS
 BEGIN
 	INSERT INTO Lab_table
@@ -479,7 +495,7 @@ END getLab;
 * Last modification: 05/05/18
 * Last modification by: Johan Torres Creed
 */
-CREATE OR REPLACE PROCEDURE updateLab(pOldNum IN VARCHAR2(100), pBuildingCode IN VARCHAR(100), pNewNum IN VARCHAR2(100), 
+CREATE OR REPLACE PROCEDURE updateLab(pOldNum IN VARCHAR2, pBuildingCode IN VARCHAR, pNewNum IN VARCHAR2, 
 	pLabCapacity IN NUMBER, pLabEquipment IN Equipment_list) AS
 BEGIN 
 	UPDATE Lab_table lab
@@ -504,10 +520,6 @@ BEGIN
 	WHERE labNumber = pLabNumber;
 	COMMIT;
 END deleteLab;
-
-/* PRUEBA DE DELETE LAB*/
-
-CALL deleteSubject('BG113');
 
 /*
 * Procedure: insertDegree
@@ -595,7 +607,7 @@ CALL deleteDegree(0);
 CREATE PROCEDURE insertEnrollsIn(pStudent IN NUMBER, pDegree IN NUMBER) AS
 BEGIN
 	INSERT INTO EnrollsIn_table
-	SELECT REF(std), REF(deg)
+	SELECT seqEnroll.Nextval, REF(std), REF(deg)
 	FROM Student_table std, Degree_table deg
 	WHERE std.idPerson = pStudent AND deg.idDegree = pDegree;
 	COMMIT;
@@ -609,10 +621,10 @@ END insertEnrollsIn;
 * Last modification: 05/05/18
 * Last modification by: Johan Torres Creed
 */
-CREATE PROCEDURE deleteEnrollsIn(pStudent IN NUMBER) AS
+CREATE PROCEDURE deleteEnrollsIn(pStudent IN REF Student_obj) AS
 BEGIN
 	DELETE FROM EnrollsIn_table
-	WHERE idPerson = pStudent;
+	WHERE studentN = pStudent;
 	COMMIT;
 END deleteEnrollsIn;
 
@@ -627,7 +639,7 @@ END deleteEnrollsIn;
 CREATE PROCEDURE insertTakes(pStudent IN NUMBER, pSubject IN NUMBER, pMarks IN NUMBER) AS
 BEGIN
 	INSERT INTO Takes_table
-	SELECT REF(std), REF(subj), pMarks
+	SELECT seqTakes.Nextval, REF(std), REF(subj), pMarks
 	FROM Student_table std, Subject_table subj
 	WHERE std.idPerson = pStudent AND subj.idSubject = pSubject;
 	COMMIT;
@@ -657,10 +669,10 @@ END updateTakes;
 * Last modification: 28/04/18
 * Last modification by: Johan Torres Creed
 */
-CREATE PROCEDURE deleteTakes(pStudent IN NUMBER) AS
+CREATE PROCEDURE deleteTakes(pStudent IN REF Student_obj) AS
 BEGIN
 	DELETE FROM Takes_table 
-	WHERE idPerson = pStudent;
+	WHERE studentN = pStudent;
 	COMMIT;
 END deleteTakes;
 
@@ -920,6 +932,38 @@ NOCACHE
 NOCYCLE
 
 /*
+* Sequence: seqEnroll
+* Author: Johan Torres Creed
+* Description: Sequence to have control of the EnrollIn id
+* Created: 28/04/18
+* Last modification: 28/04/18
+* Last modification by: Johan Torres Creed
+*/
+CREATE SEQUENCE seqEnroll
+START WITH 0
+INCREMENT BY 1
+MINVALUE 0 
+MAXVALUE 1000000
+NOCACHE
+NOCYCLE
+
+/*
+* Sequence: seqTakes
+* Author: Johan Torres Creed
+* Description: Sequence to have control of the Takes id
+* Created: 28/04/18
+* Last modification: 28/04/18
+* Last modification by: Johan Torres Creed
+*/
+CREATE SEQUENCE seqTakes
+START WITH 0
+INCREMENT BY 1
+MINVALUE 0 
+MAXVALUE 1000000
+NOCACHE
+NOCYCLE
+
+/*
 * Sequence: sequenceSubjectID
 * Author: Johan Torres Creed
 * Description: Sequence subject id.
@@ -933,7 +977,7 @@ CREATE SEQUENCE sequenceSubjectID
  MINVALUE 0
  MAXVALUE 10000000
  NOCACHE
- NOCYCLE;
+ NOCYCLE
 
 /*
 * Sequence: sequenceSeniorLecturerID
