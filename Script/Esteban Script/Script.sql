@@ -133,7 +133,7 @@ CREATE TYPE SchoolProf_array AS VARRAY(10) OF SchoolProf_obj;
 */
 CREATE TYPE School_obj AS OBJECT(
 	idSchool NUMBER,
-	name VARCHAR2(100),
+	name VLARCHAR2(100),
 	head VARCHAR2(100),
 	prof_array SchoolProf_array
 )NOT FINAL;
@@ -419,15 +419,15 @@ END insertDepartment;
 * Last modification: 04/05/18
 * Last modification by: Esteban Coto Alfaro
 */
-CREATE PROCEDURE updateDepartment(pFaculty IN VARCHAR2, pOldName IN VARCHAR2, pNewName IN VARCHAR2, pHead IN VARCHAR2) AS
+CREATE PROCEDURE updateDepartment(pFaculty IN VARCHAR2, pDeptID IN NUMBER, pName IN VARCHAR2, pHead IN VARCHAR2) AS
 BEGIN
 	UPDATE
 	TABLE(SELECT faculty_table.department_List
 	FROM faculty_table
 	WHERE faculty_table.name = pFaculty)
-	SET name = pNewName,
+	SET name = pName,
 	head = pHead
-	WHERE name = pOldName;
+	WHERE idDepartment = pDeptID;
 	COMMIT;
 END updateDepartment;
 
@@ -477,15 +477,15 @@ CALL insertSchool('Medicina', 'Pediatria', 'Adrian Gonzales', SchoolProf_array(S
 * Last modification: 04/05/18
 * Last modification by: Esteban Coto Alfaro
 */
-CREATE PROCEDURE updateSchool(pFaculty IN VARCHAR2, pOldName IN VARCHAR2, pNewName IN VARCHAR2, pHead IN VARCHAR2) AS
+CREATE PROCEDURE updateSchool(pFaculty IN VARCHAR2, pSchoolID IN NUMBER, pName IN VARCHAR2, pHead IN VARCHAR2) AS
 BEGIN
 	UPDATE
 	TABLE(SELECT faculty_table.school_List
 	FROM faculty_table
 	WHERE faculty_table.name = pFaculty)
-	SET name = pNewName,
+	SET name = pName,
 	head = pHead
-	WHERE name = pOldName;
+	WHERE idSchool = pSchoolID;
 	COMMIT;
 END updateSchool;
 
@@ -533,15 +533,15 @@ END insertRC;
 * Last modification: 04/05/18
 * Last modification by: Esteban Coto Alfaro
 */
-CREATE PROCEDURE updateRC(pFaculty IN VARCHAR2, pOldName IN VARCHAR2, pNewName IN VARCHAR2, pHead IN VARCHAR2) AS
+CREATE PROCEDURE updateRC(pFaculty IN VARCHAR2, pRCID IN NUMBER, pName IN VARCHAR2, pHead IN VARCHAR2) AS
 BEGIN
 	UPDATE
 	TABLE(SELECT faculty_table.rc_List
 	FROM faculty_table
 	WHERE faculty_table.name = pFaculty)
-	SET name = pNewName,
+	SET name = pName,
 	head = pHead
-	WHERE name = pOldName;
+	WHERE idResearchCenter = pRCID;
 	COMMIT;
 END updateRC;
 
@@ -704,3 +704,12 @@ TABLE(faculty.school_list) school, TABLE(faculty.rc_list) rc;
 SELECT o.*, s.* FROM Office_table o, Staff_table s
 WHERE o.officeNumber = s.numberOffice;
 
+insert into faculty_table
+VALUES(0, 'fac', 'dean', List_Department(
+Department_obj(0, 'dept1', 'head', DeptProf_array(DeptProf_obj('Nombre1', 12345), DeptProf_obj('Nombre2', 54321))), 
+Department_obj(1, 'dept2', 'head2', DeptProf_array(DeptProf_obj('Nombre3', 12345), DeptProf_obj('Nombre4', 54321))) ), List_School(
+School_obj(0, 'school1', 'Schoolhead', SchoolProf_array(SchoolProf_obj('Nombre1', 12345), SchoolProf_obj('Nombre2', 54321))), 
+School_obj(1, 'school2', 'head2', SchoolProf_array(SchoolProf_obj('Nombre3', 12345), SchoolProf_obj('Nombre4', 54321))) ), List_RC(
+Research_Center_obj(0, 'rc1', 'head1', RC_Unit_array(RC_Unit_obj('unit1'),RC_Unit_obj('unit2'))), 
+Research_Center_obj(1, 'rc2', 'head2', RC_Unit_array(RC_Unit_obj('unit3'),RC_Unit_obj('unit4'))))
+);
