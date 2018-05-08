@@ -24,7 +24,13 @@ CREATE TYPE Building_obj AS OBJECT(
 * Last modification: 01/05/18
 * Last modification by: Esteban Coto Alfaro
 */
-CREATE TABLE Building_table OF Building_obj(PRIMARY KEY (idBuilding));
+CREATE TABLE Building_table OF Building_obj(
+	PRIMARY KEY (idBuilding),
+	CONSTRAINT fk_faculty_building
+		FOREIGN KEY (idFaculty)
+		REFERENCES Faculty_table(idFaculty)
+		ON DELETE CASCADE
+);
 
 /*
 * Type: Building_cluster
@@ -34,7 +40,7 @@ CREATE TABLE Building_table OF Building_obj(PRIMARY KEY (idBuilding));
 * Last modification: 02/05/18
 * Last modification by: Johan Torres Creed
 */
-CREATE CLUSTER Building_cluster (idBuilding NUMBER) SIZE 512;
+CREATE CLUSTER Building_cluster (buildingCode VARCHAR2(100)) SIZE 512;
 
 /*
 * Type: idx_building_cluster
@@ -55,7 +61,7 @@ CREATE INDEX idx_building_cluster ON CLUSTER Building_cluster;
 * Last modification by: Esteban Coto Alfaro
 */
 CREATE TYPE Office_obj AS OBJECT(
-	idBuilding NUMBER,
+	idOffice NUMBER,
 	buildingCode VARCHAR2(100),
 	officeNumber VARCHAR2(100),
 	officePhone NUMBER
@@ -70,7 +76,7 @@ CREATE TYPE Office_obj AS OBJECT(
 * Last modification by: Esteban Coto Alfaro
 */
 CREATE TABLE Office_table OF Office_obj(PRIMARY KEY (officeNumber))
-	CLUSTER Building_cluster (idBuilding);
+	CLUSTER Building_cluster (buildingCode);
 
 /*
 * Type: Classroom
@@ -81,7 +87,8 @@ CREATE TABLE Office_table OF Office_obj(PRIMARY KEY (officeNumber))
 * Last modification by: Johan Torres Creed
 */
 CREATE TYPE Classroom_obj AS OBJECT (
-	idBuilding NUMBER,
+	idClassroom NUMBER,
+	buildingCode VARCHAR2(100),
 	classNumber VARCHAR2(100),
 	classCapacity NUMBER
 )NOT FINAL;
@@ -95,7 +102,7 @@ CREATE TYPE Classroom_obj AS OBJECT (
 * Last modification by: Johan Torres Creed
 */
 CREATE TABLE Classroom_table OF Classroom_obj (PRIMARY KEY(classNumber))
-	CLUSTER Building_cluster (idBuilding);
+	CLUSTER Building_cluster (buildingCode);
 
 /*
 * Type: Lab
@@ -106,18 +113,16 @@ CREATE TABLE Classroom_table OF Classroom_obj (PRIMARY KEY(classNumber))
 * Last modification by: Johan Torres Creed
 */
 
-/*
-DECLARE TYPE Equipment IS VARRAY(100) OF VARCHAR2(50);
-BEGIN
-    NULL;
-END;
-*/
+/* Equipment_list: Needed since labEquipment requires Collection values*/
+
+CREATE TYPE Equipment_list AS VARRAY(20) OF VARCHAR2(50);
 
 CREATE TYPE Lab_obj AS OBJECT (
-	idBuilding NUMBER,
+	idLab NUMBER,
+	buildingCode VARCHAR2(100),
 	labNumber VARCHAR2(100),
 	labCapacity NUMBER,
-	labEquipment VARCHAR2(100)
+	labEquipment Equipment_list
 )NOT FINAL;
 
 
@@ -130,7 +135,7 @@ CREATE TYPE Lab_obj AS OBJECT (
 * Last modification by: Johan Torres Creed
 */
 CREATE TABLE Lab_table OF Lab_obj (PRIMARY KEY(labNumber))
-	CLUSTER Building_cluster (idBuilding);
+	CLUSTER Building_cluster (buildingCode);
 
 /*
 * Type: Degree
@@ -156,34 +161,69 @@ CREATE TYPE Degree_obj AS OBJECT (
 * Last modification: 28/04/18
 * Last modification by: Johan Torres Creed
 */
-CREATE TABLE Degree_table OF Degree_obj (idDegree PRIMARY KEY)
-	OBJECT IDENTIFIER IS PRIMARY KEY
-
-/*
-* Type: Table EnrollsIn
-* Author: Johan Torres Creed
-* Description: EnrollsIn, association between Student and Degree
-* Created: 02/05/18
-* Last modification: 02/05/18
-* Last modification by: Johan Torres Creed
-*/
-CREATE TABLE EnrollsIn AS (
-	idPerson REF Student_obj SCOPE IS Student_table,
-	idDegree REF Degree_obj SCOPE IS Degree_table
+CREATE TABLE Degree_table OF Degree_obj (
+	PRIMARY KEY(idDegree),
+	CONSTRAINT fk_faculty_degree
+		FOREIGN KEY (idFaculty) 
+		REFERENCES Faculty_table(idFaculty)
+		ON DELETE CASCADE
 );
 
 /*
-* Type: Table Takes
+* Type: EnrollsIn_obj
 * Author: Johan Torres Creed
-* Description: Takes, association between Student and Subject
+* Description: This is the object EnrollsIn: association between Student and Degree
 * Created: 26/04/18
-* Last modification: 02/05/18
+* Last modification: 04/05/18
 * Last modification by: Johan Torres Creed
 */
-CREATE TABLE Takes AS (
-	idPerson REF Student_obj SCOPE IS Student_table,
-	idSubject REF Subject_obj SCOPE IS Subject_table,
+CREATE TYPE EnrollsIn_obj AS OBJECT (
+	idEnroll NUMBER,
+	studentN REF Student_obj,
+	degreeN REF Degree_obj
+)NOT FINAL;
+
+/*
+* Type: EnrollsIn_table
+* Author: Johan Torres Creed
+* Description: Table for EnrollsIn
+* Created: 02/05/18
+* Last modification: 04/05/18
+* Last modification by: Johan Torres Creed
+*/
+CREATE TABLE EnrollsIn_table OF EnrollsIn_obj (
+	PRIMARY KEY (idEnroll),
+	SCOPE FOR (studentN) IS Student_table,
+	SCOPE FOR (degreeN) IS Degree_table
+);
+
+/*
+* Type: Takes_obj
+* Author: Johan Torres Creed
+* Description: This is the object Takes: association between Student and Subject
+* Created: 26/04/18
+* Last modification: 04/05/18
+* Last modification by: Johan Torres Creed
+*/
+CREATE TYPE Takes_obj AS OBJECT (
+	idTakes NUMBER,
+	studentN REF Student_obj,
+	subjectN REF Subject_obj,
 	marks NUMBER
+)NOT FINAL;
+
+/*
+* Type: Takes_table
+* Author: Johan Torres Creed
+* Description: Table for Takes
+* Created: 02/05/18
+* Last modification: 04/05/18
+* Last modification by: Johan Torres Creed
+*/
+CREATE TABLE Takes_table OF Takes_obj (
+	PRIMARY KEY (idTakes),
+	SCOPE FOR (studentN) IS Student_table,
+	SCOPE FOR (subjectN) IS Subject_table
 );
 
 /*
@@ -210,8 +250,13 @@ CREATE TYPE Subject_obj AS OBJECT (
 * Last modification: 28/04/18
 * Last modification by: Johan Torres Creed
 */
-CREATE TABLE Subject_table OF Subject_obj (idSubject PRIMARY KEY)
-	OBJECT IDENTIFIER IS PRIMARY KEY
+CREATE TABLE Subject_table OF Subject_obj (
+	PRIMARY KEY (idSubject),
+	CONSTRAINT fk_student_subject
+		FOREIGN KEY (idPerson)
+		REFERENCES Student_table(idPerson)
+		ON DELETE CASCADE
+);
 
 /*
 * Type: SeniorLecturer
@@ -245,42 +290,121 @@ CREATE TABLE SeniorLecturer_table OF SeniorLecturer_obj (idPerson PRIMARY KEY)
 */
 
 /*
+* Procedure: insertBuilding
+* Author: Esteban Coto Alfaro
+* Description: Procedure to insert a building into the table Building_table
+* Created: 01/05/18
+* Last modification: 01/05/18
+* Last modification by: Esteban Coto Alfaro
+*/
+CREATE PROCEDURE insertBuilding(pBuildingCode IN VARCHAR2, pBuildingName IN VARCHAR2,
+pBuildingLocation IN VARCHAR2, pBuildingLevel IN NUMBER, pCampusLocation IN VARCHAR2,
+pFacultyID IN NUMBER) AS
+BEGIN
+	INSERT INTO Building_table 
+	VALUES(Building_obj(seqBuilding.Nextval, pBuildingCode, pBuildingName, pBuildingLocation, pBuildingLevel, pCampusLocation, pFacultyID));
+	COMMIT;
+END insertBuilding;
+
+/*
+* Procedure: updateBuilding
+* Author: Esteban Coto Alfaro
+* Description: Procedure to update a building into the table Building_table
+* Created: 01/05/18
+* Last modification: 01/05/18
+* Last modification by: Esteban Coto Alfaro
+*/
+CREATE PROCEDURE updateBuilding(pOldCode IN VARCHAR2, pNewCode IN VARCHAR2, pBuildingName IN VARCHAR2,
+	pBuildingLocation IN VARCHAR2, pBuildingLevel IN VARCHAR2, pCampusLocation IN VARCHAR2, pFacultyID IN NUMBER) AS
+BEGIN
+	UPDATE Building_table building
+	SET building.buildingCode = pNewCode,
+	building.buildingName = pBuildingName,
+	building.buildingLocation = pBuildingLocation,
+	building.buildingLevel = pBuildingLevel,
+	building.campusLocation = pCampusLocation,
+	building.idFaculty = pFacultyID
+	WHERE building.buildingCode = pOldCode;
+END updateBuilding;
+
+/*
+* Procedure: deleteBuilding
+* Author: Esteban Coto Alfaro
+* Description: Procedure to delete a Building into the table Building_table
+* Created: 01/05/18
+* Last modification: 01/05/18
+* Last modification by: Esteban Coto Alfaro
+*/
+CREATE PROCEDURE deleteBuilding(pBuildingCode IN VARCHAR2) AS
+BEGIN
+	DELETE FROM Building_table building
+	WHERE building.buildingCode = pBuildingCode;
+	COMMIT;
+END deleteBuilding;
+
+/*
+* Procedure: insertOffice
+* Author: Esteban Coto Alfaro
+* Description: Procedure to insert a office into the table Office_table
+* Created: 29/04/18
+* Last modification: 29/04/18
+* Last modification by: Esteban Coto Alfaro
+*/
+CREATE PROCEDURE insertOffice(pBuildingCode IN VARCHAR2, pOfficeNum IN VARCHAR2,
+pOfficePhone IN NUMBER) AS
+BEGIN
+	INSERT INTO Office_table 
+	VALUES(Office_obj(seqOffice.Nextval, pBuildingCode, pOfficeNum, pOfficePhone));
+	COMMIT;
+END insertOffice;
+
+/*
+* Procedure: updateOffice
+* Author: Esteban Coto Alfaro
+* Description: Procedure to update a office into the table Office_table
+* Created: 29/04/18
+* Last modification: 29/04/18
+* Last modification by: Esteban Coto Alfaro
+*/
+CREATE PROCEDURE updateOffice(pOldNum IN VARCHAR2, pBuildingCode IN VARCHAR2, 
+	pNewNum IN VARCHAR2, pOfficePhone IN NUMBER) AS
+BEGIN
+	UPDATE Office_table office
+	SET office.buildingCode = pBuildingCode,
+	office.officeNumber = pNewNum,
+	office.officePhone = pOfficePhone
+	WHERE office.officeNumber = pOldNum;
+END updateOffice;
+
+/*
+* Procedure: deleteOffice
+* Author: Esteban Coto Alfaro
+* Description: Procedure to delete a office into the table Office_table
+* Created: 29/04/18
+* Last modification: 29/04/18
+* Last modification by: Esteban Coto Alfaro
+*/
+CREATE PROCEDURE deleteOffice(pOfficeNum IN VARCHAR2) AS
+BEGIN
+	DELETE FROM Office_table office
+	WHERE office.officeNumber = pOfficeNum;
+	COMMIT;
+END deleteOffice;
+
+/*
 * Procedure: insertClassroom
 * Author: Johan Torres Creed
 * Description: This procedure inserts a classroom in the table Subject_table.
 * Created: 28/04/18
-* Last modification: 28/04/18
+* Last modification: 04/05/18
 * Last modification by: Johan Torres Creed
 */
-CREATE PROCEDURE insertClassroom(pClassNumber IN VARCHAR2, pClassCapacity IN NUMBER) AS
+CREATE PROCEDURE insertClassroom(pBuildingCode IN VARCHAR2, pClassNumber IN VARCHAR2, pClassCapacity IN NUMBER) AS
 BEGIN
 	INSERT INTO Classroom_table
-	VALUES(Classroom_obj(seqClassroom.Nextval, pClassNumber, pClassCapacity));
+	VALUES(Classroom_obj(seqClassroom.Nextval, pBuildingCode, pClassNumber, pClassCapacity));
 	COMMIT;
-END insertClassroom;
-
-/* PRUEBA DE INSERT CLASSROOM*/
-
-CALL insertClassroom('TC01', 40); 
-
-/*
-* Procedure: deleteClassroom
-* Author: Johan Torres Creed
-* Description: This procedure delete a classroom in the table Classroom_table.
-* Created: 28/04/18
-* Last modification: 28/04/18
-* Last modification by: Johan Torres Creed
-*/
-CREATE PROCEDURE deleteClassroom(pClassNumber IN VARCHAR2) AS
-BEGIN
-	DELETE FROM Classroom_table 
-	WHERE classNumber = pClassNumber;
-	COMMIT;
-END deleteClassroom;
-
-/* PRUEBA DE DELETE CLASSROOM*/
-
-CALL deleteSubject('TC01');
+END insertClassroom; 
 
 /*
 * Procedure: getClassroom
@@ -294,7 +418,7 @@ CREATE OR REPLACE PROCEDURE getClassroom(cClassroom OUT SYS_REFCURSOR)
 IS
 BEGIN
 	OPEN cClassroom FOR 
-	SELECT Classroom_table.classNumber, Classroom_table.classCapacity
+	SELECT Classroom_table.buildingCode, Classroom_table.classNumber, Classroom_table.classCapacity
 	FROM Classroom_table;
 END getClassroom;
 
@@ -303,35 +427,84 @@ END getClassroom;
 * Author: Johan Torres Creed
 * Description: This procedure updates a classroom in the table Classroom_table.
 * Created: 28/04/18
+* Last modification: 04/05/18
+* Last modification by: Johan Torres Creed
+*/
+CREATE OR REPLACE PROCEDURE updateClassroom(pOldNum IN VARCHAR2, pBuildingCode IN VARCHAR2, 
+	pNewNum IN VARCHAR2, pClassCapacity IN NUMBER) AS
+BEGIN 
+	UPDATE Classroom_table clsr
+	SET clsr.buildingCode = pBuildingCode,
+	clsr.classNumber = pNewNum,
+	clsr.classCapacity = pClassCapacity
+	WHERE clsr.classNumber = pOldNum;
+END updateClassroom;
+
+/*
+* Procedure: deleteClassroom
+* Author: Johan Torres Creed
+* Description: This procedure delete a classroom in the table Classroom_table.
+* Created: 28/04/18
 * Last modification: 28/04/18
 * Last modification by: Johan Torres Creed
 */
-CREATE OR REPLACE PROCEDURE updateClassroom(pClassNumber IN VARCHAR2, pClassCapacity IN NUMBER) AS
-BEGIN 
-	UPDATE Classroom_table clsr
-	SET clsr.classNumber = pClassNumber,
-	clsr.classCapacity = pClassCapacity,
+CREATE PROCEDURE deleteClassroom(pClassNumber IN VARCHAR2) AS
+BEGIN
+	DELETE FROM Classroom_table clsr 
 	WHERE clsr.classNumber = pClassNumber;
-END updateClassroom;
+	COMMIT;
+END deleteClassroom;
 
 /*
 * Procedure: insertLab
 * Author: Johan Torres Creed
 * Description: This procedure inserts a lab in the table Lab_table.
 * Created: 28/04/18
-* Last modification: 28/04/18
+* Last modification: 05/05/18
 * Last modification by: Johan Torres Creed
 */
-CREATE PROCEDURE insertLab(pLabNumber IN VARCHAR2, pLabCapacity IN NUMBER, pLabEquipment in VARCHAR2) AS
+CREATE PROCEDURE insertLab(pBuildingCode IN VARCHAR2, pLabNumber IN VARCHAR2, 
+	pLabCapacity IN NUMBER, pLabEquipment in Equipment_list) AS
 BEGIN
 	INSERT INTO Lab_table
-	VALUES(Lab_obj(seqLab.Nextval, pLabNumber, pLabCapacity, pLabEquipment));
+	VALUES(Lab_obj(seqLab.Nextval, pBuildingCode, pLabNumber, pLabCapacity, pLabEquipment));
 	COMMIT;
 END insertLab;
 
-/* PRUEBA DE INSERT LAB*/
+/*
+* Procedure: getLab
+* Author: Johan Torres Creed
+* Description: This procedure get a lab in the table Lab_table and have a out parameter as a cursor.
+* Created: 28/04/18
+* Last modification: 28/04/18
+* Last modification by: Johan Torres Creed
+*/
+CREATE OR REPLACE PROCEDURE getLab(cLab OUT SYS_REFCURSOR)
+IS
+BEGIN
+	OPEN cLab FOR 
+	SELECT Lab_table.buildingCode, Lab_table.labNumber, Lab_table.labCapacity, Lab_table.labEquipment
+	FROM Lab_table;
+END getLab;
 
-CALL insertLab('BG113', 25, '25 PC'); 
+/*
+* Procedure: updateLab
+* Author: Johan Torres Creed
+* Description: This procedure updates a lab in the table Lab_table.
+* Created: 28/04/18
+* Last modification: 05/05/18
+* Last modification by: Johan Torres Creed
+*/
+CREATE OR REPLACE PROCEDURE updateLab(pOldNum IN VARCHAR2, pBuildingCode IN VARCHAR, pNewNum IN VARCHAR2, 
+	pLabCapacity IN NUMBER, pLabEquipment IN Equipment_list) AS
+BEGIN 
+	UPDATE Lab_table lab
+	SET lab.buildingCode = pBuildingCode,
+	lab.labNumber = pNewNum,
+	lab.labCapacity = pLabCapacity,
+	lab.labEquipment = pLabEquipment
+	WHERE lab.labNumber = pOldNum;
+END updateLab;
 
 /*
 * Procedure: deleteLab
@@ -347,43 +520,6 @@ BEGIN
 	WHERE labNumber = pLabNumber;
 	COMMIT;
 END deleteLab;
-
-/* PRUEBA DE DELETE LAB*/
-
-CALL deleteSubject('BG113');
-
-/*
-* Procedure: getLab
-* Author: Johan Torres Creed
-* Description: This procedure get a lab in the table Lab_table and have a out parameter as a cursor.
-* Created: 28/04/18
-* Last modification: 28/04/18
-* Last modification by: Johan Torres Creed
-*/
-CREATE OR REPLACE PROCEDURE getLab(cLab OUT SYS_REFCURSOR)
-IS
-BEGIN
-	OPEN cLab FOR 
-	SELECT Lab_table.labNumber, Lab_table.labCapacity, Lab_table.labEquipment
-	FROM Lab_table;
-END getLab;
-
-/*
-* Procedure: updateLab
-* Author: Johan Torres Creed
-* Description: This procedure updates a lab in the table Lab_table.
-* Created: 28/04/18
-* Last modification: 28/04/18
-* Last modification by: Johan Torres Creed
-*/
-CREATE OR REPLACE PROCEDURE updateLab(pLabNumber IN VARCHAR2, pLabCapacity IN NUMBER, pLabEquipment IN VARCHAR2) AS
-BEGIN 
-	UPDATE Lab_table lab
-	SET lab.labNumber = pLabNumber,
-	lab.labCapacity = pLabCapacity,
-	lab.labEquipment = pLabEquipment
-	WHERE lab.labNumber = pLabNumber;
-END updateLab;
 
 /*
 * Procedure: insertDegree
@@ -404,25 +540,6 @@ END insertDegree;
 /* PRUEBA DE INSERT DEGREE*/
 
 CALL insertSubject('Bachelor of Comp. Sci', 3, 'Year 12 or equivalent', getFaculty(0)); 
-
-/*
-* Procedure: deleteDegree
-* Author: Johan Torres Creed
-* Description: This procedure delete a degree in the table Degree_table.
-* Created: 28/04/18
-* Last modification: 28/04/18
-* Last modification by: Johan Torres Creed
-*/
-CREATE PROCEDURE deleteDegree(pIDDegree IN NUMBER) AS
-BEGIN
-	DELETE FROM Degree_table 
-	WHERE idDegree = pIDDegree;
-	COMMIT;
-END deleteDegree;
-
-/* PRUEBA DE DELETE DEGREE*/
-
-CALL deleteDegree(0);
 
 /*
 * Procedure: getDegree
@@ -461,59 +578,79 @@ BEGIN
 END updateDegree;
 
 /*
+* Procedure: deleteDegree
+* Author: Johan Torres Creed
+* Description: This procedure delete a degree in the table Degree_table.
+* Created: 28/04/18
+* Last modification: 28/04/18
+* Last modification by: Johan Torres Creed
+*/
+CREATE PROCEDURE deleteDegree(pIDDegree IN NUMBER) AS
+BEGIN
+	DELETE FROM Degree_table 
+	WHERE idDegree = pIDDegree;
+	COMMIT;
+END deleteDegree;
+
+/* PRUEBA DE DELETE DEGREE*/
+
+CALL deleteDegree(0);
+
+/*
+* Procedure: insertEnrollsIn
+* Author: Johan Torres Creed
+* Description: Enrolls a student and inserts in EnrollsIn Table.
+* Created: 28/04/18
+* Last modification: 05/05/18
+* Last modification by: Johan Torres Creed
+*/
+CREATE PROCEDURE insertEnrollsIn(pStudent IN NUMBER, pDegree IN NUMBER) AS
+BEGIN
+	INSERT INTO EnrollsIn_table
+	SELECT seqEnroll.Nextval, REF(std), REF(deg)
+	FROM Student_table std, Degree_table deg
+	WHERE std.idPerson = pStudent AND deg.idDegree = pDegree;
+	COMMIT;
+END insertEnrollsIn;
+
+/*
+* Procedure: deleteEnrollsIn
+* Author: Johan Torres Creed
+* Description: Deletes the student's information in EnrollsIn.
+* Created: 28/04/18
+* Last modification: 05/05/18
+* Last modification by: Johan Torres Creed
+*/
+CREATE PROCEDURE deleteEnrollsIn(pStudent IN REF Student_obj) AS
+BEGIN
+	DELETE FROM EnrollsIn_table
+	WHERE studentN = pStudent;
+	COMMIT;
+END deleteEnrollsIn;
+
+/*
 * Procedure: insertTakes
 * Author: Johan Torres Creed
 * Description: This procedure inserts a take in the table Takes_table.
 * Created: 28/04/18
-* Last modification: 28/04/18
+* Last modification: 05/05/18
 * Last modification by: Johan Torres Creed
 */
 CREATE PROCEDURE insertTakes(pStudent IN NUMBER, pSubject IN NUMBER, pMarks IN NUMBER) AS
 BEGIN
 	INSERT INTO Takes_table
-	VALUES(SELECT REF(pStd), REF(pSubj), pMarks
-		FROM Student_table pStd, Subject_table pSubj
-		WHERE pStd.idPerson = pStudent AND pSubj.idSubject = pSubject);
+	SELECT seqTakes.Nextval, REF(std), REF(subj), pMarks
+	FROM Student_table std, Subject_table subj
+	WHERE std.idPerson = pStudent AND subj.idSubject = pSubject;
 	COMMIT;
 END insertTakes;
-
-/*
-* Procedure: deleteTakes
-* Author: Johan Torres Creed
-* Description: This procedure delete a take in the table Takes_table.
-* Created: 28/04/18
-* Last modification: 28/04/18
-* Last modification by: Johan Torres Creed
-*/
-CREATE PROCEDURE deleteTakes(pStudent IN NUMBER) AS
-BEGIN
-	DELETE FROM Takes_table 
-	WHERE idPerson = pStudent;
-	COMMIT;
-END deleteTakes;
-
-/*
-* Procedure: getTakes
-* Author: Johan Torres Creed
-* Description: This procedure get a take in the table Takes_table and have a out parameter as a cursor.
-* Created: 28/04/18
-* Last modification: 28/04/18
-* Last modification by: Johan Torres Creed
-*/
-CREATE OR REPLACE PROCEDURE getTakes(cTakes OUT SYS_REFCURSOR)
-IS
-BEGIN
-	OPEN cTakes FOR 
-	SELECT Takes_table.idStudent, Takes_table.idSubject, Takes_table.marks
-	FROM Takes_table;
-END getTakes;
 
 /*
 * Procedure: updateTakes
 * Author: Johan Torres Creed
 * Description: This procedure updates a take in the table Takes_table.
 * Created: 28/04/18
-* Last modification: 28/04/18
+* Last modification: 03/05/18
 * Last modification by: Johan Torres Creed
 */
 CREATE OR REPLACE PROCEDURE updateTakes(pStudent IN NUMBER, pSubject IN NUMBER, pMarks IN NUMBER) AS
@@ -523,6 +660,21 @@ BEGIN
 	WHERE tks.idStudent = (SELECT REF(pStd) FROM Student_table pStd WHERE pStd.idPerson = pStudent)
 		AND tks.idSubject = (SELECT REF(pSubj) FROM Subject_table pSubj WHERE pStbj.idSubject = pSubject);
 END updateTakes;
+
+/*
+* Procedure: deleteTakes
+* Author: Johan Torres Creed
+* Description: This procedure delete a take in the table Takes_table.
+* Created: 28/04/18
+* Last modification: 28/04/18
+* Last modification by: Johan Torres Creed
+*/
+CREATE PROCEDURE deleteTakes(pStudent IN REF Student_obj) AS
+BEGIN
+	DELETE FROM Takes_table 
+	WHERE studentN = pStudent;
+	COMMIT;
+END deleteTakes;
 
 /*
 * Procedure: insertSubject
@@ -539,29 +691,6 @@ BEGIN
 	VALUES(Subject_obj(sequenceSubjectID.Nextval, pSubjectName, pCredit, pSubjectPrerequisites, pIDPerson));
 	COMMIT;
 END insertSubject;
-
-/* PRUEBA DE INSERT SUBJECT*/
-
-CALL insertSubject('Introduccion a la Tecnologia', 3, ' ', getSeniorLecturer(0)); 
-
-/*
-* Procedure: deleteSubject
-* Author: Johan Torres Creed
-* Description: This procedure delete a subject in the table Subject_table.
-* Created: 28/04/18
-* Last modification: 28/04/18
-* Last modification by: Johan Torres Creed
-*/
-CREATE PROCEDURE deleteSubject(pIDSubject IN NUMBER) AS
-BEGIN
-	DELETE FROM Subject_table 
-	WHERE idSubject = pIDSubject;
-	COMMIT;
-END deleteSubject;
-
-/* PRUEBA DE DELETE SUBJECT*/
-
-CALL deleteSubject(0);
 
 /*
 * Procedure: getSubject
@@ -600,6 +729,21 @@ BEGIN
 END updateSubject;
 
 /*
+* Procedure: deleteSubject
+* Author: Johan Torres Creed
+* Description: This procedure delete a subject in the table Subject_table.
+* Created: 28/04/18
+* Last modification: 28/04/18
+* Last modification by: Johan Torres Creed
+*/
+CREATE PROCEDURE deleteSubject(pIDSubject IN NUMBER) AS
+BEGIN
+	DELETE FROM Subject_table 
+	WHERE idSubject = pIDSubject;
+	COMMIT;
+END deleteSubject;
+
+/*
 * Procedure: insertSeniorLecturer
 * Author: Johan Torres Creed
 * Description: This procedure inserts a senior Lecturer in the table SeniorLecturer_table.
@@ -623,24 +767,6 @@ END insertSeniorLecturer;
 
 CALL insertSeniorLecturer('Billy', 'Gomez', 'Master', 'Pavas', 12365478, 1452,
 'Cartago', 10, 'BCGH6', 'Secretario', 'Ingenieria', 'Asociado', 2, 5, 7);
-/*
-* Procedure: deleteSeniorLecturer
-* Author: Johan Torres Creed
-* Description: This procedure deletes a senior lecturer in the table SeniorLecturer_table.
-* Created: 26/04/18
-* Last modification: 26/04/18
-* Last modification by: Johan Torres Creed
-*/
-CREATE PROCEDURE deleteSeniorLecturer(pIDPerson IN NUMBER) AS
-BEGIN
-	DELETE FROM SeniorLecturer_table 
-	WHERE idPerson = pIDPerson;
-	COMMIT;
-END deleteSeniorLecturer;
-
-/* PRUEBA DE DELETE SENIOR LECTURER*/
-
-CALL deleteSeniorLecturer(0);
 
 /*
 * Procedure: getSeniorLecturer
@@ -701,11 +827,70 @@ CALL updateSeniorLecturer(0, 'Billy', 'Gomez', 'Master', 'Pavas', 12365478, 1452
 'Cartago', 10, 'BCGH6', 'Secretario', 'Ingenieria', 'Asociado', 2, 5, 8);
 
 /*
+* Procedure: deleteSeniorLecturer
+* Author: Johan Torres Creed
+* Description: This procedure deletes a senior lecturer in the table SeniorLecturer_table.
+* Created: 26/04/18
+* Last modification: 26/04/18
+* Last modification by: Johan Torres Creed
+*/
+CREATE PROCEDURE deleteSeniorLecturer(pIDPerson IN NUMBER) AS
+BEGIN
+	DELETE FROM SeniorLecturer_table 
+	WHERE idPerson = pIDPerson;
+	COMMIT;
+END deleteSeniorLecturer;
+
+/* PRUEBA DE DELETE SENIOR LECTURER*/
+
+CALL deleteSeniorLecturer(0);
+
+/*
 *-----------
 * SEQUENCE
 *-----------
 */
 
+/*
+* Sequence: seqBuilding
+* Author: Esteban Coto Alfaro
+* Description: Sequence to have control of the building id
+* Created: 28/04/18
+* Last modification: 28/04/18
+* Last modification by: Esteban Coto Alfaro
+*/
+CREATE SEQUENCE seqBuilding
+START WITH 0
+INCREMENT BY 1
+MINVALUE 0 
+MAXVALUE 1000000
+NOCACHE
+NOCYCLE
+
+/*
+* Sequence: seqOffice
+* Author: Esteban Coto Alfaro
+* Description: Sequence to have control of the office id
+* Created: 28/04/18
+* Last modification: 28/04/18
+* Last modification by: Esteban Coto Alfaro
+*/
+CREATE SEQUENCE seqOffice
+START WITH 0
+INCREMENT BY 1
+MINVALUE 0 
+MAXVALUE 1000000
+NOCACHE
+NOCYCLE
+
+/*
+* Sequence: seqClassroom
+* Author: Johan Torres Creed
+* Description: Sequence to have control of the classroom id
+* Created: 28/04/18
+* Last modification: 28/04/18
+* Last modification by: Johan Torres Creed
+*/
 CREATE SEQUENCE seqClassroom
 START WITH 0
 INCREMENT BY 1
@@ -714,6 +899,14 @@ MAXVALUE 1000000
 NOCACHE
 NOCYCLE
 
+/*
+* Sequence: seqLab
+* Author: Johan Torres Creed
+* Description: Sequence to have control of the Lab id
+* Created: 28/04/18
+* Last modification: 28/04/18
+* Last modification by: Johan Torres Creed
+*/
 CREATE SEQUENCE seqLab
 START WITH 0
 INCREMENT BY 1
@@ -722,7 +915,47 @@ MAXVALUE 1000000
 NOCACHE
 NOCYCLE
 
+/*
+* Sequence: seqDegree
+* Author: Johan Torres Creed
+* Description: Sequence degree id.
+* Created: 28/04/18
+* Last modification: 28/04/18
+* Last modification by: Johan Torres Creed
+*/
 CREATE SEQUENCE seqDegree
+START WITH 0
+INCREMENT BY 1
+MINVALUE 0 
+MAXVALUE 1000000
+NOCACHE
+NOCYCLE
+
+/*
+* Sequence: seqEnroll
+* Author: Johan Torres Creed
+* Description: Sequence to have control of the EnrollIn id
+* Created: 28/04/18
+* Last modification: 28/04/18
+* Last modification by: Johan Torres Creed
+*/
+CREATE SEQUENCE seqEnroll
+START WITH 0
+INCREMENT BY 1
+MINVALUE 0 
+MAXVALUE 1000000
+NOCACHE
+NOCYCLE
+
+/*
+* Sequence: seqTakes
+* Author: Johan Torres Creed
+* Description: Sequence to have control of the Takes id
+* Created: 28/04/18
+* Last modification: 28/04/18
+* Last modification by: Johan Torres Creed
+*/
+CREATE SEQUENCE seqTakes
 START WITH 0
 INCREMENT BY 1
 MINVALUE 0 
@@ -744,8 +977,16 @@ CREATE SEQUENCE sequenceSubjectID
  MINVALUE 0
  MAXVALUE 10000000
  NOCACHE
- NOCYCLE;
+ NOCYCLE
 
+/*
+* Sequence: sequenceSeniorLecturerID
+* Author: Johan Torres Creed
+* Description: Sequence Senior lecturer id.
+* Created: 28/04/18
+* Last modification: 28/04/18
+* Last modification by: Johan Torres Creed
+*/
 CREATE SEQUENCE sequenceSeniorLecturerID
  START WITH     0
  INCREMENT BY   1
