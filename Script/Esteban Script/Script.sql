@@ -8,7 +8,8 @@
 */
 CREATE OR REPLACE TYPE Campus_obj AS OBJECT ( 
 	idCampus NUMBER,
-	location VARCHAR2(100),
+	nameCampus VARCHAR2(100),
+	locationCampus VARCHAR2(100),
 	address VARCHAR2(100),
 	phone NUMBER,
 	fax NUMBER,
@@ -295,15 +296,15 @@ CREATE TABLE Research_Center_table OF Research_Center_obj(PRIMARY KEY (idResearc
 * Last modification: 29/04/18
 * Last modification by: Esteban Coto Alfaro
 */
-CREATE PROCEDURE insertCampus(pLocation IN VARCHAR2, pAddress IN VARCHAR2,
+CREATE PROCEDURE insertCampus(pName IN VARCHAR2, pLocation IN VARCHAR2, pAddress IN VARCHAR2,
 pPhone IN NUMBER, pFax IN NUMBER, pHead IN VARCHAR2) AS
 BEGIN
 	INSERT INTO Campus_table 
-	VALUES(Campus_obj(seqCampus.Nextval, pLocation, pAddress, pPhone, pFax, pHead));
+	VALUES(Campus_obj(seqCampus.Nextval, pName, pLocation, pAddress, pPhone, pFax, pHead));
 	COMMIT;
 END insertCampus;
 
-CALL insertCampus('Albury/Wodonga', 'Parkers Road Wodonga VIC 3690', 61260583700, 6202583700, 'John Hill');
+CALL insertCampus('Sede Central', 'Albury/Wodonga', 'Parkers Road Wodonga VIC 3690', 61260583700, 6202583700, 'John Hill');
 
 /*
 * Procedure: updateCampus
@@ -313,17 +314,20 @@ CALL insertCampus('Albury/Wodonga', 'Parkers Road Wodonga VIC 3690', 61260583700
 * Last modification: 29/04/18
 * Last modification by: Esteban Coto Alfaro
 */
-CREATE PROCEDURE updateCampus(pCampusID IN NUMBER, pLocation IN VARCHAR2, pAddress IN VARCHAR2,
+CREATE PROCEDURE updateCampus(pID IN NUMBER, pName IN VARCHAR2, pLocation IN VARCHAR2, pAddress IN VARCHAR2,
 pPhone IN NUMBER, pFax IN NUMBER, pHead IN VARCHAR2) AS
 BEGIN
 	UPDATE Campus_table campus
-	SET campus.location = pLocation,
+	SET campus.nameCampus = pName,
+	campus.locationCampus = pLocation,
 	campus.address = pAddress,
 	campus.phone = pPhone,
 	campus.fax = pFax,
 	campus.head = pHead
-	WHERE campus.idCampus = pCampusID;
+	WHERE campus.idCampus = pID;
 END updateCampus;
+
+CALL updateCampus('Sede Central', 'Sede Cartago','Albury/Wodonga', 'Parkers Road Wodonga VIC 3690', 61260583700, 6202583700, 'John Hill');
 
 /*
 * Procedure: deleteCampus
@@ -333,126 +337,12 @@ END updateCampus;
 * Last modification: 29/04/18
 * Last modification by: Esteban Coto Alfaro
 */
-CREATE PROCEDURE deleteCampus(pCampusID IN NUMBER) AS
+CREATE PROCEDURE deleteCampus(pName IN VARCHAR2) AS
 BEGIN
 	DELETE FROM Campus_table campus
-	WHERE campus.idCampus = pCampusID;
+	WHERE campus.nameCampus = pName;
 	COMMIT;
 END deleteCampus;
-
-CREATE OR REPLACE PROCEDURE getCampus IS
-    CURSOR c_getCampus IS SELECT campus.location, campus.address, campus.phone, campus.fax, 
-                                campus.head FROM Campus_Table campus;
-           r_Campus c_getCampus%ROWTYPE;
-    BEGIN
-        OPEN c_getCampus;
-        LOOP
-            FETCH c_getCampus INTO r_Campus;
-            EXIT WHEN c_getCampus%NOTFOUND;
-        END LOOP;
-        CLOSE c_getCampus;
-END;
-/*
-* Procedure: insertOffice
-* Author: Esteban Coto Alfaro
-* Description: Procedure to insert a office into the table Office_table
-* Created: 29/04/18
-* Last modification: 29/04/18
-* Last modification by: Esteban Coto Alfaro
-*/
-CREATE PROCEDURE insertOffice(pBuildingCode IN VARCHAR2(100), pOfficeNum IN VARCHAR2(100),
-pOfficePhone IN NUMBER) AS
-BEGIN
-	INSERT INTO Office_table 
-	VALUES(Office_obj(seqOffice.Nextval, pBuildingCode, pOfficeNum, pOfficePhone));
-	COMMIT;
-END insertOffice;
-
-/*
-* Procedure: updateOffice
-* Author: Esteban Coto Alfaro
-* Description: Procedure to update a office into the table Office_table
-* Created: 29/04/18
-* Last modification: 29/04/18
-* Last modification by: Esteban Coto Alfaro
-*/
-CREATE PROCEDURE updateOffice(pOldNum IN VARCHAR2(100), pBuildingCode IN VARCHAR2(100), 
-	pNewNum IN VARCHAR2(100), pOfficePhone IN NUMBER) AS
-BEGIN
-	UPDATE Office_table office
-	SET office.buildingCode = pBuildingCode,
-	office.officeNumber = pNewNum,
-	office.officePhone = pOfficePhone
-	WHERE office.officeNumber = pOldNum;
-END updateOffice;
-
-/*
-* Procedure: deleteOffice
-* Author: Esteban Coto Alfaro
-* Description: Procedure to delete a office into the table Office_table
-* Created: 29/04/18
-* Last modification: 29/04/18
-* Last modification by: Esteban Coto Alfaro
-*/
-CREATE PROCEDURE deleteOffice(pOfficeNum IN VARCHAR2(100)) AS
-BEGIN
-	DELETE FROM Office_table office
-	WHERE office.officeNumber = pOfficeNum;
-	COMMIT;
-END deleteOffice;
-
-/*
-* Procedure: insertBuilding
-* Author: Esteban Coto Alfaro
-* Description: Procedure to insert a building into the table Building_table
-* Created: 01/05/18
-* Last modification: 01/05/18
-* Last modification by: Esteban Coto Alfaro
-*/
-CREATE PROCEDURE insertBuilding(pBuildingCode IN VARCHAR2(100), pBuildingName IN VARCHAR2(100),
-pBuildingLocation IN VARCHAR2(100), pBuildingLevel IN NUMBER, pCampusLocation IN VARCHAR2(100),
-pFacultyID IN NUMBER) AS
-BEGIN
-	INSERT INTO Building_table 
-	VALUES(Building_obj(seqBuilding.Nextval, pBuildingCode, pBuildingName, pBuildingLocation, pBuildingLevel, pCampusLocation, pFacultyID));
-	COMMIT;
-END insertBuilding;
-
-/*
-* Procedure: updateBuilding
-* Author: Esteban Coto Alfaro
-* Description: Procedure to update a building into the table Building_table
-* Created: 01/05/18
-* Last modification: 01/05/18
-* Last modification by: Esteban Coto Alfaro
-*/
-CREATE PROCEDURE updateBuilding(pOldCode IN VARCHAR2(100), pNewCode IN VARCHAR2(100), pBuildingName IN VARCHAR2(100),
-	pBuildingLocation IN VARCHAR2(100), pBuildingLevel IN VARCHAR2(100), pCampusLocation IN VARCHAR2(100), pFacultyID IN NUMBER) AS
-BEGIN
-	UPDATE Building_table building
-	SET building.buildingCode = pNewCode,
-	building.buildingName = pBuildingName,
-	building.buildingLocation = pBuildingLocation,
-	building.buildingLevel = pBuildingLevel,
-	building.campusLocation = pCampusLocation,
-	building.idFaculty = pFacultyID
-	WHERE building.buildingCode = pOldCode;
-END updateBuilding;
-
-/*
-* Procedure: deleteBuilding
-* Author: Esteban Coto Alfaro
-* Description: Procedure to delete a Building into the table Building_table
-* Created: 01/05/18
-* Last modification: 01/05/18
-* Last modification by: Esteban Coto Alfaro
-*/
-CREATE PROCEDURE deleteBuilding(pBuildingCode IN VARCHAR2(100)) AS
-BEGIN
-	DELETE FROM Building_table building
-	WHERE building.buildingCode = pBuildingCode;
-	COMMIT;
-END deleteBuilding;
 
 /*
 * Procedure: insertFaculty
@@ -468,7 +358,7 @@ BEGIN
 	VALUES(Faculty_obj(seqFaculty.Nextval, pFacultyName, pFacultyDean, 
 		List_Department(Department_obj(NULL, NULL, NULL, NULL)),
 		List_School(School_obj(NULL, NULL, NULL, NULL)), 
-		List_RC(Research_Center_obj(NULL, NULL, NULL, NULL)));
+		List_RC(Research_Center_obj(NULL, NULL, NULL, NULL))));
 	COMMIT;
 END insertFaculty;
 
@@ -576,6 +466,8 @@ BEGIN
 	VALUES(seqSchool.Nextval, pName, pHead, pSchoolProf);
 	COMMIT;
 END insertSchool;
+
+CALL insertSchool('Medicina', 'Pediatria', 'Adrian Gonzales', SchoolProf_array(SchoolProf_obj('Ana Blanco', 12345), SchoolProf_obj('Juan Perez', 54321)));
 
 /*
 * Procedure: updateSchool
@@ -786,34 +678,29 @@ MAXVALUE 1000000
 NOCACHE
 NOCYCLE
 
+/*
+---------- CONSULTAS ----------
+*/
+/*
+* Consulta: Department, School and Research Center Information
+* Author: Esteban Coto Alfaro
+* Description: Insormation of every Department, School and Research Center of a Faculty
+* Created: 05/05/18
+* Last modification: 05/05/18
+* Last modification by: Esteban Coto Alfaro
+*/
+SELECT faculty.name, dept.*, school.*, rc.*
+FROM faculty_table faculty, TABLE(faculty.department_list) dept,
+TABLE(faculty.school_list) school, TABLE(faculty.rc_list) rc;
 
-insert into faculty_table
-VALUES(0, 'fac', 'dean', List_Department(
-Department_obj(0, 'dept1', 'head', DeptProf_array(DeptProf_obj('Nombre1', 12345), DeptProf_obj('Nombre2', 54321))), 
-Department_obj(1, 'dept2', 'head2', DeptProf_array(DeptProf_obj('Nombre3', 12345), DeptProf_obj('Nombre4', 54321))) ), List_School(
-School_obj(0, 'school1', 'Schoolhead', SchoolProf_array(SchoolProf_obj('Nombre1', 12345), SchoolProf_obj('Nombre2', 54321))), 
-School_obj(1, 'school2', 'head2', SchoolProf_array(SchoolProf_obj('Nombre3', 12345), SchoolProf_obj('Nombre4', 54321))) ), List_RC(
-Research_Center_obj(0, 'rc1', 'head1', RC_Unit_array(RC_Unit_obj('unit1'),RC_Unit_obj('unit2'))), 
-Research_Center_obj(1, 'rc2', 'head2', RC_Unit_array(RC_Unit_obj('unit3'),RC_Unit_obj('unit4'))))
-);
+/*
+* Consulta: Mostrar los ocupantes de las oficinas
+* Author: Esteban Coto Alfaro
+* Description: Information of every Office and the staff
+* Created: 08/05/18
+* Last modification: 08/05/18
+* Last modification by: Esteban Coto Alfaro
+*/
+SELECT o.*, s.* FROM Office_table o, Staff_table s
+WHERE o.officeNumber = s.numberOffice;
 
-
-INSERT INTO TABLE(faculty_table.department_list 
-From faculty_table 
-WHERE faculty_table.idfaculty = 0)
-VALUES
-(0, 'Name', 'head');
-COMMIT;
-
-UPDATE TABLE(SELECT faculty_table.department_list 
-From faculty_table 
-WHERE faculty_table.idfaculty = 0)
-SET head = 'head1'
-WHERE idDepartment = 0;
-Commit;
-
-DELETE TABLE(SELECT faculty_table.department_list 
-From faculty_table 
-WHERE faculty_table.idfaculty = 0)
-WHERE idDepartment = 0;
-Commit;
