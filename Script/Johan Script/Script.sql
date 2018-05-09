@@ -147,6 +147,7 @@ CREATE TABLE Lab_table OF Lab_obj (PRIMARY KEY(labNumber))
 */
 CREATE TYPE Degree_obj AS OBJECT (
 	idDegree NUMBER,
+	degreeCode VARCHAR2(100),
 	degreeName VARCHAR2(100),
 	length NUMBER,
 	degreePrerequisites VARCHAR2(100),
@@ -307,6 +308,20 @@ BEGIN
 END insertBuilding;
 
 /*
+* Procedure: getBuildingUsingSelect
+* Author: Johan Torres Creed
+* Description: This procedure get a building in the table Building_table.
+* Created: 28/04/18
+* Last modification: 08/05/18
+* Last modification by: Johan Torres Creed
+*/
+CREATE OR REPLACE PROCEDURE getBuildingUsingSelect AS
+BEGIN
+	SELECT *
+	FROM Building_table;
+END getBuildingUsingSelect;
+
+/*
 * Procedure: updateBuilding
 * Author: Esteban Coto Alfaro
 * Description: Procedure to update a building into the table Building_table
@@ -359,6 +374,20 @@ BEGIN
 END insertOffice;
 
 /*
+* Procedure: getOfficeUsingSelect
+* Author: Johan Torres Creed
+* Description: This procedure gets offices in the table Office_table.
+* Created: 28/04/18
+* Last modification: 08/05/18
+* Last modification by: Johan Torres Creed
+*/
+CREATE OR REPLACE PROCEDURE getOfficeUsingSelect AS
+BEGIN
+	SELECT *
+	FROM Office_table;
+END getOfficeUsingSelect;
+
+/*
 * Procedure: updateOffice
 * Author: Esteban Coto Alfaro
 * Description: Procedure to update a office into the table Office_table
@@ -407,20 +436,18 @@ BEGIN
 END insertClassroom; 
 
 /*
-* Procedure: getClassroom
+* Procedure: getClassroomUsingSelect
 * Author: Johan Torres Creed
-* Description: This procedure get a classroom in the table Classroom_table and have a out parameter as a cursor.
+* Description: This procedure get a classroom in the table Classroom_table.
 * Created: 28/04/18
-* Last modification: 28/04/18
+* Last modification: 08/05/18
 * Last modification by: Johan Torres Creed
 */
-CREATE OR REPLACE PROCEDURE getClassroom(cClassroom OUT SYS_REFCURSOR)
-IS
+CREATE OR REPLACE PROCEDURE getClassroomUsingSelect AS
 BEGIN
-	OPEN cClassroom FOR 
-	SELECT Classroom_table.buildingCode, Classroom_table.classNumber, Classroom_table.classCapacity
+	SELECT *
 	FROM Classroom_table;
-END getClassroom;
+END getClassroomUsingSelect;
 
 /*
 * Procedure: updateClassroom
@@ -472,20 +499,18 @@ BEGIN
 END insertLab;
 
 /*
-* Procedure: getLab
+* Procedure: getLabUsingSelect
 * Author: Johan Torres Creed
-* Description: This procedure get a lab in the table Lab_table and have a out parameter as a cursor.
+* Description: This procedure get a lab in the table Lab_table.
 * Created: 28/04/18
-* Last modification: 28/04/18
+* Last modification: 08/05/18
 * Last modification by: Johan Torres Creed
 */
-CREATE OR REPLACE PROCEDURE getLab(cLab OUT SYS_REFCURSOR)
-IS
+CREATE OR REPLACE PROCEDURE getLabUsingSelect AS
 BEGIN
-	OPEN cLab FOR 
-	SELECT Lab_table.buildingCode, Lab_table.labNumber, Lab_table.labCapacity, Lab_table.labEquipment
+	SELECT *
 	FROM Lab_table;
-END getLab;
+END getLabUsingSelect;
 
 /*
 * Procedure: updateLab
@@ -526,51 +551,45 @@ END deleteLab;
 * Author: Johan Torres Creed
 * Description: This procedure inserts a degree in the table Degree_table.
 * Created: 28/04/18
-* Last modification: 28/04/18
+* Last modification: 08/05/18
 * Last modification by: Johan Torres Creed
 */
-CREATE PROCEDURE insertDegree(pDegreeName IN VARCHAR2, pLength IN NUMBER,
+CREATE PROCEDURE insertDegree(pDegreeCode IN VARCHAR2, pDegreeName IN VARCHAR2, pLength IN NUMBER,
 pDegreePrerequisites IN VARCHAR2, pIDFaculty IN NUMBER) AS
 BEGIN
 	INSERT INTO Degree_table
-	VALUES(Degree_obj(seqDegree.Nextval, pDegreeName, pLength, pDegreePrerequisites, pIDFaculty));
+	VALUES(Degree_obj(seqDegree.Nextval, pDegreeCode, pDegreeName, pLength, pDegreePrerequisites, pIDFaculty));
 	COMMIT;
 END insertDegree;
 
-/* PRUEBA DE INSERT DEGREE*/
-
-CALL insertSubject('Bachelor of Comp. Sci', 3, 'Year 12 or equivalent', getFaculty(0)); 
-
 /*
-* Procedure: getDegree
+* Procedure: getDegreeUsingSelect
 * Author: Johan Torres Creed
-* Description: This procedure get a degree in the table Degree_table and have a out parameter as a cursor.
+* Description: This procedure gets degree in the table Degree_table.
 * Created: 28/04/18
-* Last modification: 28/04/18
+* Last modification: 08/05/18
 * Last modification by: Johan Torres Creed
 */
-CREATE OR REPLACE PROCEDURE getDegree(cDegree OUT SYS_REFCURSOR)
-IS
+CREATE OR REPLACE PROCEDURE getDegreeUsingSelect AS
 BEGIN
-	OPEN cDegree FOR 
-	SELECT Degree_table.idDegree, Degree_table.degreeName, Degree_table.length,
-	Degree_table.degreePrerequisites, Degree_table.idFaculty
+	SELECT *
 	FROM Degree_table;
-END getDegree;
+END getDegreeUsingSelect;
 
 /*
 * Procedure: updateDegree
 * Author: Johan Torres Creed
 * Description: This procedure updates a degree in the table Degree_table.
 * Created: 28/04/18
-* Last modification: 28/04/18
+* Last modification: 08/05/18
 * Last modification by: Johan Torres Creed
 */
-CREATE OR REPLACE PROCEDURE updateDegree(pIDDegree IN NUMBER, pDegreeName IN VARCHAR2,
+CREATE OR REPLACE PROCEDURE updateDegree(pIDDegree IN NUMBER, pDegreeCode IN VARCHAR2, pDegreeName IN VARCHAR2,
 pLength IN NUMBER, pDegreePrerequisites IN VARCHAR2, pIDFaculty IN NUMBER) AS
 BEGIN 
 	UPDATE Degree_table deg
-	SET deg.degreeName = pDegreeName,
+	SET deg.degreeCode = pDegreeCode,
+	deg.degreeName = pDegreeName,
 	deg.length = pLength,
 	deg.degreePrerequisites = pDegreePrerequisites,
 	deg.idFaculty = pIDFaculty
@@ -592,10 +611,6 @@ BEGIN
 	COMMIT;
 END deleteDegree;
 
-/* PRUEBA DE DELETE DEGREE*/
-
-CALL deleteDegree(0);
-
 /*
 * Procedure: insertEnrollsIn
 * Author: Johan Torres Creed
@@ -604,14 +619,28 @@ CALL deleteDegree(0);
 * Last modification: 05/05/18
 * Last modification by: Johan Torres Creed
 */
-CREATE PROCEDURE insertEnrollsIn(pStudent IN NUMBER, pDegree IN NUMBER) AS
+CREATE PROCEDURE insertEnrollsIn(pStudent IN NUMBER, pDegree IN VARCHAR2) AS
 BEGIN
 	INSERT INTO EnrollsIn_table
 	SELECT seqEnroll.Nextval, REF(std), REF(deg)
 	FROM Student_table std, Degree_table deg
-	WHERE std.idPerson = pStudent AND deg.idDegree = pDegree;
+	WHERE std.idPerson = pStudent AND deg.degreeCode = pDegree;
 	COMMIT;
 END insertEnrollsIn;
+
+/*
+* Procedure: getEnrollUsingSelect
+* Author: Johan Torres Creed
+* Description: This procedure gets enroll in the table EnrollsIn_table.
+* Created: 28/04/18
+* Last modification: 08/05/18
+* Last modification by: Johan Torres Creed
+*/
+CREATE OR REPLACE PROCEDURE getEnrollUsingSelect AS
+BEGIN
+	SELECT *
+	FROM EnrollsIn_table;
+END getEnrollUsingSelect;
 
 /*
 * Procedure: deleteEnrollsIn
@@ -644,6 +673,20 @@ BEGIN
 	WHERE std.idPerson = pStudent AND subj.idSubject = pSubject;
 	COMMIT;
 END insertTakes;
+
+/*
+* Procedure: getTakesUsingSelect
+* Author: Johan Torres Creed
+* Description: This procedure gets takes in the table Takes_table.
+* Created: 28/04/18
+* Last modification: 08/05/18
+* Last modification by: Johan Torres Creed
+*/
+CREATE OR REPLACE PROCEDURE getTakesUsingSelect AS
+BEGIN
+	SELECT *
+	FROM Takes_table;
+END getTakesUsingSelect;
 
 /*
 * Procedure: updateTakes
@@ -693,21 +736,18 @@ BEGIN
 END insertSubject;
 
 /*
-* Procedure: getSubject
+* Procedure: getSubjectUsingSelect
 * Author: Johan Torres Creed
-* Description: This procedure get a subject in the table Subject_table and have a out parameter as a cursor.
+* Description: This procedure gets subject in the table Subject_table.
 * Created: 28/04/18
-* Last modification: 28/04/18
+* Last modification: 08/05/18
 * Last modification by: Johan Torres Creed
 */
-CREATE OR REPLACE PROCEDURE getSubject(cSubject OUT SYS_REFCURSOR)
-IS
+CREATE OR REPLACE PROCEDURE getSubjectUsingSelect AS
 BEGIN
-	OPEN cSubject FOR 
-	SELECT Subject_table.idSubject, Subject_table.subjectName, Subject_table.credit,
-	Subject_table.subjectPrerequisites, Subject_table.idPerson
+	SELECT *
 	FROM Subject_table;
-END getSubject;
+END getSubjectUsingSelect;
 
 /*
 * Procedure: updateSubject
@@ -763,31 +803,19 @@ BEGIN
 	COMMIT;
 END insertSeniorLecturer;
 
-/* PRUEBA DE INSERT SENIOR LECTURER*/
-
-CALL insertSeniorLecturer('Billy', 'Gomez', 'Master', 'Pavas', 12365478, 1452,
-'Cartago', 10, 'BCGH6', 'Secretario', 'Ingenieria', 'Asociado', 2, 5, 7);
-
 /*
-* Procedure: getSeniorLecturer
+* Procedure: getSeniorLecturerUsingSelect
 * Author: Johan Torres Creed
-* Description: This procedure gets a senior lecturer in the table SeniorLecturer_table and have a out parameter as a cursor.
+* Description: This procedure gets senior lecturer in the table SeniorLecturer_table.
 * Created: 26/04/18
-* Last modification: 26/04/18
+* Last modification: 08/05/18
 * Last modification by: Johan Torres Creed
 */
-CREATE OR REPLACE PROCEDURE getSeniorLecturer(cSeniorLecturer OUT SYS_REFCURSOR)
-IS
+CREATE OR REPLACE PROCEDURE getSeniorLecturerUsingSelect AS
 BEGIN
-	OPEN cSeniorLecturer FOR 
-	SELECT SeniorLecturer_table.idPerson, SeniorLecturer_table.surname, SeniorLecturer_table.firstName, 
-	SeniorLecturer_table.title, SeniorLecturer_table.address, SeniorLecturer_table.phone, SeniorLecturer_table.postcode,
-	SeniorLecturer_table.campusLocation, SeniorLecturer_table.idBuilding, SeniorLecturer_table.numberOffice,
-	SeniorLecturer_table.staffType, 
-	SeniorLecturer_table.area, SeniorLecturer_table.lectureType,SeniorLecturer_table.numberPhd, SeniorLecturer_table.numberMaster,
-	SeniorLecturer_table.numberHonours
+	SELECT *
 	FROM SeniorLecturer_table;
-END getSeniorLecturer;
+END getSeniorLecturerUsingSelect;
 
 /*
 * Procedure: updateSeniorLecturer
@@ -821,11 +849,6 @@ BEGIN
 	WHERE lecS.idPerson = pIDPerson;
 END updateSeniorLecturer;
 
-/* PRUEBA DE UPDATE SENIOR LECTURER*/
-
-CALL updateSeniorLecturer(0, 'Billy', 'Gomez', 'Master', 'Pavas', 12365478, 1452,
-'Cartago', 10, 'BCGH6', 'Secretario', 'Ingenieria', 'Asociado', 2, 5, 8);
-
 /*
 * Procedure: deleteSeniorLecturer
 * Author: Johan Torres Creed
@@ -840,10 +863,6 @@ BEGIN
 	WHERE idPerson = pIDPerson;
 	COMMIT;
 END deleteSeniorLecturer;
-
-/* PRUEBA DE DELETE SENIOR LECTURER*/
-
-CALL deleteSeniorLecturer(0);
 
 /*
 *-----------
@@ -993,4 +1012,63 @@ CREATE SEQUENCE sequenceSeniorLecturerID
  MINVALUE 0
  MAXVALUE 10000000
  NOCACHE
- NOCYCLE;
+ NOCYCLE
+
+ /*
+----------------- CONSULTAS ---------------------
+ */
+
+/*
+* Query: Building details
+* Author: Johan Torres Creed
+* Description: Insert building details into a temp Building_Details table.
+* Created: 08/05/18
+* Last modification: 08/05/18
+* Last modification by: Johan Torres Creed
+*/
+
+CREATE TABLE Building_Details (
+	bldCode VARCHAR2(100),
+	bldName VARCHAR2(100),
+	bldLocation VARCHAR2(100),
+	bldLevel NUMBER,
+	campusLoc VARCHAR2(100),
+	facultyID NUMBER,
+	officeCant NUMBER,
+	classroomCant NUMBER,
+	labCant NUMBER
+)
+
+INSERT INTO Building_Details
+SELECT building.buildingCode, building.buildingName, building.buildingLocation, building.buildingLevel,
+	building.campusLocation, building.idFaculty, COUNT(office.officeNumber) AS OfficeCount, COUNT(classroom.classNumber)
+    AS ClassCount, COUNT(lab.labNumber) AS LabCount
+FROM Building_table building, Office_table office, Classroom_table classroom, Lab_table lab
+WHERE building.buildingCode = office.buildingCode AND building.buildingCode = classroom.buildingCode AND
+	building.buildingCode = lab.buildingCode
+GROUP BY building.buildingCode, building.buildingName, building.buildingLocation, building.buildingLevel,
+	building.campusLocation, building.idFaculty;
+
+/*
+* Query: Degree Records
+* Author: Johan Torres Creed
+* Description: Insert degree details into a temp Degree_Records table.
+* Created: 08/05/18
+* Last modification: 08/05/18
+* Last modification by: Johan Torres Creed
+*/
+
+CREATE TABLE Degree_Records (
+	degCode VARCHAR2(100),
+	degName VARCHAR2(100),
+	degLength NUMBER,
+	degPrereq VARCHAR2(100),
+	facultyID NUMBER,
+	studentCount NUMBER
+)
+
+INSERT INTO Degree_Records
+SELECT deg.degreeCode, deg.degreeName, deg.length, deg.degreePrerequisites, deg.idFaculty, COUNT(enrl.studentN.idPerson)
+FROM Degree_table deg, EnrollsIn_table enrl
+WHERE enrl.degreeN.degreeCode = deg.degreeCode
+GROUP BY deg.degreeCode, deg.degreeName, deg.length, deg.degreePrerequisites, deg.idFaculty;
