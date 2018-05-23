@@ -147,11 +147,11 @@ CREATE TABLE Technician_table OF Technician_obj (idPerson PRIMARY KEY)
 CREATE OR REPLACE TYPE Lecturer_obj UNDER Staff_obj ( 
 	area VARCHAR2(100),
 	lectureType VARCHAR2(100),
-	MEMBER PROCEDURE display_details ( SELF IN OUT NOCOPY person_typ )
+	MEMBER PROCEDURE display_details ( SELF IN OUT NOCOPY person_obj )
 ) NOT FINAL;
 
 CREATE TYPE BODY Lecturer_obj AS
-  MEMBER PROCEDURE display_details ( SELF IN OUT NOCOPY person_typ ) IS
+  MEMBER PROCEDURE display_details ( SELF IN OUT NOCOPY person_obj ) IS
   BEGIN
     -- use the PUT_LINE procedure of the DBMS_OUTPUT package to display details
     DBMS_OUTPUT.PUT_LINE(TO_CHAR(idPerson) || ' ' || firstName || ' ' || surname || ' ' || title || ' ' || address || ' ' || TO_CHAR(phone) 
