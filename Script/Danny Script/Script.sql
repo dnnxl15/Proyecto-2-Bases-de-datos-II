@@ -550,7 +550,9 @@ CALL updateTutorStudent(2, 'Bilio', 'Gomez', 'Bachillerato', 'San Jose', 8965236
 */
 CREATE PROCEDURE insertTutorStaff(pFirstName IN VARCHAR2, pSurname IN VARCHAR2,
 pTitle IN VARCHAR2, pAddress IN VARCHAR2, pPhone IN NUMBER, pPostcode IN NUMBER,
-pCampusLocation IN VARCHAR2, pIdBuilding IN VARCHAR2, pNumberOffice IN VARCHAR2,
+pCampusLocation IN VARCHAR2,
+
+ pIdBuilding IN VARCHAR2, pNumberOffice IN VARCHAR2,
 pStaffType IN VARCHAR2, pNumberHours IN NUMBER, pRate IN FLOAT) AS
 BEGIN
 	INSERT INTO TutorStaff_table 
